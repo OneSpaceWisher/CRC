@@ -14,6 +14,18 @@
   Every background uses a solid opaque color — no rgba transparency that bleeds Shopify gray.
 */
 
+/* ── Remove Shopify section wrapper top/bottom gaps ── */
+.shopify-section:has(#crc-root),
+.shopify-section--main:has(#crc-root),
+[class*="shopify-section"]:has(#crc-root) {
+  padding: 0 !important;
+  margin: 0 !important;
+  background: #04060f !important;
+}
+/* Fallback: hide the 1px white line Shopify sometimes inserts via page background */
+#crc-root + * { display: none; }
+body:has(#crc-root) > main { background: #04060f !important; }
+
 /* Hard reset inside our root only */
 #crc-root, #crc-root *,
 #crc-root *::before, #crc-root *::after {
@@ -114,7 +126,7 @@
 }
 #crc-root .hh1 {
   font-family: 'Space Grotesk', sans-serif !important;
-  font-size: clamp(2.8rem, 9vw, 6.5rem);
+  font-size: clamp(2.8rem, 10vw, 9.5rem);
   font-weight: 900;
   color: #ffffff !important;
   line-height: 1;
@@ -133,14 +145,19 @@
   animation: crc-fi .7s .05s ease forwards, crc-sh 4s linear infinite;
 }
 #crc-root .hdesc {
-  font-size: clamp(1rem, 3.5vw, 1.15rem);
-  color: #a0aec0 !important;
-  max-width: 640px;
+  font-size: clamp(1rem, 2vw, 1.35rem);
+  color: #ffffff !important;
+  max-width: 680px;
   margin: 0 auto 2.25rem;
   line-height: 1.75;
   opacity: 0;
   animation: crc-fi .7s .2s ease forwards;
-  text-shadow: 0 1px 12px rgba(0,0,0,.8);
+  text-shadow: 0 1px 14px rgba(0,0,0,.9);
+}
+@media (max-width: 640px) {
+  #crc-root .hdesc {
+    font-size: clamp(1rem, 4.5vw, 1.1rem);
+  }
 }
 #crc-root .hbtns {
   display: flex; gap: 1rem;
@@ -297,6 +314,50 @@
   margin-bottom: 3.5rem;
 }
 #crc-root .vw video { width: 100%; max-height: 70vh; display: block; object-fit: cover; }
+#crc-root .vctl {
+  padding: .75rem 1.25rem .85rem;
+  background: #060c18;
+  border-top: 1px solid #161e30;
+  display: flex; flex-direction: column; gap: .6rem;
+}
+#crc-root .vprog {
+  width: 100%; height: 5px; border-radius: 99px;
+  background: rgba(255,255,255,.1);
+  position: relative; cursor: pointer;
+}
+#crc-root .vprog-fill {
+  height: 100%; border-radius: 99px;
+  background: linear-gradient(90deg,#7c6af7,#38bdf8);
+  pointer-events: none;
+}
+#crc-root .vprog-thumb {
+  position: absolute; top: 50%; transform: translate(-50%,-50%);
+  width: 11px; height: 11px; border-radius: 50%;
+  background: #7c6af7;
+  box-shadow: 0 0 6px rgba(124,106,247,.8);
+  pointer-events: none;
+}
+#crc-root .vrow {
+  display: flex; align-items: center; gap: .6rem;
+}
+#crc-root .vbtn {
+  background: none; border: none; cursor: pointer; padding: 0;
+  display: flex; align-items: center; justify-content: center;
+  color: rgba(255,255,255,.5);
+  transition: color .2s;
+  width: 28px; height: 28px;
+}
+#crc-root .vbtn:hover { color: #fff; }
+#crc-root .vbtn-play {
+  width: 34px; height: 34px; border-radius: 50%;
+  background: rgba(124,106,247,.2);
+  transition: background .2s;
+}
+#crc-root .vbtn-play:hover { background: rgba(124,106,247,.45); }
+#crc-root .vtm {
+  margin-left: auto; font-size: .68rem; font-family: 'Inter', monospace !important;
+  color: rgba(255,255,255,.32) !important; letter-spacing: .04em;
+}
 #crc-root .vc {
   padding: .9rem 1.4rem;
   background: #060c18;
@@ -759,10 +820,29 @@
       <h2 class="ch">The Bibliographic Network</h2>
       <p class="cd">The CRCBN hosts thousands of research papers, each one interconnected and annotated by our team. One solid paper from our network has more value than entire $50 'looksmaxxing' courses filled with recycled, AI-generated misinformation.</p>
     </div>
-    <div class="vw sr d1">
-      <video autoplay muted loop playsinline>
+    <div class="vw sr d1" id="crc-vw">
+      <video id="crc-vid" autoplay muted playsinline>
         <source src="https://cdn.shopify.com/videos/c/o/v/9c353db6514840cdb5d88dbe13c85cfa.mov" type="video/mp4"/>
       </video>
+      <div class="vctl">
+        <div class="vprog" id="crc-prog">
+          <div class="vprog-fill" id="crc-fill" style="width:0%"></div>
+          <div class="vprog-thumb" id="crc-thumb" style="left:0%"></div>
+        </div>
+        <div class="vrow">
+          <button class="vbtn" id="crc-rew" title="Back 10 seconds">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="19 20 9 12 19 4 19 20"/><line x1="5" y1="19" x2="5" y2="5"/></svg>
+          </button>
+          <button class="vbtn vbtn-play" id="crc-pp" title="Play / Pause">
+            <svg id="crc-ico-pause" width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+            <svg id="crc-ico-play" width="15" height="15" viewBox="0 0 24 24" fill="currentColor" style="display:none"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          </button>
+          <button class="vbtn" id="crc-fwd" title="Forward 10 seconds">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 4 15 12 5 20 5 4"/><line x1="19" y1="5" x2="19" y2="19"/></svg>
+          </button>
+          <span class="vtm" id="crc-tm">0:00 / 0:00</span>
+        </div>
+      </div>
       <div class="vc">Watch how the Craniofacial Research Collective's Bibliographic Network makes navigating complex orthodontic and craniofacial research effortless.</div>
     </div>
     <div class="sr d2">
@@ -1078,6 +1158,67 @@ document.querySelectorAll('.cu').forEach(el => cio.observe(el));
     t += 0.016;
   }
   requestAnimationFrame(draw);
+})();
+
+// ── Video player controls ─────────────────────────────────────────────
+(function () {
+  const vid  = document.getElementById('crc-vid');
+  const prog = document.getElementById('crc-prog');
+  const fill = document.getElementById('crc-fill');
+  const thumb= document.getElementById('crc-thumb');
+  const pp   = document.getElementById('crc-pp');
+  const rew  = document.getElementById('crc-rew');
+  const fwd  = document.getElementById('crc-fwd');
+  const tm   = document.getElementById('crc-tm');
+  if (!vid || !prog) return;
+
+  function fmt(s) {
+    if (!isFinite(s) || isNaN(s)) return '0:00';
+    const m = Math.floor(s / 60);
+    return m + ':' + String(Math.floor(s % 60)).padStart(2, '0');
+  }
+
+  function updateProg() {
+    const pct = vid.duration ? (vid.currentTime / vid.duration * 100) : 0;
+    fill.style.width  = pct + '%';
+    thumb.style.left  = pct + '%';
+    tm.textContent    = fmt(vid.currentTime) + ' / ' + fmt(vid.duration);
+  }
+
+  function syncIcons() {
+    const pause = document.getElementById('crc-ico-pause');
+    const play  = document.getElementById('crc-ico-play');
+    if (vid.paused) { pause.style.display='none'; play.style.display=''; }
+    else            { pause.style.display='';     play.style.display='none'; }
+  }
+
+  vid.addEventListener('timeupdate', updateProg);
+  vid.addEventListener('loadedmetadata', updateProg);
+  vid.addEventListener('play',  syncIcons);
+  vid.addEventListener('pause', syncIcons);
+  vid.addEventListener('ended', syncIcons);
+
+  pp.addEventListener('click', function() {
+    vid.paused ? vid.play() : vid.pause();
+  });
+  rew.addEventListener('click', function() {
+    vid.currentTime = Math.max(0, vid.currentTime - 10);
+  });
+  fwd.addEventListener('click', function() {
+    vid.currentTime = Math.min(vid.duration || 0, vid.currentTime + 10);
+  });
+
+  function seekTo(e) {
+    const r = prog.getBoundingClientRect();
+    const pct = Math.max(0, Math.min(1, (e.clientX - r.left) / r.width));
+    vid.currentTime = pct * (vid.duration || 0);
+  }
+  prog.addEventListener('click', seekTo);
+  // drag support
+  let dragging = false;
+  prog.addEventListener('mousedown', function(e) { dragging = true; seekTo(e); });
+  window.addEventListener('mousemove', function(e) { if (dragging) seekTo(e); });
+  window.addEventListener('mouseup',   function()  { dragging = false; });
 })();
 
 // ── Network canvas (mission section) ─────────────────────────────────
