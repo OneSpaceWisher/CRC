@@ -1,1055 +1,684 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Craniofacial Research Collective</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Craniofacial Research Collective</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#04060f;--bg-card:#080d18;--border:#161e30;
+  --primary:#5b4cf5;--pl:#7c6af7;--sky:#38bdf8;
+  --text:#e8eaf0;--muted:#56637a;--discord:#5865F2;
+  --fh:'Space Grotesk',sans-serif;--fb:'Inter',sans-serif
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--fb);min-height:100vh;overflow-x:hidden}
+.c{max-width:1280px;margin:0 auto;padding:0 2rem}
+.tc{text-align:center}
+img{max-width:100%;display:block}
+a{color:inherit}
 
-    :root {
-      --bg: #04060f;
-      --bg-card: #080d18;
-      --border: #161e30;
-      --primary: #5b4cf5;
-      --primary-light: #7c6af7;
-      --primary-glow: rgba(91,76,245,0.4);
-      --sky: #38bdf8;
-      --text: #e8eaf0;
-      --muted: #56637a;
-      --discord: #5865F2;
-      --font-head: 'Space Grotesk', sans-serif;
-      --font-body: 'Inter', sans-serif;
-    }
+/* Scroll reveal */
+.sr{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
+.sr.d1{transition-delay:.1s}.sr.d2{transition-delay:.2s}.sr.d3{transition-delay:.3s}
+.sr.vis{opacity:1;transform:none}
 
-    html { scroll-behavior: smooth; }
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: var(--font-body);
-      min-height: 100vh;
-      overflow-x: hidden;
-    }
+/* ── HERO ── */
+#hero{position:relative;width:100%;height:100svh;min-height:580px;overflow:hidden;display:flex;align-items:center;justify-content:center}
+#hc{position:absolute;inset:0;width:100%;height:100%;display:block}
+.hob{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(4,6,15,.15) 0%,transparent 40%,var(--bg) 100%);pointer-events:none;z-index:2}
+.hos{position:absolute;inset:0;background:linear-gradient(to right,rgba(4,6,15,.5) 0%,transparent 30%,transparent 70%,rgba(4,6,15,.5) 100%);pointer-events:none;z-index:2}
+.hcont{position:relative;z-index:10;text-align:center;padding:0 1.25rem;max-width:900px;width:100%}
+.hh1{font-family:var(--fh);font-size:clamp(3rem,9vw,6.5rem);font-weight:900;color:#fff;line-height:1;letter-spacing:-.03em;margin-bottom:1.4rem;opacity:0;animation:fi .7s .05s ease forwards}
+.hh1 .gt{background:linear-gradient(90deg,var(--pl),var(--sky),var(--pl));background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:fi .7s .05s ease forwards,sh 4s linear infinite}
+.hdesc{font-size:clamp(.95rem,2vw,1.15rem);color:var(--muted);max-width:640px;margin:0 auto 2.25rem;line-height:1.7;opacity:0;animation:fi .7s .2s ease forwards}
+.hbtns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;opacity:0;animation:fi .7s .35s ease forwards}
+.bp{display:inline-block;padding:.9rem 2rem;border-radius:9999px;background:var(--primary);color:#fff;font-family:var(--fh);font-weight:700;font-size:1rem;text-decoration:none;border:1px solid rgba(124,106,247,.5);box-shadow:0 0 28px rgba(91,76,245,.4);transition:transform .2s,box-shadow .2s}
+.bp:hover{transform:scale(1.05);box-shadow:0 0 44px rgba(91,76,245,.65)}
+.bg{display:inline-block;padding:.9rem 2rem;border-radius:9999px;background:rgba(255,255,255,.05);color:#fff;font-family:var(--fh);font-weight:700;font-size:1rem;text-decoration:none;border:1px solid rgba(255,255,255,.18);backdrop-filter:blur(8px);transition:background .2s,transform .2s}
+.bg:hover{background:rgba(255,255,255,.12);transform:scale(1.03)}
+.hscr{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);z-index:10;display:flex;flex-direction:column;align-items:center;gap:.5rem}
+.hscr span{font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+.sl{width:1px;height:2rem;background:linear-gradient(to bottom,var(--muted),transparent);animation:sb 1.6s ease-in-out infinite}
 
-    .container { max-width: 1280px; margin: 0 auto; padding: 0 2rem; }
-    .text-center { text-align: center; }
+@keyframes fi{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+@keyframes sh{0%{background-position:0% center}100%{background-position:200% center}}
+@keyframes sb{0%,100%{transform:translateY(0);opacity:1}50%{transform:translateY(8px);opacity:.4}}
 
-    .fade-up { opacity: 0; transform: translateY(28px); transition: opacity 0.65s ease, transform 0.65s ease; }
-    .fade-up.visible { opacity: 1; transform: none; }
-    .fade-up-d1 { transition-delay: 0.1s; }
-    .fade-up-d2 { transition-delay: 0.2s; }
-    .fade-up-d3 { transition-delay: 0.3s; }
-    .fade-up-d4 { transition-delay: 0.4s; }
+/* ── STATS ── */
+#stats{padding:4.5rem 0;border-top:1px solid rgba(255,255,255,.04);border-bottom:1px solid rgba(255,255,255,.04);background:rgba(0,0,0,.22)}
+.sg{display:grid;grid-template-columns:repeat(2,1fr);gap:2rem}
+@media(min-width:768px){.sg{grid-template-columns:repeat(4,1fr)}}
+.si{text-align:center}
+.sv{font-family:var(--fh);font-size:clamp(2rem,4vw,2.7rem);font-weight:900;margin-bottom:.35rem}
+.sl2{font-size:.82rem;color:var(--muted);font-weight:500;letter-spacing:.03em}
 
-    /* ===========================
-       SECTION 1: HERO
-    =========================== */
-    #hero {
-      position: relative;
-      width: 100%;
-      height: 100svh;
-      min-height: 600px;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
+/* ── MISSION ── */
+#mission{padding:5.5rem 0;position:relative}
+#mission::before{content:'';position:absolute;top:0;left:25%;width:22rem;height:22rem;background:rgba(91,76,245,.05);border-radius:50%;filter:blur(80px);pointer-events:none}
+.mg{display:grid;grid-template-columns:1fr;gap:2.5rem;align-items:center}
+@media(min-width:768px){.mg{grid-template-columns:1fr 1fr;gap:4rem}}
+.mlbl{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.18em;color:var(--pl);margin-bottom:.9rem}
+.mh2{font-family:var(--fh);font-size:clamp(2.2rem,4vw,3.4rem);font-weight:900;line-height:1.1;color:#fff;margin-bottom:1.75rem}
+.mh2 .a{color:var(--pl)}
+.mb p{color:var(--muted);line-height:1.75;margin-bottom:.9rem;font-size:1rem}
+.mtags{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.75rem}
+.mtag{padding:.28rem .85rem;border-radius:9999px;font-size:.72rem;font-weight:600;border:1px solid rgba(91,76,245,.3);background:rgba(91,76,245,.1);color:var(--pl)}
+.mcw{position:relative;height:360px;border-radius:1.25rem;overflow:hidden;border:1px solid rgba(255,255,255,.08);background:rgba(0,0,0,.25)}
+#nc{width:100%;height:100%;display:block}
+.mcl{position:absolute;bottom:1.25rem;left:1.25rem;font-size:.78rem;color:var(--muted);font-weight:500}
 
-    #hero-canvas {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      display: block;
-    }
+/* ── CRCBN ── */
+#crcbn{padding:5.5rem 0;background:rgba(8,13,24,.5)}
+.ch{font-family:var(--fh);font-size:clamp(2rem,4vw,3.2rem);font-weight:900;color:#fff;margin-bottom:1.1rem}
+.cd{font-size:1rem;color:var(--muted);line-height:1.7;max-width:760px}
+.chdr{margin-bottom:3.5rem}
+.vw{border-radius:1.25rem;overflow:hidden;border:1px solid var(--border);background:rgba(0,0,0,.45);box-shadow:0 28px 70px rgba(0,0,0,.5);margin-bottom:3.5rem}
+.vw video{width:100%;max-height:70vh;display:block;object-fit:cover}
+.vc{padding:.9rem 1.4rem;background:rgba(8,13,24,.92);border-top:1px solid var(--border);font-size:.82rem;color:var(--muted);text-align:center}
+.ph{font-family:var(--fh);font-size:1.2rem;font-weight:700;color:#fff;margin-bottom:1.4rem}
+.ps{display:flex;overflow-x:auto;gap:1.2rem;padding-bottom:1.5rem;margin:0 -2rem;padding-left:2rem;padding-right:2rem;scroll-snap-type:x mandatory;-ms-overflow-style:none;scrollbar-width:none}
+.ps::-webkit-scrollbar{display:none}
+.pc{min-width:288px;max-width:288px;flex-shrink:0;scroll-snap-align:start;background:rgba(8,13,24,.7);border:1px solid rgba(255,255,255,.07);border-radius:1rem;padding:1.4rem;display:flex;flex-direction:column;gap:.55rem;transition:border-color .25s}
+.pc:hover{border-color:rgba(91,76,245,.4)}
+.pt{font-weight:600;font-size:.95rem;color:#fff;line-height:1.45}
+.pau{font-size:.8rem;color:var(--muted)}
+.pm{font-size:.72rem;color:rgba(86,99,122,.65);margin-top:auto}
+.ptags{display:flex;flex-wrap:wrap;gap:.35rem;margin-top:.4rem}
+.ptag{padding:.18rem .55rem;border-radius:9999px;font-size:.68rem;font-weight:600;border:1px solid rgba(91,76,245,.25);background:rgba(91,76,245,.08);color:var(--pl)}
 
-    .hero-overlay-b {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to bottom, rgba(4,6,15,0.15) 0%, transparent 40%, var(--bg) 100%);
-      pointer-events: none;
-      z-index: 2;
-    }
-    .hero-overlay-s {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to right, rgba(4,6,15,0.5) 0%, transparent 30%, transparent 70%, rgba(4,6,15,0.5) 100%);
-      pointer-events: none;
-      z-index: 2;
-    }
+/* ── COVERFLOW ── */
+#cov{padding:5.5rem 0;overflow:hidden}
+.covh{font-family:var(--fh);font-size:clamp(2rem,4vw,3.2rem);font-weight:900;color:#fff;margin-bottom:.65rem}
+.covs{font-size:.95rem;color:var(--muted);margin-bottom:.35rem}
+.covhint{font-size:.75rem;color:rgba(86,99,122,.55);margin-bottom:2.5rem}
+.cstg{position:relative;width:100%;height:460px;perspective:1100px;display:flex;align-items:center;justify-content:center}
+.cin{position:relative;width:100%;height:100%;transform-style:preserve-3d}
+.ccard{position:absolute;width:280px;aspect-ratio:3/4;border-radius:1.25rem;overflow:hidden;transition:transform .65s cubic-bezier(.4,0,.2,1),opacity .65s ease,box-shadow .65s ease;box-shadow:0 18px 55px rgba(0,0,0,.7);border:1px solid rgba(255,255,255,.08);left:50%;top:50%;margin-left:-140px;margin-top:-186px;background:var(--bg-card);user-select:none;cursor:pointer}
+@media(min-width:768px){.ccard{width:360px;margin-left:-180px;margin-top:-240px}}
+.ccard img{width:100%;height:100%;object-fit:cover;pointer-events:none}
+.clbl{position:absolute;bottom:0;left:0;right:0;padding:1.35rem;background:linear-gradient(to top,rgba(0,0,0,.9),transparent);font-family:var(--fh);font-weight:600;font-size:1.05rem;color:#fff}
+.czi{position:absolute;top:.65rem;right:.65rem;background:rgba(0,0,0,.5);backdrop-filter:blur(4px);border:1px solid rgba(255,255,255,.2);border-radius:9999px;width:1.9rem;height:1.9rem;display:none;align-items:center;justify-content:center;color:#fff;font-size:.8rem}
+.ccard.isc .czi{display:flex}
+.cprev,.cnxt{position:absolute;top:50%;transform:translateY(-50%);z-index:100;background:rgba(4,6,15,.6);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.12);color:#fff;border-radius:9999px;width:2.5rem;height:2.5rem;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .2s,transform .2s;font-size:1.1rem;outline:none}
+.cprev:hover,.cnxt:hover{background:var(--primary);transform:translateY(-50%) scale(1.08)}
+.cprev{left:1rem}.cnxt{right:1rem}
+@media(min-width:768px){.cprev{left:2.5rem}.cnxt{right:2.5rem}}
+.cdots{display:flex;justify-content:center;gap:.4rem;margin-top:1.75rem}
+.cdot{height:.45rem;border-radius:9999px;background:rgba(255,255,255,.18);transition:all .3s;cursor:pointer;width:.45rem;border:none;outline:none}
+.cdot.act{width:1.4rem;background:var(--primary)}
+.cdot:hover:not(.act){background:rgba(255,255,255,.35)}
+#lb{position:fixed;inset:0;z-index:999;background:rgba(0,0,0,.9);backdrop-filter:blur(12px);display:none;align-items:center;justify-content:center;padding:1rem}
+#lb.open{display:flex}
+.lbi{max-width:100%;max-height:88vh;border-radius:1.25rem;box-shadow:0 40px 100px rgba(0,0,0,.7);object-fit:contain;animation:lbin .25s ease}
+@keyframes lbin{from{transform:scale(.88);opacity:0}to{transform:scale(1);opacity:1}}
+.lbc{position:absolute;top:1.25rem;right:1.25rem;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:9999px;width:2.4rem;height:2.4rem;display:flex;align-items:center;justify-content:center;color:#fff;cursor:pointer;font-size:1.1rem;transition:background .2s}
+.lbc:hover{background:rgba(255,255,255,.22)}
 
-    .hero-content {
-      position: relative;
-      z-index: 10;
-      text-align: center;
-      padding: 0 1.5rem;
-      max-width: 900px;
-      width: 100%;
-    }
+/* ── MEMBERSHIP ── */
+#mem{padding:6.5rem 0;position:relative;overflow:hidden}
+#mem::before{content:'';position:absolute;top:25%;right:0;width:480px;height:480px;background:rgba(91,76,245,.06);border-radius:50%;filter:blur(110px);pointer-events:none}
+#mem::after{content:'';position:absolute;bottom:25%;left:0;width:380px;height:380px;background:rgba(56,189,248,.04);border-radius:50%;filter:blur(100px);pointer-events:none}
+.mrel{position:relative;z-index:1}
+.mbadge{display:inline-flex;align-items:center;gap:.5rem;padding:.38rem .95rem;border-radius:9999px;border:1px solid rgba(91,76,245,.3);background:rgba(91,76,245,.1);color:var(--pl);font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.18em;margin-bottom:1.4rem}
+.bdot{width:.35rem;height:.35rem;border-radius:9999px;background:var(--pl);animation:pd 1.5s ease-in-out infinite}
+@keyframes pd{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.8)}}
+.mh2{font-family:var(--fh);font-size:clamp(2.1rem,5vw,3.8rem);font-weight:900;color:#fff;line-height:1.1;margin-bottom:1.15rem}
+.mh2 .gr{background:linear-gradient(90deg,var(--pl),var(--sky));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.mdes{font-size:1.05rem;color:var(--muted);max-width:630px;margin:0 auto 3.5rem;line-height:1.7}
+.mstats{display:grid;grid-template-columns:repeat(2,1fr);gap:.9rem;margin-bottom:4.5rem}
+@media(min-width:768px){.mstats{grid-template-columns:repeat(4,1fr)}}
+.mst{background:rgba(8,13,24,.7);border:1px solid rgba(255,255,255,.06);border-radius:1.25rem;padding:1.15rem;text-align:center;backdrop-filter:blur(8px)}
+.msv{font-family:var(--fh);font-size:clamp(1.4rem,3vw,2rem);font-weight:900;margin-bottom:.3rem}
+.msl{font-size:.77rem;color:var(--muted);line-height:1.35}
+.mgrid{display:grid;grid-template-columns:1fr;gap:1.4rem;margin-bottom:3.5rem}
+@media(min-width:768px){.mgrid{grid-template-columns:1fr 1fr}}
+.mcard{background:rgba(8,13,24,.7);border:1px solid rgba(255,255,255,.06);border-radius:1.5rem;padding:1.75rem;backdrop-filter:blur(8px)}
+.mch{font-family:var(--fh);font-size:1.25rem;font-weight:700;color:#fff;margin-bottom:1.4rem}
+.fli{display:flex;gap:.9rem;align-items:flex-start;margin-bottom:1.1rem}
+.fli:last-of-type{margin-bottom:0}
+.fico{font-size:1.15rem;flex-shrink:0;margin-top:.1rem}
+.ftx{color:var(--muted);font-size:.92rem;line-height:1.55}
+.ftx strong{color:#fff}
+.fdis{font-size:.72rem;color:rgba(86,99,122,.5);border-top:1px solid rgba(255,255,255,.05);padding-top:.9rem;margin-top:.9rem}
+.crow{padding:.7rem 0;border-bottom:1px solid rgba(255,255,255,.05)}
+.crow:last-child{border:none}
+.cdim{font-size:.75rem;color:rgba(86,99,122,.65);margin-bottom:.38rem}
+.cpills{display:flex;flex-wrap:wrap;gap:.38rem}
+.pcrc{display:inline-flex;align-items:center;gap:.3rem;font-size:.72rem;font-weight:600;padding:.22rem .65rem;border-radius:9999px;background:rgba(52,211,153,.1);color:#34d399;border:1px solid rgba(52,211,153,.22)}
+.poth{display:inline-flex;align-items:center;font-size:.72rem;padding:.22rem .65rem;border-radius:9999px;background:rgba(255,255,255,.04);color:var(--muted);border:1px solid rgba(255,255,255,.08)}
+.howh{font-family:var(--fh);font-size:1.45rem;font-weight:700;color:#fff;text-align:center;margin-bottom:2.25rem}
+.hsteps{display:grid;grid-template-columns:1fr;gap:1.2rem;margin-bottom:4rem}
+@media(min-width:768px){.hsteps{grid-template-columns:repeat(3,1fr)}}
+.hsc{background:rgba(8,13,24,.7);border:1px solid rgba(255,255,255,.06);border-radius:1.5rem;padding:1.75rem;backdrop-filter:blur(8px)}
+.hsn{font-family:var(--fh);font-size:4.5rem;font-weight:900;line-height:1;margin-bottom:.9rem;background:linear-gradient(135deg,rgba(124,106,247,.18),rgba(124,106,247,.03));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hslb{font-size:.72rem;font-weight:700;color:var(--pl);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.45rem}
+.hsti{font-family:var(--fh);font-size:1.1rem;font-weight:700;color:#fff;margin-bottom:.55rem}
+.hsde{font-size:.88rem;color:var(--muted);line-height:1.6}
+.mctab{border-radius:2rem;overflow:hidden;border:1px solid rgba(91,76,245,.2);background:linear-gradient(135deg,rgba(91,76,245,.1),rgba(91,76,245,.03) 50%,rgba(56,189,248,.06));padding:3.5rem 1.75rem;text-align:center;backdrop-filter:blur(8px);position:relative}
+.mctab::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(91,76,245,.07),transparent);pointer-events:none}
+.mctab .r{position:relative;z-index:1}
+.mctah{font-family:var(--fh);font-size:clamp(1.7rem,4vw,2.7rem);font-weight:900;color:#fff;margin-bottom:.9rem}
+.mctap{font-size:1rem;color:var(--muted);margin-bottom:1.75rem;max-width:480px;margin-left:auto;margin-right:auto}
+.mctap strong{color:#fff}
+.bctа{display:inline-block;padding:1rem 2.6rem;border-radius:9999px;background:var(--primary);color:#fff;font-family:var(--fh);font-weight:700;font-size:1.05rem;text-decoration:none;border:1px solid rgba(124,106,247,.5);box-shadow:0 0 30px rgba(91,76,245,.4);transition:transform .2s,box-shadow .2s}
+.bctа:hover{transform:scale(1.05);box-shadow:0 0 50px rgba(91,76,245,.65)}
+.mdisc{margin-top:1.1rem;font-size:.72rem;color:rgba(86,99,122,.4)}
 
-    .hero-h1 {
-      font-family: var(--font-head);
-      font-size: clamp(3rem, 8vw, 6.5rem);
-      font-weight: 900;
-      color: #fff;
-      line-height: 1.0;
-      letter-spacing: -0.03em;
-      margin-bottom: 1.5rem;
-    }
+/* ── DISCORD ── */
+#discord{padding:5.5rem 0;background:rgba(8,13,24,.3);position:relative;overflow:hidden}
+#discord::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:560px;height:560px;background:rgba(88,101,242,.08);border-radius:50%;filter:blur(90px);pointer-events:none}
+.di{position:relative;z-index:2;max-width:620px;margin:0 auto;text-align:center}
+.dav{display:flex;align-items:center;justify-content:center;margin-bottom:1.75rem}
+.da{width:2.35rem;height:2.35rem;border-radius:9999px;border:2px solid var(--bg);display:flex;align-items:center;justify-content:center;font-size:.68rem;font-weight:700;color:#fff;margin-left:-.7rem;flex-shrink:0}
+.da:first-child{margin-left:0}
+.db{margin-left:.7rem;padding:.22rem .7rem;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:9999px;font-size:.82rem;font-weight:500}
+.dh2{font-family:var(--fh);font-size:clamp(2rem,4vw,3rem);font-weight:900;color:#fff;margin-bottom:.9rem}
+.ddesc{font-size:.97rem;color:var(--muted);line-height:1.7;margin-bottom:2.25rem}
+.bdis{display:inline-flex;align-items:center;gap:.7rem;padding:.95rem 2rem;background:var(--discord);color:#fff;font-family:var(--fh);font-weight:700;font-size:1rem;text-decoration:none;border-radius:.8rem;box-shadow:0 0 28px rgba(88,101,242,.4);transition:background .2s,transform .2s,box-shadow .2s}
+.bdis:hover{background:#4752C4;transform:scale(1.04);box-shadow:0 0 44px rgba(88,101,242,.55)}
+.dico{width:1.4rem;height:1.4rem;fill:#fff;flex-shrink:0}
 
-    .hero-h1 .gradient-text {
-      background: linear-gradient(90deg, var(--primary-light), var(--sky), var(--primary-light));
-      background-size: 200% auto;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      animation: shimmer 4s linear infinite;
-    }
-
-    @keyframes shimmer {
-      0% { background-position: 0% center; }
-      100% { background-position: 200% center; }
-    }
-
-    .hero-desc {
-      font-size: clamp(1rem, 2vw, 1.2rem);
-      color: var(--muted);
-      max-width: 640px;
-      margin: 0 auto 2.5rem;
-      line-height: 1.7;
-    }
-
-    .hero-btns {
-      display: flex;
-      gap: 1rem;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-
-    .btn-primary {
-      display: inline-block;
-      padding: 1rem 2.2rem;
-      border-radius: 9999px;
-      background: var(--primary);
-      color: #fff;
-      font-family: var(--font-head);
-      font-weight: 700;
-      font-size: 1.05rem;
-      text-decoration: none;
-      border: 1px solid rgba(124,106,247,0.5);
-      box-shadow: 0 0 28px var(--primary-glow);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-    .btn-primary:hover { transform: scale(1.05); box-shadow: 0 0 44px rgba(91,76,245,0.65); }
-
-    .btn-ghost {
-      display: inline-block;
-      padding: 1rem 2.2rem;
-      border-radius: 9999px;
-      background: rgba(255,255,255,0.05);
-      color: #fff;
-      font-family: var(--font-head);
-      font-weight: 700;
-      font-size: 1.05rem;
-      text-decoration: none;
-      border: 1px solid rgba(255,255,255,0.18);
-      backdrop-filter: blur(8px);
-      transition: background 0.2s ease, transform 0.2s ease;
-    }
-    .btn-ghost:hover { background: rgba(255,255,255,0.12); transform: scale(1.03); }
-
-    .hero-scroll {
-      position: absolute;
-      bottom: 2rem;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 10;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.5rem;
-    }
-    .hero-scroll span {
-      font-size: 0.7rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
-    .scroll-line {
-      width: 1px;
-      height: 2rem;
-      background: linear-gradient(to bottom, var(--muted), transparent);
-      animation: scroll-bob 1.6s ease-in-out infinite;
-    }
-    @keyframes scroll-bob {
-      0%, 100% { transform: translateY(0); opacity: 1; }
-      50% { transform: translateY(8px); opacity: 0.4; }
-    }
-
-    .hero-content > * { opacity: 0; animation: hero-in 0.75s ease forwards; }
-    .hero-h1 { animation-delay: 0.05s; }
-    .hero-desc { animation-delay: 0.22s; }
-    .hero-btns { animation-delay: 0.38s; }
-    @keyframes hero-in {
-      from { opacity: 0; transform: translateY(28px); }
-      to { opacity: 1; transform: none; }
-    }
-
-    /* ===========================
-       SECTION 2: STATS
-    =========================== */
-    #stats {
-      padding: 5rem 0;
-      border-top: 1px solid rgba(255,255,255,0.04);
-      border-bottom: 1px solid rgba(255,255,255,0.04);
-      background: rgba(0,0,0,0.25);
-    }
-
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 2rem;
-    }
-    @media (min-width: 768px) { .stats-grid { grid-template-columns: repeat(4, 1fr); } }
-
-    .stat-item { text-align: center; }
-    .stat-value {
-      font-family: var(--font-head);
-      font-size: clamp(2rem, 4vw, 2.8rem);
-      font-weight: 900;
-      margin-bottom: 0.4rem;
-    }
-    .stat-label { font-size: 0.85rem; color: var(--muted); font-weight: 500; letter-spacing: 0.03em; }
-
-    /* ===========================
-       SECTION 3: MISSION
-    =========================== */
-    #mission { padding: 6rem 0; position: relative; }
-    #mission::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 25%;
-      width: 24rem; height: 24rem;
-      background: rgba(91,76,245,0.05);
-      border-radius: 50%; filter: blur(80px);
-      pointer-events: none;
-    }
-
-    .mission-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 3rem;
-      align-items: center;
-    }
-    @media (min-width: 768px) { .mission-grid { grid-template-columns: 1fr 1fr; gap: 5rem; } }
-
-    .mission-label {
-      font-size: 0.75rem; font-weight: 700;
-      text-transform: uppercase; letter-spacing: 0.18em;
-      color: var(--primary-light); margin-bottom: 1rem;
-    }
-    .mission-h2 {
-      font-family: var(--font-head);
-      font-size: clamp(2.2rem, 4vw, 3.5rem);
-      font-weight: 900; line-height: 1.1; color: #fff; margin-bottom: 2rem;
-    }
-    .mission-h2 .accent { color: var(--primary-light); }
-    .mission-body p { color: var(--muted); line-height: 1.75; margin-bottom: 1rem; font-size: 1.02rem; }
-
-    .mission-tags { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 2rem; }
-    .mission-tag {
-      padding: 0.3rem 0.9rem; border-radius: 9999px;
-      font-size: 0.75rem; font-weight: 600;
-      border: 1px solid rgba(91,76,245,0.3);
-      background: rgba(91,76,245,0.1); color: var(--primary-light);
-    }
-
-    .mission-canvas-wrap {
-      position: relative; height: 380px; border-radius: 1.25rem;
-      overflow: hidden; border: 1px solid rgba(255,255,255,0.08);
-      background: rgba(0,0,0,0.28);
-    }
-    #network-canvas { width: 100%; height: 100%; display: block; }
-    .mission-canvas-label {
-      position: absolute; bottom: 1.25rem; left: 1.25rem;
-      font-size: 0.8rem; color: var(--muted); font-weight: 500;
-    }
-
-    /* ===========================
-       SECTION 4: CRCBN
-    =========================== */
-    #crcbn { padding: 6rem 0; background: rgba(8,13,24,0.5); }
-
-    .crcbn-heading { font-family: var(--font-head); font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 900; color: #fff; margin-bottom: 1.25rem; }
-    .crcbn-desc { font-size: 1.05rem; color: var(--muted); line-height: 1.7; max-width: 760px; }
-    .crcbn-header { margin-bottom: 4rem; }
-
-    .video-wrap {
-      border-radius: 1.25rem; overflow: hidden;
-      border: 1px solid var(--border); background: rgba(0,0,0,0.5);
-      box-shadow: 0 32px 80px rgba(0,0,0,0.5); margin-bottom: 4rem;
-    }
-    .video-wrap video { width: 100%; max-height: 72vh; display: block; object-fit: cover; }
-    .video-caption {
-      padding: 1rem 1.5rem;
-      background: rgba(8,13,24,0.92); backdrop-filter: blur(8px);
-      border-top: 1px solid var(--border);
-      font-size: 0.85rem; color: var(--muted); text-align: center;
-    }
-
-    .papers-heading { font-family: var(--font-head); font-size: 1.25rem; font-weight: 700; color: #fff; margin-bottom: 1.5rem; }
-    .papers-scroll {
-      display: flex; overflow-x: auto; gap: 1.25rem;
-      padding-bottom: 2rem; margin: 0 -2rem;
-      padding-left: 2rem; padding-right: 2rem;
-      scroll-snap-type: x mandatory;
-      -ms-overflow-style: none; scrollbar-width: none;
-    }
-    .papers-scroll::-webkit-scrollbar { display: none; }
-
-    .paper-card {
-      min-width: 300px; max-width: 300px; flex-shrink: 0;
-      scroll-snap-align: start;
-      background: rgba(8,13,24,0.7);
-      border: 1px solid rgba(255,255,255,0.07);
-      border-radius: 1rem; padding: 1.5rem;
-      display: flex; flex-direction: column; gap: 0.6rem;
-      transition: border-color 0.25s;
-    }
-    .paper-card:hover { border-color: rgba(91,76,245,0.45); }
-    .paper-title { font-weight: 600; font-size: 1rem; color: #fff; line-height: 1.45; }
-    .paper-authors { font-size: 0.83rem; color: var(--muted); }
-    .paper-meta { font-size: 0.75rem; color: rgba(86,99,122,0.7); margin-top: auto; }
-    .paper-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.5rem; }
-    .paper-tag {
-      padding: 0.2rem 0.6rem; border-radius: 9999px;
-      font-size: 0.7rem; font-weight: 600;
-      border: 1px solid rgba(91,76,245,0.25);
-      background: rgba(91,76,245,0.08); color: var(--primary-light);
-    }
-
-    /* ===========================
-       SECTION 5: COVERFLOW
-    =========================== */
-    #coverflow { padding: 6rem 0; overflow: hidden; }
-
-    .coverflow-heading { font-family: var(--font-head); font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 900; color: #fff; margin-bottom: 0.75rem; }
-    .coverflow-sub { font-size: 1rem; color: var(--muted); margin-bottom: 0.4rem; }
-    .coverflow-hint { font-size: 0.8rem; color: rgba(86,99,122,0.6); margin-bottom: 3rem; }
-
-    .coverflow-stage {
-      position: relative; width: 100%; height: 480px;
-      perspective: 1100px;
-      display: flex; align-items: center; justify-content: center;
-    }
-    .coverflow-inner { position: relative; width: 100%; height: 100%; transform-style: preserve-3d; }
-
-    .cf-card {
-      position: absolute; width: 300px; aspect-ratio: 3/4;
-      border-radius: 1.25rem; overflow: hidden;
-      transition: transform 0.7s cubic-bezier(0.4,0,0.2,1), opacity 0.7s ease, box-shadow 0.7s ease;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.7);
-      border: 1px solid rgba(255,255,255,0.08);
-      left: 50%; top: 50%; margin-left: -150px; margin-top: -200px;
-      background: var(--bg-card); user-select: none;
-    }
-    @media (min-width: 768px) { .cf-card { width: 380px; margin-left: -190px; margin-top: -253px; } }
-    .cf-card img { width: 100%; height: 100%; object-fit: cover; display: block; pointer-events: none; }
-    .cf-label {
-      position: absolute; bottom: 0; left: 0; right: 0; padding: 1.5rem;
-      background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 100%);
-      font-family: var(--font-head); font-weight: 600; font-size: 1.1rem; color: #fff;
-    }
-    .cf-zoom-icon {
-      position: absolute; top: 0.75rem; right: 0.75rem;
-      background: rgba(0,0,0,0.5); backdrop-filter: blur(4px);
-      border: 1px solid rgba(255,255,255,0.2); border-radius: 9999px;
-      width: 2rem; height: 2rem;
-      display: none; align-items: center; justify-content: center;
-      color: #fff; font-size: 0.85rem;
-    }
-    .cf-card.is-center .cf-zoom-icon { display: flex; }
-
-    .cf-prev, .cf-next {
-      position: absolute; top: 50%; transform: translateY(-50%); z-index: 100;
-      background: rgba(4,6,15,0.6); backdrop-filter: blur(8px);
-      border: 1px solid rgba(255,255,255,0.12); color: #fff;
-      border-radius: 9999px; width: 2.75rem; height: 2.75rem;
-      display: flex; align-items: center; justify-content: center;
-      cursor: pointer; transition: background 0.2s, transform 0.2s; font-size: 1.2rem;
-    }
-    .cf-prev:hover, .cf-next:hover { background: var(--primary); transform: translateY(-50%) scale(1.07); }
-    .cf-prev { left: 1rem; }
-    .cf-next { right: 1rem; }
-    @media (min-width: 768px) { .cf-prev { left: 3rem; } .cf-next { right: 3rem; } }
-
-    .cf-dots { display: flex; justify-content: center; gap: 0.4rem; margin-top: 2rem; }
-    .cf-dot {
-      height: 0.5rem; border-radius: 9999px;
-      background: rgba(255,255,255,0.18);
-      transition: all 0.3s ease; cursor: pointer; width: 0.5rem; border: none;
-    }
-    .cf-dot.active { width: 1.5rem; background: var(--primary); }
-    .cf-dot:hover:not(.active) { background: rgba(255,255,255,0.35); }
-
-    /* =================== LIGHTBOX =================== */
-    #lightbox {
-      position: fixed; inset: 0; z-index: 999;
-      background: rgba(0,0,0,0.9); backdrop-filter: blur(12px);
-      display: none; align-items: center; justify-content: center; padding: 1rem;
-    }
-    #lightbox.open { display: flex; }
-    .lightbox-img {
-      max-width: 100%; max-height: 88vh; border-radius: 1.25rem;
-      box-shadow: 0 40px 100px rgba(0,0,0,0.7); object-fit: contain;
-      animation: lb-in 0.25s ease;
-    }
-    @keyframes lb-in {
-      from { transform: scale(0.87); opacity: 0; }
-      to { transform: scale(1); opacity: 1; }
-    }
-    .lightbox-close {
-      position: absolute; top: 1.25rem; right: 1.25rem;
-      background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
-      border-radius: 9999px; width: 2.5rem; height: 2.5rem;
-      display: flex; align-items: center; justify-content: center;
-      color: #fff; cursor: pointer; font-size: 1.1rem; transition: background 0.2s;
-    }
-    .lightbox-close:hover { background: rgba(255,255,255,0.2); }
-
-    /* ===========================
-       SECTION 6: MEMBERSHIP
-    =========================== */
-    #membership { padding: 7rem 0; position: relative; overflow: hidden; }
-    #membership::before {
-      content: '';
-      position: absolute; top: 25%; right: 0;
-      width: 500px; height: 500px;
-      background: rgba(91,76,245,0.06); border-radius: 50%; filter: blur(120px);
-      pointer-events: none;
-    }
-    #membership::after {
-      content: '';
-      position: absolute; bottom: 25%; left: 0;
-      width: 400px; height: 400px;
-      background: rgba(56,189,248,0.04); border-radius: 50%; filter: blur(100px);
-      pointer-events: none;
-    }
-
-    .membership-badge {
-      display: inline-flex; align-items: center; gap: 0.5rem;
-      padding: 0.4rem 1rem; border-radius: 9999px;
-      border: 1px solid rgba(91,76,245,0.3);
-      background: rgba(91,76,245,0.1); color: var(--primary-light);
-      font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.18em;
-      margin-bottom: 1.5rem;
-    }
-    .badge-dot {
-      width: 0.375rem; height: 0.375rem; border-radius: 9999px;
-      background: var(--primary-light);
-      animation: pulse-dot 1.5s ease-in-out infinite;
-    }
-    @keyframes pulse-dot { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(0.8)} }
-
-    .membership-h2 {
-      font-family: var(--font-head);
-      font-size: clamp(2.2rem, 5vw, 4rem);
-      font-weight: 900; color: #fff; line-height: 1.1; margin-bottom: 1.25rem;
-    }
-    .membership-h2 .grad {
-      background: linear-gradient(90deg, var(--primary-light), var(--sky));
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-    }
-    .membership-desc { font-size: 1.1rem; color: var(--muted); max-width: 640px; margin: 0 auto; line-height: 1.7; }
-
-    .mem-stats {
-      display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin: 3.5rem 0 5rem;
-    }
-    @media (min-width: 768px) { .mem-stats { grid-template-columns: repeat(4, 1fr); } }
-
-    .mem-stat {
-      background: rgba(8,13,24,0.7); border: 1px solid rgba(255,255,255,0.06);
-      border-radius: 1.25rem; padding: 1.25rem; text-align: center; backdrop-filter: blur(8px);
-    }
-    .mem-stat-val {
-      font-family: var(--font-head); font-size: clamp(1.5rem, 3vw, 2.2rem);
-      font-weight: 900; margin-bottom: 0.3rem;
-    }
-    .mem-stat-lab { font-size: 0.8rem; color: var(--muted); line-height: 1.35; }
-
-    .mem-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; margin-bottom: 4rem; }
-    @media (min-width: 768px) { .mem-grid { grid-template-columns: 1fr 1fr; } }
-
-    .mem-card {
-      background: rgba(8,13,24,0.7); border: 1px solid rgba(255,255,255,0.06);
-      border-radius: 1.5rem; padding: 2rem; backdrop-filter: blur(8px);
-    }
-    .mem-card-h { font-family: var(--font-head); font-size: 1.3rem; font-weight: 700; color: #fff; margin-bottom: 1.5rem; }
-
-    .feature-li { display: flex; gap: 1rem; align-items: flex-start; margin-bottom: 1.2rem; }
-    .feature-li:last-child { margin-bottom: 0; }
-    .feature-icon { font-size: 1.2rem; flex-shrink: 0; margin-top: 0.1rem; }
-    .feature-text strong { color: #fff; }
-    .feature-text { color: var(--muted); font-size: 0.95rem; line-height: 1.55; }
-    .feature-disclaimer { font-size: 0.75rem; color: rgba(86,99,122,0.55); border-top: 1px solid rgba(255,255,255,0.05); padding-top: 1rem; margin-top: 1rem; }
-
-    .compare-row {
-      padding: 0.75rem 0;
-      border-bottom: 1px solid rgba(255,255,255,0.05);
-    }
-    .compare-row:last-child { border: none; }
-    .compare-dim { font-size: 0.78rem; color: rgba(86,99,122,0.7); margin-bottom: 0.4rem; }
-    .compare-pills { display: flex; flex-wrap: wrap; gap: 0.4rem; }
-    .pill-crc {
-      display: inline-flex; align-items: center; gap: 0.3rem;
-      font-size: 0.75rem; font-weight: 600;
-      padding: 0.25rem 0.7rem; border-radius: 9999px;
-      background: rgba(52,211,153,0.1); color: #34d399; border: 1px solid rgba(52,211,153,0.25);
-    }
-    .pill-other {
-      display: inline-flex; align-items: center;
-      font-size: 0.75rem; padding: 0.25rem 0.7rem; border-radius: 9999px;
-      background: rgba(255,255,255,0.04); color: var(--muted); border: 1px solid rgba(255,255,255,0.08);
-    }
-
-    .how-steps { display: grid; grid-template-columns: 1fr; gap: 1.25rem; margin-bottom: 4.5rem; }
-    @media (min-width: 768px) { .how-steps { grid-template-columns: repeat(3, 1fr); } }
-
-    .step-card {
-      background: rgba(8,13,24,0.7); border: 1px solid rgba(255,255,255,0.06);
-      border-radius: 1.5rem; padding: 2rem; backdrop-filter: blur(8px);
-      position: relative; overflow: hidden;
-    }
-    .step-num {
-      font-family: var(--font-head); font-size: 5rem; font-weight: 900;
-      line-height: 1; margin-bottom: 1rem;
-      background: linear-gradient(135deg, rgba(124,106,247,0.18), rgba(124,106,247,0.03));
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-    }
-    .step-label { font-size: 0.75rem; font-weight: 700; color: var(--primary-light); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem; }
-    .step-title { font-family: var(--font-head); font-size: 1.15rem; font-weight: 700; color: #fff; margin-bottom: 0.6rem; }
-    .step-desc { font-size: 0.9rem; color: var(--muted); line-height: 1.6; }
-
-    .mem-cta-box {
-      border-radius: 2rem; overflow: hidden;
-      border: 1px solid rgba(91,76,245,0.2);
-      background: linear-gradient(135deg, rgba(91,76,245,0.1), rgba(91,76,245,0.03) 50%, rgba(56,189,248,0.06));
-      padding: 4rem 2rem; text-align: center; backdrop-filter: blur(8px);
-      position: relative;
-    }
-    .mem-cta-box::before {
-      content: '';
-      position: absolute; inset: 0;
-      background: linear-gradient(135deg, rgba(91,76,245,0.07), transparent);
-      pointer-events: none;
-    }
-    .mem-cta-box .rel { position: relative; z-index: 1; }
-    .mem-cta-h { font-family: var(--font-head); font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 900; color: #fff; margin-bottom: 1rem; }
-    .mem-cta-p { font-size: 1.05rem; color: var(--muted); margin-bottom: 2rem; max-width: 500px; margin-left: auto; margin-right: auto; }
-    .mem-cta-p strong { color: #fff; }
-    .btn-cta {
-      display: inline-block;
-      padding: 1.1rem 2.8rem; border-radius: 9999px;
-      background: var(--primary); color: #fff;
-      font-family: var(--font-head); font-weight: 700; font-size: 1.1rem;
-      text-decoration: none; border: 1px solid rgba(124,106,247,0.5);
-      box-shadow: 0 0 32px rgba(91,76,245,0.4);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-    .btn-cta:hover { transform: scale(1.05); box-shadow: 0 0 50px rgba(91,76,245,0.65); }
-    .mem-disclaimer { margin-top: 1.25rem; font-size: 0.75rem; color: rgba(86,99,122,0.45); }
-
-    /* ===========================
-       SECTION 7: DISCORD
-    =========================== */
-    #discord { padding: 6rem 0; background: rgba(8,13,24,0.3); position: relative; overflow: hidden; }
-    #discord::before {
-      content: '';
-      position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
-      width: 600px; height: 600px;
-      background: rgba(88,101,242,0.08); border-radius: 50%; filter: blur(100px); pointer-events: none;
-    }
-
-    .discord-inner { position: relative; z-index: 2; max-width: 640px; margin: 0 auto; text-align: center; }
-    .discord-avatars { display: flex; align-items: center; justify-content: center; margin-bottom: 2rem; }
-    .d-avatar {
-      width: 2.5rem; height: 2.5rem; border-radius: 9999px;
-      border: 2px solid var(--bg);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 0.7rem; font-weight: 700; color: #fff;
-      margin-left: -0.75rem; flex-shrink: 0;
-    }
-    .d-avatar:first-child { margin-left: 0; }
-    .d-badge {
-      margin-left: 0.75rem; padding: 0.25rem 0.75rem;
-      background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 9999px; font-size: 0.85rem; font-weight: 500; color: var(--text);
-    }
-    .discord-h2 { font-family: var(--font-head); font-size: clamp(2rem, 4vw, 3rem); font-weight: 900; color: #fff; margin-bottom: 1rem; }
-    .discord-desc { font-size: 1rem; color: var(--muted); line-height: 1.7; margin-bottom: 2.5rem; }
-
-    .btn-discord {
-      display: inline-flex; align-items: center; gap: 0.75rem;
-      padding: 1rem 2.2rem; background: var(--discord); color: #fff;
-      font-family: var(--font-head); font-weight: 700; font-size: 1.05rem;
-      text-decoration: none; border-radius: 0.85rem;
-      box-shadow: 0 0 32px rgba(88,101,242,0.4);
-      transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
-    }
-    .btn-discord:hover { background: #4752C4; transform: scale(1.04); box-shadow: 0 0 44px rgba(88,101,242,0.55); }
-    .discord-icon { width: 1.5rem; height: 1.5rem; fill: #fff; }
-
-    /* ===========================
-       FOOTER
-    =========================== */
-    footer { padding: 3rem 0; background: #000; border-top: 1px solid rgba(255,255,255,0.05); }
-    .footer-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; align-items: center; text-align: center; }
-    @media (min-width: 768px) { .footer-grid { grid-template-columns: 1fr 1fr 1fr; text-align: left; } }
-    .footer-brand { display: flex; align-items: center; gap: 0.75rem; justify-content: center; margin-bottom: 0.75rem; }
-    @media (min-width: 768px) { .footer-brand { justify-content: flex-start; } }
-    .footer-logo { width: 2rem; height: 2rem; opacity: 0.8; }
-    .footer-brand-name { font-family: var(--font-head); font-weight: 700; font-size: 1.1rem; color: #fff; }
-    .footer-tagline { font-size: 0.83rem; color: var(--muted); max-width: 260px; margin: 0 auto; line-height: 1.6; }
-    @media (min-width: 768px) { .footer-tagline { margin: 0; } }
-    .footer-links { display: flex; flex-direction: column; align-items: center; gap: 0.75rem; }
-    .footer-links a { font-size: 0.9rem; color: var(--muted); text-decoration: none; transition: color 0.2s; }
-    .footer-links a:hover { color: #fff; }
-    .footer-right { display: flex; flex-direction: column; align-items: center; gap: 0.75rem; }
-    @media (min-width: 768px) { .footer-right { align-items: flex-end; } }
-    .footer-motto { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); }
-    .footer-copy { font-size: 0.75rem; color: rgba(86,99,122,0.5); }
-
-    @media (max-width: 640px) {
-      .container { padding: 0 1.25rem; }
-      .coverflow-stage { height: 380px; }
-    }
-  </style>
+/* ── FOOTER ── */
+footer{padding:2.75rem 0;background:#000;border-top:1px solid rgba(255,255,255,.05)}
+.fg{display:grid;grid-template-columns:1fr;gap:2rem;align-items:center;text-align:center}
+@media(min-width:768px){.fg{grid-template-columns:1fr 1fr 1fr;text-align:left}}
+.fbr{display:flex;align-items:center;gap:.7rem;justify-content:center;margin-bottom:.65rem}
+@media(min-width:768px){.fbr{justify-content:flex-start}}
+.flo{width:1.9rem;height:1.9rem;opacity:.8}
+.fbn{font-family:var(--fh);font-weight:700;font-size:1.05rem;color:#fff}
+.ftag{font-size:.8rem;color:var(--muted);max-width:250px;margin:0 auto;line-height:1.55}
+@media(min-width:768px){.ftag{margin:0}}
+.flinks{display:flex;flex-direction:column;align-items:center;gap:.65rem}
+.flinks a{font-size:.88rem;color:var(--muted);text-decoration:none;transition:color .2s}
+.flinks a:hover{color:#fff}
+.frr{display:flex;flex-direction:column;align-items:center;gap:.65rem}
+@media(min-width:768px){.frr{align-items:flex-end}}
+.fm{font-size:.68rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+.fc{font-size:.72rem;color:rgba(86,99,122,.45)}
+</style>
 </head>
 <body>
 
-<!-- ===================== HERO ===================== -->
+<!-- HERO -->
 <section id="hero">
-  <canvas id="hero-canvas"></canvas>
-  <div class="hero-overlay-b"></div>
-  <div class="hero-overlay-s"></div>
-  <div class="hero-content">
-    <h1 class="hero-h1">Real Science.<br><span class="gradient-text">Real Answers.</span></h1>
-    <p class="hero-desc">The Craniofacial Research Collective combines peer-reviewed evidence, open science, and community to give you genuine knowledge, not false hope or guesswork.</p>
-    <div class="hero-btns">
-      <a href="https://crcofficial.com/products/crc-membership" target="_blank" rel="noopener noreferrer" class="btn-primary">Become a Member</a>
-      <a href="#crcbn" class="btn-ghost">Explore the Network</a>
+  <canvas id="hc"></canvas>
+  <div class="hob"></div><div class="hos"></div>
+  <div class="hcont">
+    <h1 class="hh1">Real Science.<br><span class="gt">Real Answers.</span></h1>
+    <p class="hdesc">The Craniofacial Research Collective combines peer-reviewed evidence, open science, and community to give you genuine knowledge, not false hope or guesswork.</p>
+    <div class="hbtns">
+      <a href="https://crcofficial.com/products/crc-membership" target="_blank" rel="noopener noreferrer" class="bp">Become a Member</a>
+      <a href="#crcbn" class="bg">Explore the Network</a>
     </div>
   </div>
-  <div class="hero-scroll"><span>Scroll</span><div class="scroll-line"></div></div>
+  <div class="hscr"><span>Scroll</span><div class="sl"></div></div>
 </section>
 
-<!-- ===================== STATS ===================== -->
+<!-- STATS -->
 <section id="stats">
-  <div class="container">
-    <div class="stats-grid">
-      <div class="stat-item fade-up">
-        <div class="stat-value" style="color:#7c6af7;text-shadow:0 0 28px rgba(124,106,247,0.4)"><span class="count-up" data-end="3800" data-suffix="+">0+</span></div>
-        <div class="stat-label">Discord Members</div>
-      </div>
-      <div class="stat-item fade-up fade-up-d1">
-        <div class="stat-value" style="color:#38bdf8;text-shadow:0 0 28px rgba(56,189,248,0.4)">Thousands</div>
-        <div class="stat-label">Research Papers in CRCBN</div>
-      </div>
-      <div class="stat-item fade-up fade-up-d2">
-        <div class="stat-value" style="color:#34d399;text-shadow:0 0 28px rgba(52,211,153,0.4)"><span class="count-up" data-end="100" data-suffix="%">0%</span></div>
-        <div class="stat-label">Peer-Reviewed</div>
-      </div>
-      <div class="stat-item fade-up fade-up-d3">
-        <div class="stat-value" style="color:#fbbf24;text-shadow:0 0 28px rgba(251,191,36,0.4)">Free</div>
-        <div class="stat-label">Core Research Access</div>
-      </div>
+  <div class="c">
+    <div class="sg">
+      <div class="si sr"><div class="sv" style="color:var(--pl);text-shadow:0 0 24px rgba(124,106,247,.4)"><span class="cu" data-e="3800" data-s="+">0+</span></div><div class="sl2">Discord Members</div></div>
+      <div class="si sr d1"><div class="sv" style="color:var(--sky);text-shadow:0 0 24px rgba(56,189,248,.4)">Thousands</div><div class="sl2">Research Papers in CRCBN</div></div>
+      <div class="si sr d2"><div class="sv" style="color:#34d399;text-shadow:0 0 24px rgba(52,211,153,.4)"><span class="cu" data-e="100" data-s="%">0%</span></div><div class="sl2">Peer-Reviewed</div></div>
+      <div class="si sr d3"><div class="sv" style="color:#fbbf24;text-shadow:0 0 24px rgba(251,191,36,.4)">Free</div><div class="sl2">Core Research Access</div></div>
     </div>
   </div>
 </section>
 
-<!-- ===================== MISSION ===================== -->
+<!-- MISSION -->
 <section id="mission">
-  <div class="container">
-    <div class="mission-grid">
-      <div class="fade-up">
-        <div class="mission-label">Our Mission</div>
-        <h2 class="mission-h2">We build up.<br><span class="accent">Not tear down.</span></h2>
-        <div class="mission-body">
+  <div class="c">
+    <div class="mg">
+      <div class="sr">
+        <div class="mlbl">Our Mission</div>
+        <h2 class="mh2">We build up.<br><span class="a">Not tear down.</span></h2>
+        <div class="mb">
           <p>CRC is proudly anti-black pill. That ideology has no place here. This is a community built on science, self-development, and genuine curiosity - not fatalism, negativity, or false hope.</p>
           <p>We combine peer-reviewed evidence, open science, and a dedicated community to give people real answers. Not recycled misinformation packaged as a $50 course. Not vague promises. Evidence.</p>
-          <p>CRC exists to give you the knowledge to understand your own facial structure, growth patterns, and treatment options - grounded in the same science your orthodontist reads, but accessible to anyone who wants it.</p>
+          <p>CRC exists to give you the knowledge to understand your own facial structure, growth patterns, and treatment options - grounded in the same science your orthodontist reads, but accessible to anyone.</p>
         </div>
-        <div class="mission-tags">
-          <span class="mission-tag">Science-First</span>
-          <span class="mission-tag">Anti-Black Pill</span>
-          <span class="mission-tag">Open Access</span>
-          <span class="mission-tag">Peer-Reviewed</span>
+        <div class="mtags">
+          <span class="mtag">Science-First</span><span class="mtag">Anti-Black Pill</span><span class="mtag">Open Access</span><span class="mtag">Peer-Reviewed</span>
         </div>
       </div>
-      <div class="fade-up fade-up-d2">
-        <div class="mission-canvas-wrap">
-          <canvas id="network-canvas"></canvas>
-          <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(4,6,15,0.55) 0%,transparent 100%);pointer-events:none"></div>
-          <div class="mission-canvas-label">CRCBN - Live Research Network</div>
+      <div class="sr d2">
+        <div class="mcw">
+          <canvas id="nc"></canvas>
+          <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(4,6,15,.5) 0%,transparent 100%);pointer-events:none"></div>
+          <div class="mcl">CRCBN - Live Research Network</div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===================== CRCBN ===================== -->
+<!-- CRCBN -->
 <section id="crcbn">
-  <div class="container">
-    <div class="crcbn-header fade-up">
-      <h2 class="crcbn-heading">The Bibliographic Network</h2>
-      <p class="crcbn-desc">The CRCBN hosts thousands of research papers, each one interconnected and annotated by our team. One solid paper from our network has more value than entire $50 'looksmaxxing' courses filled with recycled, AI-generated misinformation.</p>
+  <div class="c">
+    <div class="chdr sr">
+      <h2 class="ch">The Bibliographic Network</h2>
+      <p class="cd">The CRCBN hosts thousands of research papers, each one interconnected and annotated by our team. One solid paper from our network has more value than entire $50 'looksmaxxing' courses filled with recycled, AI-generated misinformation.</p>
     </div>
-    <div class="video-wrap fade-up fade-up-d1">
-      <video autoplay muted loop playsinline controls>
-        <source src="https://cdn.shopify.com/videos/c/o/v/9c353db6514840cdb5d88dbe13c85cfa.mov" type="video/mp4" />
-      </video>
-      <div class="video-caption">Watch how the Craniofacial Research Collective's Bibliographic Network makes navigating complex orthodontic and craniofacial research effortless.</div>
+    <div class="vw sr d1">
+      <video autoplay muted loop playsinline><source src="https://cdn.shopify.com/videos/c/o/v/9c353db6514840cdb5d88dbe13c85cfa.mov" type="video/mp4"/></video>
+      <div class="vc">Watch how the Craniofacial Research Collective's Bibliographic Network makes navigating complex orthodontic and craniofacial research effortless.</div>
     </div>
-    <div class="fade-up">
-      <h3 class="papers-heading">Featured Research</h3>
-      <div class="papers-scroll">
-        <div class="paper-card"><div class="paper-title">Craniofacial Growth Patterns in Adolescents</div><div class="paper-authors">Björk, A. et al.</div><div class="paper-meta">American Journal of Orthodontics &bull; 2019</div><div class="paper-tags"><span class="paper-tag">Growth</span><span class="paper-tag">Mandible</span></div></div>
-        <div class="paper-card"><div class="paper-title">Functional Appliances and Condylar Adaptation</div><div class="paper-authors">McNamara, J.A. et al.</div><div class="paper-meta">Angle Orthodontist &bull; 2021</div><div class="paper-tags"><span class="paper-tag">Condylar</span><span class="paper-tag">Appliance</span></div></div>
-        <div class="paper-card"><div class="paper-title">Orthotropics and Vertical Dimension</div><div class="paper-authors">Mew, J.R. et al.</div><div class="paper-meta">J. Craniofacial Surgery &bull; 2020</div><div class="paper-tags"><span class="paper-tag">Orthotropics</span><span class="paper-tag">Vertical</span></div></div>
-        <div class="paper-card"><div class="paper-title">Airway Volume and Mandibular Position</div><div class="paper-authors">Graber, T.M. et al.</div><div class="paper-meta">Orthodontics &amp; Craniofacial Res. &bull; 2022</div><div class="paper-tags"><span class="paper-tag">Airway</span><span class="paper-tag">Mandible</span></div></div>
-        <div class="paper-card"><div class="paper-title">Sutural Growth and Facial Expansion</div><div class="paper-authors">Moss, M.L. et al.</div><div class="paper-meta">J. Dental Research &bull; 2018</div><div class="paper-tags"><span class="paper-tag">Sutures</span><span class="paper-tag">Expansion</span></div></div>
-        <div class="paper-card"><div class="paper-title">Nasal Breathing and Facial Development</div><div class="paper-authors">Enlow, D.H. et al.</div><div class="paper-meta">European J. Orthodontics &bull; 2023</div><div class="paper-tags"><span class="paper-tag">Nasal</span><span class="paper-tag">Development</span></div></div>
-        <div class="paper-card"><div class="paper-title">Long-Term Stability of Orthopedic Treatment</div><div class="paper-authors">Proffit, W.R. et al.</div><div class="paper-meta">Am. J. Orthodontics &bull; 2020</div><div class="paper-tags"><span class="paper-tag">Stability</span><span class="paper-tag">Treatment</span></div></div>
-        <div class="paper-card"><div class="paper-title">Muscle Function and Skeletal Adaptation</div><div class="paper-authors">Petrovic, A.G. et al.</div><div class="paper-meta">Craniofacial Biology &bull; 2021</div><div class="paper-tags"><span class="paper-tag">Muscle</span><span class="paper-tag">Skeletal</span></div></div>
+    <div class="sr d2">
+      <h3 class="ph">Featured Research</h3>
+      <div class="ps">
+        <div class="pc"><div class="pt">Craniofacial Growth Patterns in Adolescents</div><div class="pau">Björk, A. et al.</div><div class="pm">American Journal of Orthodontics &bull; 2019</div><div class="ptags"><span class="ptag">Growth</span><span class="ptag">Mandible</span></div></div>
+        <div class="pc"><div class="pt">Functional Appliances and Condylar Adaptation</div><div class="pau">McNamara, J.A. et al.</div><div class="pm">Angle Orthodontist &bull; 2021</div><div class="ptags"><span class="ptag">Condylar</span><span class="ptag">Appliance</span></div></div>
+        <div class="pc"><div class="pt">Orthotropics and Vertical Dimension</div><div class="pau">Mew, J.R. et al.</div><div class="pm">J. Craniofacial Surgery &bull; 2020</div><div class="ptags"><span class="ptag">Orthotropics</span><span class="ptag">Vertical</span></div></div>
+        <div class="pc"><div class="pt">Airway Volume and Mandibular Position</div><div class="pau">Graber, T.M. et al.</div><div class="pm">Orthodontics &amp; Craniofacial Res. &bull; 2022</div><div class="ptags"><span class="ptag">Airway</span><span class="ptag">Mandible</span></div></div>
+        <div class="pc"><div class="pt">Sutural Growth and Facial Expansion</div><div class="pau">Moss, M.L. et al.</div><div class="pm">J. Dental Research &bull; 2018</div><div class="ptags"><span class="ptag">Sutures</span><span class="ptag">Expansion</span></div></div>
+        <div class="pc"><div class="pt">Nasal Breathing and Facial Development</div><div class="pau">Enlow, D.H. et al.</div><div class="pm">European J. Orthodontics &bull; 2023</div><div class="ptags"><span class="ptag">Nasal</span><span class="ptag">Dev.</span></div></div>
+        <div class="pc"><div class="pt">Long-Term Stability of Orthopedic Treatment</div><div class="pau">Proffit, W.R. et al.</div><div class="pm">Am. J. Orthodontics &bull; 2020</div><div class="ptags"><span class="ptag">Stability</span><span class="ptag">Treatment</span></div></div>
+        <div class="pc"><div class="pt">Muscle Function and Skeletal Adaptation</div><div class="pau">Petrovic, A.G. et al.</div><div class="pm">Craniofacial Biology &bull; 2021</div><div class="ptags"><span class="ptag">Muscle</span><span class="ptag">Skeletal</span></div></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===================== COVERFLOW ===================== -->
-<section id="coverflow">
-  <div class="container text-center">
-    <div class="fade-up">
-      <h2 class="coverflow-heading">Member Transformations</h2>
-      <p class="coverflow-sub">Real results from CRC members following evidence-based protocols.</p>
-      <p class="coverflow-hint">Click any image to enlarge &bull; Click side cards to navigate</p>
+<!-- COVERFLOW -->
+<section id="cov">
+  <div class="c tc">
+    <div class="sr">
+      <h2 class="covh">Member Transformations</h2>
+      <p class="covs">Real results from CRC members following evidence-based protocols.</p>
+      <p class="covhint">Click center image to enlarge &bull; Side cards to navigate</p>
     </div>
   </div>
-  <div class="coverflow-stage fade-up fade-up-d1">
-    <div class="coverflow-inner" id="cf-inner"></div>
-    <button class="cf-prev" id="cf-prev" aria-label="Previous">&#8592;</button>
-    <button class="cf-next" id="cf-next" aria-label="Next">&#8594;</button>
+  <div class="cstg sr d1">
+    <div class="cin" id="cfin"></div>
+    <button class="cprev" id="cprev" aria-label="Previous">&#8592;</button>
+    <button class="cnxt" id="cnxt" aria-label="Next">&#8594;</button>
   </div>
-  <div class="cf-dots" id="cf-dots"></div>
+  <div class="cdots" id="cdots"></div>
 </section>
 
-<!-- ===================== MEMBERSHIP ===================== -->
-<section id="membership">
-  <div class="container" style="position:relative;z-index:1">
-    <div class="text-center fade-up" style="margin-bottom:1rem">
-      <div class="membership-badge"><span class="badge-dot"></span>Membership</div>
-      <h2 class="membership-h2">Evidence-First Guidance<br><span class="grad">for $20/month</span></h2>
-      <p class="membership-desc">Unlimited messages and scheduled calls. Access to CRC's orthodontic literature network. Personalized, natural-correction planning and US orthodontist referral support.</p>
+<!-- MEMBERSHIP -->
+<section id="mem">
+  <div class="c mrel">
+    <div class="tc sr">
+      <div class="mbadge"><span class="bdot"></span>Membership</div>
+      <h2 class="mh2">Evidence-First Guidance<br><span class="gr">for $20/month</span></h2>
+      <p class="mdes">Unlimited messages and scheduled calls. Access to CRC's orthodontic literature network. Personalized, natural-correction planning and US orthodontist referral support.</p>
     </div>
 
-    <div class="mem-stats fade-up fade-up-d1">
-      <div class="mem-stat"><div class="mem-stat-val" style="color:#34d399;text-shadow:0 0 24px rgba(52,211,153,0.4)">$20</div><div class="mem-stat-lab">per month</div></div>
-      <div class="mem-stat"><div class="mem-stat-val" style="color:#7c6af7;text-shadow:0 0 24px rgba(124,106,247,0.4)">Unlimited</div><div class="mem-stat-lab">messages &amp; calls</div></div>
-      <div class="mem-stat"><div class="mem-stat-val" style="color:#38bdf8;text-shadow:0 0 24px rgba(56,189,248,0.4)">Library</div><div class="mem-stat-lab">orthodontic literature network</div></div>
-      <div class="mem-stat"><div class="mem-stat-val" style="color:#fbbf24;text-shadow:0 0 24px rgba(251,191,36,0.4)">US</div><div class="mem-stat-lab">orthodontist referral help</div></div>
+    <div class="mstats sr d1">
+      <div class="mst"><div class="msv" style="color:#34d399;text-shadow:0 0 20px rgba(52,211,153,.35)">$20</div><div class="msl">per month</div></div>
+      <div class="mst"><div class="msv" style="color:var(--pl);text-shadow:0 0 20px rgba(124,106,247,.35)">Unlimited</div><div class="msl">messages &amp; calls</div></div>
+      <div class="mst"><div class="msv" style="color:var(--sky);text-shadow:0 0 20px rgba(56,189,248,.35)">Library</div><div class="msl">orthodontic literature network</div></div>
+      <div class="mst"><div class="msv" style="color:#fbbf24;text-shadow:0 0 20px rgba(251,191,36,.35)">US</div><div class="msl">orthodontist referral help</div></div>
     </div>
 
-    <div class="mem-grid fade-up">
-      <div class="mem-card">
-        <div class="mem-card-h">What's included</div>
-        <div class="feature-li"><span class="feature-icon">💬</span><div class="feature-text"><strong>Unlimited messages &amp; scheduled calls</strong> with CRC staff. We guide your journey so you never feel alone.</div></div>
-        <div class="feature-li"><span class="feature-icon">📚</span><div class="feature-text"><strong>Full access to the CRC literature network</strong> and all research channels with thousands of annotated papers.</div></div>
-        <div class="feature-li"><span class="feature-icon">🌿</span><div class="feature-text"><strong>Natural correction program</strong> adapted to your facial structure, with practical habit and lifestyle tracks.</div></div>
-        <div class="feature-li"><span class="feature-icon">🏥</span><div class="feature-text"><strong>US orthodontist referral assistance</strong> and education on treatment options, with case studies to share with your provider.</div></div>
-        <div class="feature-li"><span class="feature-icon">📋</span><div class="feature-text"><strong>Custom treatment planning</strong> for minor to moderate malocclusions, with ongoing guidance at a fraction of in-person costs.</div></div>
-        <div class="feature-li"><span class="feature-icon">🛍️</span><div class="feature-text">Through our partner <strong>BracesShop</strong>, members can access devices at affordable prices when appropriate.</div></div>
-        <p class="feature-disclaimer">Not medical advice. CRC supports informed decisions and provider conversations.</p>
+    <div class="mgrid sr">
+      <div class="mcard">
+        <div class="mch">What's included</div>
+        <div class="fli"><span class="fico">💬</span><div class="ftx"><strong>Unlimited messages &amp; scheduled calls</strong> with CRC staff. We guide your journey so you never feel alone.</div></div>
+        <div class="fli"><span class="fico">📚</span><div class="ftx"><strong>Full access to the CRC literature network</strong> and all research channels with thousands of annotated papers.</div></div>
+        <div class="fli"><span class="fico">🌿</span><div class="ftx"><strong>Natural correction program</strong> adapted to your facial structure, with practical habit and lifestyle tracks.</div></div>
+        <div class="fli"><span class="fico">🏥</span><div class="ftx"><strong>US orthodontist referral assistance</strong> and education on treatment options, with case studies to share with your provider.</div></div>
+        <div class="fli"><span class="fico">📋</span><div class="ftx"><strong>Custom treatment planning</strong> for minor to moderate malocclusions, with ongoing guidance at a fraction of in-person costs.</div></div>
+        <div class="fli"><span class="fico">🛍️</span><div class="ftx">Through our partner <strong>BracesShop</strong>, members can access devices at affordable prices when appropriate.</div></div>
+        <p class="fdis">Not medical advice. CRC supports informed decisions and provider conversations.</p>
       </div>
 
-      <div class="mem-card">
-        <div class="mem-card-h">CRC vs. typical online course</div>
-        <div class="compare-row"><div class="compare-dim">Evidence backbone</div><div class="compare-pills"><span class="pill-crc">&#10003; Active literature network</span><span class="pill-other">Static modules</span></div></div>
-        <div class="compare-row"><div class="compare-dim">Expert access</div><div class="compare-pills"><span class="pill-crc">&#10003; Unlimited messages + calls</span><span class="pill-other">Limited community</span></div></div>
-        <div class="compare-row"><div class="compare-dim">Personalization</div><div class="compare-pills"><span class="pill-crc">&#10003; Plan matched to your structure</span><span class="pill-other">One-size modules</span></div></div>
-        <div class="compare-row"><div class="compare-dim">Promise style</div><div class="compare-pills"><span class="pill-crc">&#10003; No blind promises</span><span class="pill-other">Transformational marketing</span></div></div>
-        <div class="compare-row"><div class="compare-dim">Refund clarity</div><div class="compare-pills"><span class="pill-crc">&#10003; Clear</span><span class="pill-other">Mixed</span></div></div>
-        <div class="compare-row"><div class="compare-dim">Price</div><div class="compare-pills"><span class="pill-crc">&#10003; $20/mo, no upsell tiers</span><span class="pill-other">Multi-tier</span></div></div>
-      </div>
-    </div>
-
-    <div class="fade-up">
-      <h3 style="font-family:var(--font-head);font-size:1.5rem;font-weight:700;color:#fff;text-align:center;margin-bottom:2.5rem">How it works — first 30 days</h3>
-      <div class="how-steps">
-        <div class="step-card"><div class="step-num">01</div><div class="step-label">Step 1</div><div class="step-title">Onboarding &amp; Intake</div><div class="step-desc">Submit photos, history, and goals. Get immediate access to all research channels.</div></div>
-        <div class="step-card"><div class="step-num">02</div><div class="step-label">Step 2</div><div class="step-title">Assessment &amp; Plan</div><div class="step-desc">Receive a natural-correction track tailored to your facial structure plus an education pack for provider discussions.</div></div>
-        <div class="step-card"><div class="step-num">03</div><div class="step-label">Step 3</div><div class="step-title">Guided Execution</div><div class="step-desc">Weekly check-ins via messages and calls. We adjust your track and escalate to US referral if needed.</div></div>
+      <div class="mcard">
+        <div class="mch">CRC vs. typical online course</div>
+        <div class="crow"><div class="cdim">Evidence backbone</div><div class="cpills"><span class="pcrc">&#10003; Active literature network</span><span class="poth">Static modules</span></div></div>
+        <div class="crow"><div class="cdim">Expert access</div><div class="cpills"><span class="pcrc">&#10003; Unlimited messages + calls</span><span class="poth">Limited community</span></div></div>
+        <div class="crow"><div class="cdim">Personalization</div><div class="cpills"><span class="pcrc">&#10003; Plan matched to your structure</span><span class="poth">One-size modules</span></div></div>
+        <div class="crow"><div class="cdim">Promise style</div><div class="cpills"><span class="pcrc">&#10003; No blind promises</span><span class="poth">Transformational marketing</span></div></div>
+        <div class="crow"><div class="cdim">Refund clarity</div><div class="cpills"><span class="pcrc">&#10003; Clear</span><span class="poth">Mixed</span></div></div>
+        <div class="crow"><div class="cdim">Price</div><div class="cpills"><span class="pcrc">&#10003; $20/mo, no upsell tiers</span><span class="poth">Multi-tier</span></div></div>
       </div>
     </div>
 
-    <div class="mem-cta-box fade-up">
-      <div class="rel">
-        <h3 class="mem-cta-h">Ready to get started?</h3>
-        <p class="mem-cta-p">Join CRC for <strong>$20/month</strong>. Evidence-first guidance, personal support, and a community focused on doing it right.</p>
-        <a href="https://crcofficial.com/products/crc-membership" target="_blank" rel="noopener noreferrer" class="btn-cta">Join CRC - $20/mo</a>
-        <p class="mem-disclaimer">Not medical advice. Always consult a licensed provider for diagnosis and treatment.</p>
+    <div class="sr d1">
+      <h3 class="howh">How it works — first 30 days</h3>
+      <div class="hsteps">
+        <div class="hsc"><div class="hsn">01</div><div class="hslb">Step 1</div><div class="hsti">Onboarding &amp; Intake</div><div class="hsde">Submit photos, history, and goals. Get immediate access to all research channels.</div></div>
+        <div class="hsc"><div class="hsn">02</div><div class="hslb">Step 2</div><div class="hsti">Assessment &amp; Plan</div><div class="hsde">Receive a natural-correction track tailored to your facial structure plus an education pack for provider discussions.</div></div>
+        <div class="hsc"><div class="hsn">03</div><div class="hslb">Step 3</div><div class="hsti">Guided Execution</div><div class="hsde">Weekly check-ins via messages and calls. We adjust your track and escalate to US referral if needed.</div></div>
+      </div>
+    </div>
+
+    <div class="mctab sr d2">
+      <div class="r">
+        <h3 class="mctah">Ready to get started?</h3>
+        <p class="mctap">Join CRC for <strong>$20/month</strong>. Evidence-first guidance, personal support, and a community focused on doing it right.</p>
+        <a href="https://crcofficial.com/products/crc-membership" target="_blank" rel="noopener noreferrer" class="bctа">Join CRC - $20/mo</a>
+        <p class="mdisc">Not medical advice. Always consult a licensed provider for diagnosis and treatment.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===================== DISCORD ===================== -->
+<!-- DISCORD -->
 <section id="discord">
-  <div class="container">
-    <div class="discord-inner fade-up">
-      <div class="discord-avatars">
-        <div class="d-avatar" style="background:#3d4450">AJ</div>
-        <div class="d-avatar" style="background:#2d3748">MK</div>
-        <div class="d-avatar" style="background:#1a2035">L</div>
-        <div class="d-badge">+3,800 members</div>
+  <div class="c">
+    <div class="di sr">
+      <div class="dav">
+        <div class="da" style="background:#3d4450">AJ</div>
+        <div class="da" style="background:#2d3748">MK</div>
+        <div class="da" style="background:#1a2035">L</div>
+        <div class="db">+3,800 members</div>
       </div>
-      <h2 class="discord-h2">3,800+ Members Strong</h2>
-      <p class="discord-desc">Join a community of researchers, students, and curious minds dedicated to evidence-based science and self-development.</p>
-      <a href="https://discord.gg/4jMVUXZW6J" target="_blank" rel="noopener noreferrer" class="btn-discord">
-        <svg class="discord-icon" viewBox="0 0 71 55" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M60.1045 4.8978C55.5792 2.8214 50.7265 1.2916 45.6527 0.41542C45.5603 0.39851 45.468 0.44077 45.4204 0.52529C44.7963 1.6353 44.105 3.0834 43.6209 4.2216C38.1637 3.4046 32.7345 3.4046 27.3892 4.2216C26.905 3.0581 26.1886 1.6353 25.5617 0.52529C25.5141 0.44334 25.4218 0.40108 25.3294 0.41542C20.2584 1.2888 15.4057 2.8186 10.8776 4.8978C10.8384 4.9147 10.8048 4.9429 10.7825 4.9795C1.57795 18.7309 -0.943561 32.1443 0.293408 45.3914C0.299005 45.4562 0.335386 45.5182 0.385761 45.5576C6.45866 50.0174 12.3413 52.7249 18.1147 54.5195C18.2071 54.5477 18.305 54.5139 18.3638 54.4378C19.7295 52.5728 20.9469 50.6063 21.9907 48.5383C22.0523 48.4172 21.9935 48.2735 21.8676 48.2256C19.9366 47.4931 18.0979 46.6 16.3292 45.5858C16.1893 45.5041 16.1781 45.304 16.3068 45.2082C16.679 44.9293 17.0513 44.6391 17.4067 44.3461C17.471 44.2926 17.5606 44.2813 17.6362 44.3151C29.2558 49.6202 41.8354 49.6202 53.3179 44.3151C53.3935 44.2785 53.4831 44.2898 53.5502 44.3433C53.9057 44.6363 54.2779 44.9293 54.6529 45.2082C54.7816 45.304 54.7732 45.5041 54.6333 45.5858C52.8646 46.6197 51.0259 47.4931 49.0921 48.2228C48.9662 48.2707 48.9102 48.4172 48.9718 48.5383C50.038 50.6034 51.2554 52.5699 52.5959 54.435C52.6519 54.5139 52.7526 54.5477 52.845 54.5195C58.6464 52.7249 64.529 50.0174 70.6019 45.5576C70.6551 45.5182 70.6887 45.459 70.6943 45.3942C72.1747 30.0791 68.2147 16.7757 60.1968 4.9823C60.1772 4.9429 60.1437 4.9147 60.1045 4.8978ZM23.7259 37.3253C20.2276 37.3253 17.3451 34.1136 17.3451 30.1693C17.3451 26.225 20.1717 23.0133 23.7259 23.0133C27.308 23.0133 30.1626 26.2532 30.1066 30.1693C30.1066 34.1136 27.28 37.3253 23.7259 37.3253ZM47.3178 37.3253C43.8196 37.3253 40.9371 34.1136 40.9371 30.1693C40.9371 26.225 43.7636 23.0133 47.3178 23.0133C50.9 23.0133 53.7545 26.2532 53.6986 30.1693C53.6986 34.1136 50.9 37.3253 47.3178 37.3253Z" fill="white"/></svg>
+      <h2 class="dh2">3,800+ Members Strong</h2>
+      <p class="ddesc">Join a community of researchers, students, and curious minds dedicated to evidence-based science and self-development.</p>
+      <a href="https://discord.gg/4jMVUXZW6J" target="_blank" rel="noopener noreferrer" class="bdis">
+        <svg class="dico" viewBox="0 0 71 55" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M60.1045 4.8978C55.5792 2.8214 50.7265 1.2916 45.6527 0.41542C45.5603 0.39851 45.468 0.44077 45.4204 0.52529C44.7963 1.6353 44.105 3.0834 43.6209 4.2216C38.1637 3.4046 32.7345 3.4046 27.3892 4.2216C26.905 3.0581 26.1886 1.6353 25.5617 0.52529C25.5141 0.44334 25.4218 0.40108 25.3294 0.41542C20.2584 1.2888 15.4057 2.8186 10.8776 4.8978C10.8384 4.9147 10.8048 4.9429 10.7825 4.9795C1.57795 18.7309 -0.943561 32.1443 0.293408 45.3914C0.299005 45.4562 0.335386 45.5182 0.385761 45.5576C6.45866 50.0174 12.3413 52.7249 18.1147 54.5195C18.2071 54.5477 18.305 54.5139 18.3638 54.4378C19.7295 52.5728 20.9469 50.6063 21.9907 48.5383C22.0523 48.4172 21.9935 48.2735 21.8676 48.2256C19.9366 47.4931 18.0979 46.6 16.3292 45.5858C16.1893 45.5041 16.1781 45.304 16.3068 45.2082C16.679 44.9293 17.0513 44.6391 17.4067 44.3461C17.471 44.2926 17.5606 44.2813 17.6362 44.3151C29.2558 49.6202 41.8354 49.6202 53.3179 44.3151C53.3935 44.2785 53.4831 44.2898 53.5502 44.3433C53.9057 44.6363 54.2779 44.9293 54.6529 45.2082C54.7816 45.304 54.7732 45.5041 54.6333 45.5858C52.8646 46.6197 51.0259 47.4931 49.0921 48.2228C48.9662 48.2707 48.9102 48.4172 48.9718 48.5383C50.038 50.6034 51.2554 52.5699 52.5959 54.435C52.6519 54.5139 52.7526 54.5477 52.845 54.5195C58.6464 52.7249 64.529 50.0174 70.6019 45.5576C70.6551 45.5182 70.6887 45.459 70.6943 45.3942C72.1747 30.0791 68.2147 16.7757 60.1968 4.9823C60.1772 4.9429 60.1437 4.9147 60.1045 4.8978ZM23.7259 37.3253C20.2276 37.3253 17.3451 34.1136 17.3451 30.1693C17.3451 26.225 20.1717 23.0133 23.7259 23.0133C27.308 23.0133 30.1626 26.2532 30.1066 30.1693C30.1066 34.1136 27.28 37.3253 23.7259 37.3253ZM47.3178 37.3253C43.8196 37.3253 40.9371 34.1136 40.9371 30.1693C40.9371 26.225 43.7636 23.0133 47.3178 23.0133C50.9 23.0133 53.7545 26.2532 53.6986 30.1693C53.6986 34.1136 50.9 37.3253 47.3178 37.3253Z" fill="white"/></svg>
         Join the CRC Discord
       </a>
     </div>
   </div>
 </section>
 
-<!-- ===================== FOOTER ===================== -->
+<!-- FOOTER -->
 <footer>
-  <div class="container">
-    <div class="footer-grid">
+  <div class="c">
+    <div class="fg">
       <div>
-        <div class="footer-brand">
-          <img src="https://cdn.shopify.com/s/files/1/0946/6455/6842/files/077cedd2-dd86-44d1-a654-1849a0d930eb_1782611186945.png" alt="CRC Logo" class="footer-logo" onerror="this.style.display='none'" />
-          <span class="footer-brand-name">CRC</span>
+        <div class="fbr">
+          <img src="https://cdn.shopify.com/s/files/1/0946/6455/6842/files/077cedd2-dd86-44d1-a654-1849a0d930eb_1782611186945.png" alt="CRC Logo" class="flo" onerror="this.style.display='none'"/>
+          <span class="fbn">CRC</span>
         </div>
-        <p class="footer-tagline">Reshaping how we understand facial growth through peer-reviewed science.</p>
+        <p class="ftag">Reshaping how we understand facial growth through peer-reviewed science.</p>
       </div>
-      <div class="footer-links">
+      <div class="flinks">
         <a href="#crcbn">Bibliographic Network</a>
-        <a href="#membership">Membership</a>
+        <a href="#mem">Membership</a>
         <a href="https://discord.gg/4jMVUXZW6J" target="_blank" rel="noopener noreferrer">Discord</a>
         <a href="https://crcofficial.com/products/crc-membership" target="_blank" rel="noopener noreferrer">Join CRC</a>
       </div>
-      <div class="footer-right">
-        <div class="footer-motto">Science-First &bull; Evidence-Based &bull; Community-Driven</div>
-        <div class="footer-copy">&copy; <span id="year"></span> Craniofacial Research Collective.</div>
+      <div class="frr">
+        <div class="fm">Science-First &bull; Evidence-Based &bull; Community-Driven</div>
+        <div class="fc">&copy; <span id="yr"></span> Craniofacial Research Collective.</div>
       </div>
     </div>
   </div>
 </footer>
 
 <!-- LIGHTBOX -->
-<div id="lightbox" role="dialog" aria-modal="true">
-  <button class="lightbox-close" id="lb-close" aria-label="Close">&times;</button>
-  <img src="" alt="Enlarged transformation" class="lightbox-img" id="lb-img" />
+<div id="lb" role="dialog" aria-modal="true">
+  <button class="lbc" id="lbc" aria-label="Close">&times;</button>
+  <img src="" alt="" class="lbi" id="lbi"/>
 </div>
 
 <script>
-  document.getElementById('year').textContent = new Date().getFullYear();
+'use strict';
+document.getElementById('yr').textContent = new Date().getFullYear();
 
-  // ===== INTERSECTION OBSERVER =====
-  const io = new IntersectionObserver(es => es.forEach(e => { if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);} }), {threshold:0.12});
-  document.querySelectorAll('.fade-up').forEach(el => io.observe(el));
+// ── Scroll reveal ───────────────────────────────────────────────────
+const io = new IntersectionObserver(es => es.forEach(e => {
+  if (e.isIntersecting) { e.target.classList.add('vis'); io.unobserve(e.target); }
+}), { threshold: 0.1 });
+document.querySelectorAll('.sr').forEach(el => io.observe(el));
 
-  // ===== COUNT-UP =====
-  function animateCount(el) {
-    const end = parseInt(el.dataset.end,10), suf = el.dataset.suffix||'';
-    let cur = 0; const step = (end/1800)*16;
-    const t = setInterval(()=>{ cur+=step; if(cur>=end){cur=end;clearInterval(t);} el.textContent=Math.floor(cur).toLocaleString()+suf; },16);
+// ── Count-up ────────────────────────────────────────────────────────
+function animCount(el) {
+  const end = +el.dataset.e, suf = el.dataset.s || '';
+  let cur = 0; const step = (end / 1600) * 16;
+  const t = setInterval(() => { cur = Math.min(cur + step, end); el.textContent = Math.floor(cur).toLocaleString() + suf; if (cur >= end) clearInterval(t); }, 16);
+}
+const cio = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { animCount(e.target); cio.unobserve(e.target); } }), { threshold: 0.3 });
+document.querySelectorAll('.cu').forEach(el => cio.observe(el));
+
+// ── Hero canvas — icosahedron + animated stars ─────────────────────
+(function () {
+  const canvas = document.getElementById('hc');
+  const ctx = canvas.getContext('2d', { alpha: false });
+  const isMobile = window.innerWidth < 768;
+  const DPR = Math.min(devicePixelRatio || 1, 1.5);
+
+  // Build icosahedron — store edge INDICES (not references) for O(1) lookup
+  function buildIco(subs) {
+    const t2 = (1 + Math.sqrt(5)) / 2;
+    const norm = v => { const l = Math.sqrt(v[0]*v[0]+v[1]*v[1]+v[2]*v[2]); return [v[0]/l,v[1]/l,v[2]/l]; };
+    let V = [[-1,t2,0],[1,t2,0],[-1,-t2,0],[1,-t2,0],[0,-1,t2],[0,1,t2],[0,-1,-t2],[0,1,-t2],[t2,0,-1],[t2,0,1],[-t2,0,-1],[-t2,0,1]].map(norm);
+    let F = [[0,11,5],[0,5,1],[0,1,7],[0,7,10],[0,10,11],[1,5,9],[5,11,4],[11,10,2],[10,7,6],[7,1,8],[3,9,4],[3,4,2],[3,2,6],[3,6,8],[3,8,9],[4,9,5],[2,4,11],[6,2,10],[8,6,7],[9,8,1]];
+    for (let s = 0; s < subs; s++) {
+      const NF = [], mc = {};
+      const gm = (a, b) => { const k = Math.min(a,b)+'_'+Math.max(a,b); if (mc[k]!=null) return mc[k]; V.push(norm([(V[a][0]+V[b][0])/2,(V[a][1]+V[b][1])/2,(V[a][2]+V[b][2])/2])); mc[k]=V.length-1; return mc[k]; };
+      for (const [a,b,c] of F) { const ab=gm(a,b),bc=gm(b,c),ca=gm(c,a); NF.push([a,ab,ca],[ab,b,bc],[ca,bc,c],[ab,bc,ca]); }
+      F = NF;
+    }
+    const ES = new Set(), EI = [];
+    for (const [a,b,c] of F) for (const [i,j] of [[a,b],[b,c],[c,a]]) { const k=Math.min(i,j)+'_'+Math.max(i,j); if (!ES.has(k)){ES.add(k);EI.push([i,j]);} }
+    return { V, EI };
   }
-  const cio = new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){animateCount(e.target);cio.unobserve(e.target);}}),{threshold:0.3});
-  document.querySelectorAll('.count-up').forEach(el=>cio.observe(el));
 
-  // ===== HERO 3D CANVAS (icosahedron + animated stars) =====
-  (function(){
-    const canvas = document.getElementById('hero-canvas');
-    const ctx = canvas.getContext('2d');
-    let t = 0;
+  // Pre-render glow sprites (used via drawImage — much faster than createRadialGradient per frame)
+  function makeSprite(size, r0, r1, c0, c1) {
+    const oc = document.createElement('canvas'); oc.width = oc.height = size * 2;
+    const ox = oc.getContext('2d');
+    const g = ox.createRadialGradient(size,size,0,size,size,size);
+    g.addColorStop(0, c0); g.addColorStop(1, c1);
+    ox.fillStyle = g; ox.fillRect(0,0,size*2,size*2);
+    return oc;
+  }
 
-    function norm(v){const l=Math.sqrt(v[0]*v[0]+v[1]*v[1]+v[2]*v[2]);return[v[0]/l,v[1]/l,v[2]/l];}
-    function mid(a,b){return norm([(a[0]+b[0])/2,(a[1]+b[1])/2,(a[2]+b[2])/2]);}
+  const subs = isMobile ? 1 : 2;
+  const { V: verts, EI: edgeIdx } = buildIco(subs);
+  const VGSZ = 18, SGSZ = 9;
+  const vertSprite = makeSprite(VGSZ, 0, VGSZ, 'rgba(200,190,255,1)', 'rgba(100,80,240,0)');
+  const starSprite = makeSprite(SGSZ, 0, SGSZ, 'rgba(210,220,255,1)', 'rgba(180,200,255,0)');
 
-    function buildIco(subs){
-      const phi=(1+Math.sqrt(5))/2;
-      let verts=[[-1,phi,0],[1,phi,0],[-1,-phi,0],[1,-phi,0],[0,-1,phi],[0,1,phi],[0,-1,-phi],[0,1,-phi],[phi,0,-1],[phi,0,1],[-phi,0,-1],[-phi,0,1]].map(norm);
-      let faces=[[0,11,5],[0,5,1],[0,1,7],[0,7,10],[0,10,11],[1,5,9],[5,11,4],[11,10,2],[10,7,6],[7,1,8],[3,9,4],[3,4,2],[3,2,6],[3,6,8],[3,8,9],[4,9,5],[2,4,11],[6,2,10],[8,6,7],[9,8,1]];
-      for(let s=0;s<subs;s++){const nf=[],mc={};function gm(a,b){const k=Math.min(a,b)+'_'+Math.max(a,b);if(mc[k]!=null)return mc[k];verts.push(mid(verts[a],verts[b]));mc[k]=verts.length-1;return mc[k];}for(const[a,b,c]of faces){const ab=gm(a,b),bc=gm(b,c),ca=gm(c,a);nf.push([a,ab,ca],[ab,b,bc],[ca,bc,c],[ab,bc,ca]);}faces=nf;}
-      const es=new Set(),edges=[];
-      for(const[a,b,c]of faces){[[a,b],[b,c],[c,a]].forEach(([i,j])=>{const k=Math.min(i,j)+'_'+Math.max(i,j);if(!es.has(k)){es.add(k);edges.push([i,j]);}});}
-      return{verts,edges};
-    }
+  // Typed arrays for projected positions
+  const N = verts.length;
+  const px = new Float32Array(N), py = new Float32Array(N), pz = new Float32Array(N);
 
-    const{verts,edges}=buildIco(2);
+  // Stars
+  const SC = isMobile ? 160 : 300;
+  const sx_ = new Float32Array(SC), sy_ = new Float32Array(SC), sz_ = new Float32Array(SC);
+  const svx = new Float32Array(SC), svy = new Float32Array(SC);
+  const ssz = new Float32Array(SC), spu = new Float32Array(SC), sps = new Float32Array(SC);
+  for (let i = 0; i < SC; i++) {
+    sx_[i] = Math.random(); sy_[i] = Math.random(); sz_[i] = Math.random();
+    ssz[i] = Math.random() * 1.3 + 0.3;
+    const sp = 0.00006 + Math.random() * 0.00011, ang = Math.random() * Math.PI * 2;
+    svx[i] = Math.cos(ang) * sp; svy[i] = Math.sin(ang) * sp;
+    spu[i] = Math.random() * Math.PI * 2; sps[i] = 0.006 + Math.random() * 0.012;
+  }
 
-    // Animated stars with velocity and twinkling
-    const stars=Array.from({length:600},()=>{
-      const speed=0.00005+Math.random()*0.00015;
-      const ang=Math.random()*Math.PI*2;
-      return{x:Math.random(),y:Math.random(),z:Math.random(),size:Math.random()*1.5+0.3,vx:Math.cos(ang)*speed,vy:Math.sin(ang)*speed,pulse:Math.random()*Math.PI*2,pulseSpeed:0.005+Math.random()*0.015};
-    });
+  let t = 0, lastTime = 0, animId;
+  const FPS_MS = 1000 / 60;
 
-    function rotY(v,a){return[v[0]*Math.cos(a)-v[2]*Math.sin(a),v[1],v[0]*Math.sin(a)+v[2]*Math.cos(a)];}
-    function rotX(v,a){return[v[0],v[1]*Math.cos(a)-v[2]*Math.sin(a),v[1]*Math.sin(a)+v[2]*Math.cos(a)];}
-    function proj(v,cx,cy,fov){const z=v[2]+4;const s=fov/z;return[cx+v[0]*s,cy-v[1]*s,v[2]];}
+  function resize() {
+    canvas.width = Math.round(canvas.offsetWidth * DPR);
+    canvas.height = Math.round(canvas.offsetHeight * DPR);
+    ctx.scale(DPR, DPR);
+  }
+  resize();
+  window.addEventListener('resize', resize, { passive: true });
 
-    function resize(){canvas.width=canvas.offsetWidth*devicePixelRatio;canvas.height=canvas.offsetHeight*devicePixelRatio;ctx.scale(devicePixelRatio,devicePixelRatio);}
-    resize();
-    window.addEventListener('resize',resize);
+  function draw(now) {
+    animId = requestAnimationFrame(draw);
+    if (now - lastTime < FPS_MS - 1) return;
+    lastTime = now;
 
-    function draw(){
-      const W=canvas.offsetWidth,H=canvas.offsetHeight;
-      ctx.clearRect(0,0,W,H);
-      ctx.fillStyle='rgb(4,7,18)';ctx.fillRect(0,0,W,H);
+    const W = canvas.offsetWidth, H = canvas.offsetHeight;
+    ctx.fillStyle = '#04070f'; ctx.fillRect(0, 0, W, H);
 
-      // Animated stars
-      for(const s of stars){
-        s.x+=s.vx; s.y+=s.vy; s.pulse+=s.pulseSpeed;
-        if(s.x<0)s.x=1; if(s.x>1)s.x=0;
-        if(s.y<0)s.y=1; if(s.y>1)s.y=0;
-        const twinkle=0.55+Math.sin(s.pulse)*0.45;
-        const brightness=(0.3+s.z*0.7)*twinkle;
-        const r=s.size*(0.8+Math.sin(s.pulse*0.7)*0.2);
-        if(s.z>0.7&&Math.sin(s.pulse)>0.6){
-          const g=ctx.createRadialGradient(s.x*W,s.y*H,0,s.x*W,s.y*H,r*4);
-          g.addColorStop(0,`rgba(200,215,255,${brightness*0.6})`);g.addColorStop(1,'rgba(180,200,255,0)');
-          ctx.beginPath();ctx.arc(s.x*W,s.y*H,r*4,0,Math.PI*2);ctx.fillStyle=g;ctx.fill();
-        }
-        ctx.beginPath();ctx.arc(s.x*W,s.y*H,r,0,Math.PI*2);
-        ctx.fillStyle=`rgba(210,220,255,${Math.min(1,brightness*0.95)})`;ctx.fill();
+    // Stars
+    ctx.save();
+    let glows = 0;
+    for (let i = 0; i < SC; i++) {
+      sx_[i] += svx[i]; sy_[i] += svy[i]; spu[i] += sps[i];
+      if (sx_[i] < 0) sx_[i] = 1; else if (sx_[i] > 1) sx_[i] = 0;
+      if (sy_[i] < 0) sy_[i] = 1; else if (sy_[i] > 1) sy_[i] = 0;
+      const tw = 0.55 + Math.sin(spu[i]) * 0.45;
+      const br = (0.3 + sz_[i] * 0.7) * tw;
+      if (br < 0.07) continue;
+      const x = sx_[i] * W, y = sy_[i] * H;
+      const r = ssz[i] * (0.8 + Math.sin(spu[i] * 0.7) * 0.2);
+      if (glows < 7 && sz_[i] > 0.72 && tw > 0.9) {
+        ctx.globalAlpha = br * 0.5;
+        ctx.drawImage(starSprite, x - SGSZ, y - SGSZ, SGSZ*2, SGSZ*2);
+        glows++;
       }
-
-      const cx=W/2,cy=H/2,fov=Math.min(W,H)*0.36;
-      const ay=t*0.18,ax=Math.sin(t*0.07)*0.18;
-      const rv=verts.map(v=>rotX(rotY(v,ay),ax));
-      const pv=rv.map(v=>proj(v,cx,cy,fov));
-      const pulse=Math.sin(t*2.2)*0.5+0.5;
-
-      for(const[i,j]of edges){
-        const pa=pv[i],pb=pv[j];
-        const avgZ=(pa[2]+pb[2])/2;
-        const alpha=Math.min(0.8,Math.max(0.06,0.15+(avgZ+1)*0.25));
-        ctx.beginPath();ctx.strokeStyle=`rgba(140,120,255,${alpha})`;ctx.lineWidth=0.9;
-        ctx.moveTo(pa[0],pa[1]);ctx.lineTo(pb[0],pb[1]);ctx.stroke();
-      }
-
-      for(const p of pv){
-        const na=Math.min(1,0.5+(p[2]+1)*0.25);
-        const g=ctx.createRadialGradient(p[0],p[1],0,p[0],p[1],6+pulse*3);
-        g.addColorStop(0,`rgba(200,190,255,${Math.min(1,na+0.2)})`);g.addColorStop(1,'rgba(100,80,240,0)');
-        ctx.beginPath();ctx.arc(p[0],p[1],6+pulse*3,0,Math.PI*2);ctx.fillStyle=g;ctx.fill();
-        ctx.beginPath();ctx.arc(p[0],p[1],2+pulse*0.8,0,Math.PI*2);
-        ctx.fillStyle=`rgba(220,215,255,${Math.min(1,na)})`;ctx.fill();
-      }
-
-      const cg=ctx.createRadialGradient(cx,cy,0,cx,cy,fov*0.65);
-      cg.addColorStop(0,'rgba(91,76,245,0.07)');cg.addColorStop(1,'rgba(91,76,245,0)');
-      ctx.beginPath();ctx.arc(cx,cy,fov*0.65,0,Math.PI*2);ctx.fillStyle=cg;ctx.fill();
-      t+=0.016;requestAnimationFrame(draw);
+      ctx.globalAlpha = Math.min(1, br * 0.92);
+      ctx.fillStyle = '#d2dcff';
+      ctx.beginPath(); ctx.arc(x, y, r, 0, 6.2832); ctx.fill();
     }
-    draw();
-  })();
+    ctx.restore();
 
-  // ===== NETWORK CANVAS =====
-  (function(){
-    const canvas=document.getElementById('network-canvas');
-    if(!canvas)return;
-    const ctx=canvas.getContext('2d');
-    function resize(){canvas.width=canvas.offsetWidth;canvas.height=canvas.offsetHeight;}
-    resize();window.addEventListener('resize',resize);
-    const nodes=Array.from({length:18},()=>({x:Math.random()*canvas.width,y:Math.random()*canvas.height,vx:(Math.random()-0.5)*0.4,vy:(Math.random()-0.5)*0.4,r:Math.random()*3+2,pulse:Math.random()*Math.PI*2}));
-    function draw(){
-      const W=canvas.offsetWidth,H=canvas.offsetHeight;
-      ctx.clearRect(0,0,W,H);
-      nodes.forEach(n=>{n.x+=n.vx;n.y+=n.vy;n.pulse+=0.03;if(n.x<0||n.x>W)n.vx*=-1;if(n.y<0||n.y>H)n.vy*=-1;});
-      for(let i=0;i<nodes.length;i++)for(let j=i+1;j<nodes.length;j++){const dx=nodes[i].x-nodes[j].x,dy=nodes[i].y-nodes[j].y,dist=Math.sqrt(dx*dx+dy*dy);if(dist<130){ctx.beginPath();ctx.strokeStyle=`rgba(91,76,245,${(1-dist/130)*0.5})`;ctx.lineWidth=1;ctx.moveTo(nodes[i].x,nodes[i].y);ctx.lineTo(nodes[j].x,nodes[j].y);ctx.stroke();}}
-      nodes.forEach(n=>{const g2=Math.sin(n.pulse)*0.5+0.5;const g=ctx.createRadialGradient(n.x,n.y,0,n.x,n.y,n.r*4);g.addColorStop(0,`rgba(124,106,247,${0.9*g2+0.1})`);g.addColorStop(1,'rgba(91,76,245,0)');ctx.beginPath();ctx.arc(n.x,n.y,n.r*4,0,Math.PI*2);ctx.fillStyle=g;ctx.fill();ctx.beginPath();ctx.arc(n.x,n.y,n.r,0,Math.PI*2);ctx.fillStyle=`rgba(200,190,255,${0.7+0.3*g2})`;ctx.fill();});
-      requestAnimationFrame(draw);
+    // Icosahedron — rotate all verts once, storing in typed arrays
+    const aY = t * 0.18, aX = Math.sin(t * 0.07) * 0.18;
+    const cY = Math.cos(aY), sY = Math.sin(aY), cX = Math.cos(aX), sX = Math.sin(aX);
+    const cx = W * 0.5, cy = H * 0.5, fov = Math.min(W, H) * 0.36;
+    for (let i = 0; i < N; i++) {
+      const [vx, vy, vz] = verts[i];
+      const rx = vx*cY - vz*sY, rz0 = vx*sY + vz*cY;
+      const ry = vy*cX - rz0*sX, rz = vy*sX + rz0*cX;
+      const s = fov / (rz + 4);
+      px[i] = cx + rx * s; py[i] = cy - ry * s; pz[i] = rz;
     }
-    draw();
-  })();
 
-  // ===== COVERFLOW =====
-  (function(){
-    const images=[
-      {src:'https://cdn.shopify.com/s/files/1/0946/6455/6842/files/Ari.png?v=1782609576',label:'Ari'},
-      {src:'https://cdn.shopify.com/s/files/1/0946/6455/6842/files/Ari_2.png?v=1782609576',label:'Ari'},
-      {src:'https://cdn.shopify.com/s/files/1/0946/6455/6842/files/Monte_60774d3a-383f-49a9-ba21-d755d800745f.png?v=1782609576',label:'Monte'},
-      {src:'https://cdn.shopify.com/s/files/1/0946/6455/6842/files/Monte_2_f2ae46f6-71ac-47b1-b35c-d2a1425127bf.png?v=1782609575',label:'Monte'},
-      {src:'https://cdn.shopify.com/s/files/1/0946/6455/6842/files/Monte_3_36158fb3-ebe7-4131-89c7-3de4cc54d727.png?v=1782609576',label:'Monte'},
-      {src:'https://cdn.shopify.com/s/files/1/0946/6455/6842/files/Monte_4.png?v=1782609576',label:'Monte'},
-      {src:'https://cdn.shopify.com/s/files/1/0946/6455/6842/files/Monte_5.png?v=1782609576',label:'Monte'},
-      {src:'https://cdn.shopify.com/s/files/1/0946/6455/6842/files/Lee_5a146122-6c69-4730-9138-654f82838a83.png?v=1782609576',label:'Lee'},
-      {src:'https://cdn.shopify.com/s/files/1/0946/6455/6842/files/Kap_8c29bd78-c265-4522-b0d4-5839fd4b656e.png?v=1782609575',label:'Kap'},
-      {src:'https://cdn.shopify.com/s/files/1/0946/6455/6842/files/Kap_2_579ba7ce-ebc2-433f-8a79-97fb0f4047e1.png?v=1782609575',label:'Kap'},
-      {src:'https://cdn.shopify.com/s/files/1/0946/6455/6842/files/Kap_3_f8da04b3-8109-4796-9d87-e60080e1d9ff.png?v=1782609576',label:'Kap'},
-      {src:'https://cdn.shopify.com/s/files/1/0946/6455/6842/files/Hi.png?v=1782609575',label:'Hi'}
-    ];
+    // Edges
+    ctx.save(); ctx.lineWidth = 0.9; ctx.strokeStyle = '#8c78ff';
+    for (const [ai, bi] of edgeIdx) {
+      const avgZ = (pz[ai] + pz[bi]) * 0.5;
+      ctx.globalAlpha = Math.min(0.68, Math.max(0.06, 0.11 + (avgZ + 1) * 0.21));
+      ctx.beginPath(); ctx.moveTo(px[ai], py[ai]); ctx.lineTo(px[bi], py[bi]); ctx.stroke();
+    }
+    ctx.restore();
 
-    const inner=document.getElementById('cf-inner'),dotsEl=document.getElementById('cf-dots');
-    const prevBtn=document.getElementById('cf-prev'),nextBtn=document.getElementById('cf-next');
-    const lightbox=document.getElementById('lightbox'),lbImg=document.getElementById('lb-img'),lbClose=document.getElementById('lb-close');
-    let current=0,paused=false,timer;
+    // Vertex glow via sprite
+    const pulse = Math.sin(t * 2.2) * 0.5 + 0.5;
+    const dotR = 2 + pulse * 0.75;
+    ctx.save(); ctx.fillStyle = '#dcd7ff';
+    for (let i = 0; i < N; i++) {
+      const na = Math.min(1, 0.42 + (pz[i] + 1) * 0.22);
+      ctx.globalAlpha = na * 0.65;
+      ctx.drawImage(vertSprite, px[i]-VGSZ, py[i]-VGSZ, VGSZ*2, VGSZ*2);
+      ctx.globalAlpha = Math.min(1, na);
+      ctx.beginPath(); ctx.arc(px[i], py[i], dotR, 0, 6.2832); ctx.fill();
+    }
+    ctx.restore();
 
-    const cards=images.map((img,idx)=>{
-      const el=document.createElement('div');el.className='cf-card';
-      el.innerHTML=`<img src="${img.src}" alt="${img.label}" loading="lazy"/><div class="cf-label">${img.label}</div><div class="cf-zoom-icon">&#128269;</div>`;
-      el.addEventListener('click',()=>{ if(idx===current){openLB(img.src);}else{setCurrent(idx);} });
-      inner.appendChild(el);return el;
+    // Core ambient (single gradient, one per frame — acceptable)
+    const cg = ctx.createRadialGradient(cx, cy, 0, cx, cy, fov * 0.65);
+    cg.addColorStop(0, 'rgba(91,76,245,0.09)'); cg.addColorStop(1, 'rgba(91,76,245,0)');
+    ctx.globalAlpha = 1; ctx.fillStyle = cg;
+    ctx.beginPath(); ctx.arc(cx, cy, fov * 0.65, 0, 6.2832); ctx.fill();
+
+    t += 0.016;
+  }
+  requestAnimationFrame(draw);
+})();
+
+// ── Network canvas ──────────────────────────────────────────────────
+(function () {
+  const canvas = document.getElementById('nc');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  function resize() { canvas.width = canvas.offsetWidth; canvas.height = canvas.offsetHeight; }
+  resize();
+  window.addEventListener('resize', resize, { passive: true });
+  const NN = 16;
+  const nx = new Float32Array(NN), ny = new Float32Array(NN);
+  const nvx = new Float32Array(NN), nvy = new Float32Array(NN), npr = new Float32Array(NN), npu = new Float32Array(NN);
+  for (let i = 0; i < NN; i++) {
+    nx[i] = Math.random() * canvas.width; ny[i] = Math.random() * canvas.height;
+    nvx[i] = (Math.random() - 0.5) * 0.4; nvy[i] = (Math.random() - 0.5) * 0.4;
+    npr[i] = Math.random() * 3 + 2; npu[i] = Math.random() * Math.PI * 2;
+  }
+  let nLast = 0; const N_FPS = 1000 / 40;
+  function drawNet(now) {
+    requestAnimationFrame(drawNet);
+    if (now - nLast < N_FPS - 1) return; nLast = now;
+    const W = canvas.offsetWidth, H = canvas.offsetHeight;
+    ctx.clearRect(0, 0, W, H);
+    for (let i = 0; i < NN; i++) { nx[i] += nvx[i]; ny[i] += nvy[i]; npu[i] += 0.025; if (nx[i]<0||nx[i]>W) nvx[i]*=-1; if (ny[i]<0||ny[i]>H) nvy[i]*=-1; }
+    ctx.strokeStyle = 'rgba(91,76,245,0.45)'; ctx.lineWidth = 1;
+    for (let i = 0; i < NN; i++) for (let j = i+1; j < NN; j++) {
+      const dx=nx[i]-nx[j], dy=ny[i]-ny[j], d=Math.sqrt(dx*dx+dy*dy);
+      if (d < 130) { ctx.globalAlpha = (1-d/130)*0.5; ctx.beginPath(); ctx.moveTo(nx[i],ny[i]); ctx.lineTo(nx[j],ny[j]); ctx.stroke(); }
+    }
+    ctx.globalAlpha = 1;
+    for (let i = 0; i < NN; i++) {
+      const g2 = Math.sin(npu[i]) * 0.5 + 0.5;
+      const g = ctx.createRadialGradient(nx[i],ny[i],0,nx[i],ny[i],npr[i]*4);
+      g.addColorStop(0, `rgba(124,106,247,${0.85*g2+0.15})`); g.addColorStop(1, 'rgba(91,76,245,0)');
+      ctx.fillStyle = g; ctx.beginPath(); ctx.arc(nx[i],ny[i],npr[i]*4,0,6.2832); ctx.fill();
+      ctx.fillStyle = `rgba(200,190,255,${0.65+0.35*g2})`; ctx.beginPath(); ctx.arc(nx[i],ny[i],npr[i],0,6.2832); ctx.fill();
+    }
+  }
+  requestAnimationFrame(drawNet);
+})();
+
+// ── Coverflow ───────────────────────────────────────────────────────
+(function () {
+  const imgs = [
+    {s:'https://cdn.shopify.com/s/files/1/0946/6455/6842/files/Ari.png?v=1782609576',l:'Ari'},
+    {s:'https://cdn.shopify.com/s/files/1/0946/6455/6842/files/Ari_2.png?v=1782609576',l:'Ari'},
+    {s:'https://cdn.shopify.com/s/files/1/0946/6455/6842/files/Monte_60774d3a-383f-49a9-ba21-d755d800745f.png?v=1782609576',l:'Monte'},
+    {s:'https://cdn.shopify.com/s/files/1/0946/6455/6842/files/Monte_2_f2ae46f6-71ac-47b1-b35c-d2a1425127bf.png?v=1782609575',l:'Monte'},
+    {s:'https://cdn.shopify.com/s/files/1/0946/6455/6842/files/Monte_3_36158fb3-ebe7-4131-89c7-3de4cc54d727.png?v=1782609576',l:'Monte'},
+    {s:'https://cdn.shopify.com/s/files/1/0946/6455/6842/files/Monte_4.png?v=1782609576',l:'Monte'},
+    {s:'https://cdn.shopify.com/s/files/1/0946/6455/6842/files/Monte_5.png?v=1782609576',l:'Monte'},
+    {s:'https://cdn.shopify.com/s/files/1/0946/6455/6842/files/Lee_5a146122-6c69-4730-9138-654f82838a83.png?v=1782609576',l:'Lee'},
+    {s:'https://cdn.shopify.com/s/files/1/0946/6455/6842/files/Kap_8c29bd78-c265-4522-b0d4-5839fd4b656e.png?v=1782609575',l:'Kap'},
+    {s:'https://cdn.shopify.com/s/files/1/0946/6455/6842/files/Kap_2_579ba7ce-ebc2-433f-8a79-97fb0f4047e1.png?v=1782609575',l:'Kap'},
+    {s:'https://cdn.shopify.com/s/files/1/0946/6455/6842/files/Kap_3_f8da04b3-8109-4796-9d87-e60080e1d9ff.png?v=1782609576',l:'Kap'},
+    {s:'https://cdn.shopify.com/s/files/1/0946/6455/6842/files/Hi.png?v=1782609575',l:'Hi'}
+  ];
+  const inner=document.getElementById('cfin'), dotsEl=document.getElementById('cdots');
+  const lb=document.getElementById('lb'), lbi=document.getElementById('lbi'), lbc=document.getElementById('lbc');
+  let cur=0, paused=false, timer;
+  const cards = imgs.map((img,idx) => {
+    const el = document.createElement('div'); el.className = 'ccard';
+    el.innerHTML = `<img src="${img.s}" alt="${img.l}" loading="lazy"/><div class="clbl">${img.l}</div><div class="czi">&#128269;</div>`;
+    el.addEventListener('click', () => idx === cur ? openLB(img.s) : setCur(idx));
+    inner.appendChild(el); return el;
+  });
+  const dots = imgs.map((_,idx) => {
+    const d = document.createElement('button'); d.className = 'cdot';
+    d.addEventListener('click', () => setCur(idx)); dotsEl.appendChild(d); return d;
+  });
+  function render() {
+    cards.forEach((c,idx) => {
+      let off = idx - cur;
+      if (off > imgs.length/2) off -= imgs.length;
+      if (off < -imgs.length/2) off += imgs.length;
+      const abs = Math.abs(off), isC = off === 0;
+      c.style.transform = `translateX(${off*110}px) translateZ(${-abs*130}px) rotateY(${isC?0:off>0?-28:28}deg)`;
+      c.style.opacity = abs > 3 ? '0' : String(1 - abs * 0.2);
+      c.style.zIndex = String(50 - abs);
+      c.style.pointerEvents = abs > 3 ? 'none' : 'auto';
+      c.style.cursor = isC ? 'zoom-in' : 'pointer';
+      c.style.boxShadow = isC ? '0 28px 80px rgba(91,76,245,.35),0 18px 55px rgba(0,0,0,.8)' : '0 18px 55px rgba(0,0,0,.7)';
+      c.classList.toggle('isc', isC);
     });
-
-    const dots=images.map((_,idx)=>{
-      const d=document.createElement('button');d.className='cf-dot';
-      d.addEventListener('click',()=>setCurrent(idx));dotsEl.appendChild(d);return d;
-    });
-
-    function render(){
-      cards.forEach((c,idx)=>{
-        let off=idx-current;
-        if(off>images.length/2)off-=images.length;
-        if(off<-images.length/2)off+=images.length;
-        const abs=Math.abs(off),isC=off===0;
-        c.style.transform=`translateX(${off*115}px) translateZ(${-abs*140}px) rotateY(${isC?0:off>0?-30:30}deg)`;
-        c.style.opacity=abs>3?0:1-abs*0.2;
-        c.style.zIndex=50-abs;
-        c.style.pointerEvents=abs>3?'none':'auto';
-        c.style.cursor=isC?'zoom-in':'pointer';
-        c.style.boxShadow=isC?'0 30px 90px rgba(91,76,245,0.35),0 20px 60px rgba(0,0,0,0.8)':'0 20px 60px rgba(0,0,0,0.7)';
-        c.classList.toggle('is-center',isC);
-      });
-      dots.forEach((d,idx)=>d.classList.toggle('active',idx===current));
-    }
-
-    function setCurrent(i){current=i;render();}
-    function next(){setCurrent((current+1)%images.length);}
-    function prev(){setCurrent((current-1+images.length)%images.length);}
-    function startT(){timer=setInterval(next,4000);}
-    function stopT(){clearInterval(timer);}
-
-    prevBtn.addEventListener('click',()=>{stopT();prev();if(!paused)startT();});
-    nextBtn.addEventListener('click',()=>{stopT();next();if(!paused)startT();});
-    document.getElementById('coverflow').addEventListener('mouseenter',()=>{paused=true;stopT();});
-    document.getElementById('coverflow').addEventListener('mouseleave',()=>{paused=false;startT();});
-
-    function openLB(src){lbImg.src=src;lightbox.classList.add('open');document.body.style.overflow='hidden';}
-    function closeLB(){lightbox.classList.remove('open');document.body.style.overflow='';}
-    lbClose.addEventListener('click',closeLB);
-    lightbox.addEventListener('click',e=>{if(e.target===lightbox)closeLB();});
-    document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLB();if(lightbox.classList.contains('open'))return;if(e.key==='ArrowRight')next();if(e.key==='ArrowLeft')prev();});
-
-    render();startT();
-  })();
+    dots.forEach((d,idx) => d.classList.toggle('act', idx === cur));
+  }
+  function setCur(i) { cur = i; render(); }
+  function next() { setCur((cur+1) % imgs.length); }
+  function prev() { setCur((cur-1+imgs.length) % imgs.length); }
+  function startT() { timer = setInterval(next, 4000); }
+  function stopT() { clearInterval(timer); }
+  function openLB(src) { lbi.src=src; lb.classList.add('open'); document.body.style.overflow='hidden'; }
+  function closeLB() { lb.classList.remove('open'); document.body.style.overflow=''; }
+  document.getElementById('cprev').addEventListener('click', () => { stopT(); prev(); if (!paused) startT(); });
+  document.getElementById('cnxt').addEventListener('click', () => { stopT(); next(); if (!paused) startT(); });
+  document.getElementById('cov').addEventListener('mouseenter', () => { paused=true; stopT(); });
+  document.getElementById('cov').addEventListener('mouseleave', () => { paused=false; startT(); });
+  lbc.addEventListener('click', closeLB);
+  lb.addEventListener('click', e => { if (e.target===lb) closeLB(); });
+  document.addEventListener('keydown', e => {
+    if (e.key==='Escape') closeLB();
+    if (!lb.classList.contains('open')) { if(e.key==='ArrowRight') next(); if(e.key==='ArrowLeft') prev(); }
+  });
+  render(); startT();
+})();
 </script>
 </body>
 </html>
