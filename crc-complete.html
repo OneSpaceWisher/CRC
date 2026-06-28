@@ -29,6 +29,12 @@
   overflow-x: hidden;
   -webkit-text-size-adjust: 100%;
   line-height: 1.5;
+  /* Prevent bleeding into Shopify's mobile menu overlay */
+  position: relative !important;
+  z-index: 0 !important;
+  isolation: isolate;
+  /* Remove any gap Shopify's section wrapper adds */
+  margin: 0 !important;
 }
 
 /* Force text color inheritance inside root for all generic elements */
@@ -80,9 +86,9 @@
   height: 100svh;
   min-height: 580px;
   overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
   background: #04060f;
 }
 #crc-root #hc {
@@ -108,7 +114,7 @@
 }
 #crc-root .hh1 {
   font-family: 'Space Grotesk', sans-serif !important;
-  font-size: clamp(3rem, 9vw, 6.5rem);
+  font-size: clamp(2.8rem, 9vw, 6.5rem);
   font-weight: 900;
   color: #ffffff !important;
   line-height: 1;
@@ -116,6 +122,7 @@
   margin-bottom: 1.4rem;
   opacity: 0;
   animation: crc-fi .7s .05s ease forwards;
+  text-shadow: 0 2px 30px rgba(0,0,0,.6);
 }
 #crc-root .hh1 .gt {
   background: linear-gradient(90deg, #7c6af7, #38bdf8, #7c6af7);
@@ -126,13 +133,14 @@
   animation: crc-fi .7s .05s ease forwards, crc-sh 4s linear infinite;
 }
 #crc-root .hdesc {
-  font-size: clamp(.95rem, 2vw, 1.15rem);
-  color: #56637a !important;
+  font-size: clamp(1rem, 3.5vw, 1.15rem);
+  color: #a0aec0 !important;
   max-width: 640px;
   margin: 0 auto 2.25rem;
-  line-height: 1.7;
+  line-height: 1.75;
   opacity: 0;
   animation: crc-fi .7s .2s ease forwards;
+  text-shadow: 0 1px 12px rgba(0,0,0,.8);
 }
 #crc-root .hbtns {
   display: flex; gap: 1rem;
@@ -722,9 +730,9 @@
         <div class="mlbl">Our Mission</div>
         <h2 class="mh2m-mis">We build up.<br><span class="a">Not tear down.</span></h2>
         <div class="mb">
-          <p>CRC is proudly anti-black pill. That ideology has no place here. This is a community built on science, self-development, and genuine curiosity — not fatalism, negativity, or false hope.</p>
+          <p>CRC is proudly anti-black pill. That ideology has no place here. This is a community built on science, self-development, and genuine curiosity - not fatalism, negativity, or false hope.</p>
           <p>We combine peer-reviewed evidence, open science, and a dedicated community to give people real answers. Not recycled misinformation packaged as a $50 course. Not vague promises. Evidence.</p>
-          <p>CRC exists to give you the knowledge to understand your own facial structure, growth patterns, and treatment options — grounded in the same science your orthodontist reads, but accessible to anyone.</p>
+          <p>CRC exists to give you the knowledge to understand your own facial structure, growth patterns, and treatment options - grounded in the same science your orthodontist reads, but accessible to anyone.</p>
         </div>
         <div class="mtags">
           <span class="mtag">Science-First</span>
@@ -737,7 +745,7 @@
         <div class="mcw">
           <canvas id="nc"></canvas>
           <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(4,6,15,.5) 0%,transparent 100%);pointer-events:none"></div>
-          <div class="mcl">CRCBN — Live Research Network</div>
+          <div class="mcl">CRCBN - Live Research Network</div>
         </div>
       </div>
     </div>
@@ -841,7 +849,7 @@
     </div>
 
     <div class="sr d1">
-      <h3 class="howh">How it works — first 30 days</h3>
+      <h3 class="howh">How it works - first 30 days</h3>
       <div class="hsteps">
         <div class="hsc">
           <div class="hsn">01</div>
@@ -868,7 +876,7 @@
       <div class="r">
         <h3 class="mctah">Ready to get started?</h3>
         <p class="mctap" style="color:#56637a !important;">Join CRC for <strong>$20/month</strong>. Evidence-first guidance, personal support, and a community focused on doing it right.</p>
-        <a href="https://crcofficial.com/products/crc-membership" target="_blank" rel="noopener noreferrer" class="bcta">Join CRC — $20/mo</a>
+        <a href="https://crcofficial.com/products/crc-membership" target="_blank" rel="noopener noreferrer" class="bcta">Join CRC - $20/mo</a>
         <p class="mdisc">Not medical advice. Always consult a licensed provider for diagnosis and treatment.</p>
       </div>
     </div>
@@ -965,8 +973,8 @@ document.querySelectorAll('.cu').forEach(el => cio.observe(el));
   }
 
   const { V: verts, EI: edgeIdx } = buildIco(isMobile ? 1 : 2);
-  const VGSZ = 18, SGSZ = 9;
-  const vertSprite = makeSprite(VGSZ,'rgba(200,190,255,1)','rgba(100,80,240,0)');
+  const VGSZ = 28, SGSZ = 9;
+  const vertSprite = makeSprite(VGSZ,'rgba(215,205,255,1)','rgba(100,80,240,0)');
   const starSprite = makeSprite(SGSZ,'rgba(210,220,255,1)','rgba(180,200,255,0)');
 
   const N = verts.length;
@@ -1028,7 +1036,7 @@ document.querySelectorAll('.cu').forEach(el => cio.observe(el));
     // Icosahedron: rotate all verts, store in typed arrays
     const aY = t * 0.18, aX = Math.sin(t * 0.07) * 0.18;
     const cY = Math.cos(aY), sY = Math.sin(aY), cX = Math.cos(aX), sX = Math.sin(aX);
-    const cx = W * 0.5, cy = H * 0.5, fov = Math.min(W, H) * 0.36;
+    const cx = W * 0.5, cy = H * 0.5, fov = Math.min(W, H) * (isMobile ? 0.50 : 0.54);
     for (let i = 0; i < N; i++) {
       const [vx,vy,vz] = verts[i];
       const rx = vx*cY - vz*sY, rz0 = vx*sY + vz*cY;
@@ -1037,33 +1045,35 @@ document.querySelectorAll('.cu').forEach(el => cio.observe(el));
       px[i] = cx + rx * s; py[i] = cy - ry * s; pz[i] = rz;
     }
 
-    // Edges
-    ctx.save(); ctx.lineWidth = 0.9; ctx.strokeStyle = '#8c78ff';
+    // Edges — brighter with depth-based alpha
+    ctx.save(); ctx.lineWidth = 1.1; ctx.strokeStyle = '#9080ff';
     for (const [ai, bi] of edgeIdx) {
       const avgZ = (pz[ai] + pz[bi]) * 0.5;
-      ctx.globalAlpha = Math.min(0.68, Math.max(0.06, 0.11 + (avgZ + 1) * 0.21));
+      ctx.globalAlpha = Math.min(0.88, Math.max(0.1, 0.18 + (avgZ + 1) * 0.30));
       ctx.beginPath(); ctx.moveTo(px[ai], py[ai]); ctx.lineTo(px[bi], py[bi]); ctx.stroke();
     }
     ctx.restore();
 
-    // Vertex glows via sprite
-    const dotR = 2 + (Math.sin(t * 2.2) * 0.5 + 0.5) * 0.75;
-    ctx.save(); ctx.fillStyle = '#dcd7ff';
+    // Vertex glows via sprite — larger and brighter
+    const pulse = Math.sin(t * 2.2) * 0.5 + 0.5;
+    const dotR = 2.5 + pulse * 1.1;
+    ctx.save(); ctx.fillStyle = '#e8e3ff';
     for (let i = 0; i < N; i++) {
-      const na = Math.min(1, 0.42 + (pz[i] + 1) * 0.22);
-      ctx.globalAlpha = na * 0.65;
+      const na = Math.min(1, 0.52 + (pz[i] + 1) * 0.25);
+      ctx.globalAlpha = na * 0.88;
       ctx.drawImage(vertSprite, px[i]-VGSZ, py[i]-VGSZ, VGSZ*2, VGSZ*2);
       ctx.globalAlpha = Math.min(1, na);
       ctx.beginPath(); ctx.arc(px[i], py[i], dotR, 0, 6.2832); ctx.fill();
     }
     ctx.restore();
 
-    // Core ambient gradient (one per frame — cheap)
-    const cg = ctx.createRadialGradient(cx, cy, 0, cx, cy, fov * 0.65);
-    cg.addColorStop(0, 'rgba(91,76,245,0.09)');
+    // Core ambient glow (larger, more visible)
+    const cg = ctx.createRadialGradient(cx, cy, 0, cx, cy, fov * 0.75);
+    cg.addColorStop(0, 'rgba(91,76,245,0.14)');
+    cg.addColorStop(0.5, 'rgba(91,76,245,0.05)');
     cg.addColorStop(1, 'rgba(91,76,245,0)');
     ctx.globalAlpha = 1; ctx.fillStyle = cg;
-    ctx.beginPath(); ctx.arc(cx, cy, fov * 0.65, 0, 6.2832); ctx.fill();
+    ctx.beginPath(); ctx.arc(cx, cy, fov * 0.75, 0, 6.2832); ctx.fill();
 
     t += 0.016;
   }
