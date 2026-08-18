@@ -314,14 +314,20 @@ body:has(#crc-root) > main { background: #f8f9fb !important; }
   display: flex; flex-direction: column; gap: .6rem;
 }
 #crc-root .vprog {
-  width: 100%; height: 5px; border-radius: 99px;
-  background: rgba(0,0,0,.10);
+  width: 100%; height: 20px;
+  display: flex; align-items: center;
   position: relative; cursor: pointer;
+}
+#crc-root .vprog-track {
+  position: absolute; inset-x: 0; height: 5px;
+  border-radius: 99px; background: rgba(0,0,0,.10);
+  top: 50%; transform: translateY(-50%);
+  pointer-events: none;
 }
 #crc-root .vprog-fill {
   height: 100%; border-radius: 99px;
   background: linear-gradient(90deg,#6b5ff8,#38bdf8);
-  pointer-events: none;
+  pointer-events: none; transition: none;
 }
 #crc-root .vprog-thumb {
   position: absolute; top: 50%; transform: translate(-50%,-50%);
@@ -341,6 +347,10 @@ body:has(#crc-root) > main { background: #f8f9fb !important; }
   width: 28px; height: 28px;
 }
 #crc-root .vbtn:hover { color: #0f1629; }
+#crc-root .vbtn-skip {
+  font-family: 'Inter', monospace !important; font-size: .68rem; font-weight: 700;
+  letter-spacing: .01em; width: auto; min-width: 36px; padding: 0 4px;
+}
 #crc-root .vbtn-play {
   width: 34px; height: 34px; border-radius: 50%;
   background: rgba(107,95,248,.85);
@@ -846,20 +856,18 @@ body:has(#crc-root) > main { background: #f8f9fb !important; }
       </video>
       <div class="vctl">
         <div class="vprog" id="crc-prog">
-          <div class="vprog-fill" id="crc-fill" style="width:0%"></div>
+          <div class="vprog-track">
+            <div class="vprog-fill" id="crc-fill" style="width:0%"></div>
+          </div>
           <div class="vprog-thumb" id="crc-thumb" style="left:0%"></div>
         </div>
         <div class="vrow">
-          <button class="vbtn" id="crc-rew" title="Back 10 seconds">
-            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="19 20 9 12 19 4 19 20"/><line x1="5" y1="19" x2="5" y2="5"/></svg>
-          </button>
+          <button class="vbtn vbtn-skip" id="crc-rew" title="Back 10 seconds">&#8635;10s</button>
           <button class="vbtn vbtn-play" id="crc-pp" title="Play / Pause">
             <svg id="crc-ico-pause" width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
             <svg id="crc-ico-play" width="15" height="15" viewBox="0 0 24 24" fill="currentColor" style="display:none"><polygon points="5 3 19 12 5 21 5 3"/></svg>
           </button>
-          <button class="vbtn" id="crc-fwd" title="Forward 10 seconds">
-            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 4 15 12 5 20 5 4"/><line x1="19" y1="5" x2="19" y2="19"/></svg>
-          </button>
+          <button class="vbtn vbtn-skip" id="crc-fwd" title="Forward 10 seconds">10s&#8634;</button>
           <span class="vtm" id="crc-tm">0:00 / 0:00</span>
         </div>
       </div>
@@ -1011,7 +1019,7 @@ body:has(#crc-root) > main { background: #f8f9fb !important; }
     <div class="fg">
       <div>
         <div class="flogo">
-          <img src="https://cdn.shopify.com/s/files/1/0769/4362/2362/files/077cedd2-dd86-44d1-a654-1849a0d930eb_1782611186945.png" alt="CRC" class="flogo-img"/>
+          <img src="https://cdn.shopify.com/s/files/1/0946/6455/6842/files/Craniofacial_research_collective_2.png?v=1753420613" alt="CRC" class="flogo-img"/>
           <span class="flogo-name">CRC</span>
         </div>
         <p class="ftag">Reshaping how we understand facial growth through peer-reviewed science.</p>
@@ -1133,8 +1141,12 @@ document.querySelectorAll('.cu').forEach(el => cio.observe(el));
     lastTime = now;
 
     const W = canvas.offsetWidth, H = canvas.offsetHeight;
-    // Light background
-    ctx.fillStyle = '#f8f9fb'; ctx.fillRect(0, 0, W, H);
+    // White-to-lavender radial gradient background
+    const bg = ctx.createRadialGradient(W*0.5, H*0.42, 0, W*0.5, H*0.52, Math.max(W,H)*0.78);
+    bg.addColorStop(0, '#ffffff');
+    bg.addColorStop(0.42, '#f4f3ff');
+    bg.addColorStop(1, '#ede9fe');
+    ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H);
 
     // Subtle floating particles (slate-400 on light bg)
     ctx.save();
@@ -1294,7 +1306,7 @@ document.querySelectorAll('.cu').forEach(el => cio.observe(el));
   const cards = imgs.map((img, idx) => {
     const el = document.createElement('div');
     el.className = 'ccard';
-    el.innerHTML = `<img src="${img.s}" alt="${img.l}" loading="lazy"/><div class="clbl">${img.l}</div><div class="czi">&#128269;</div>`;
+    el.innerHTML = `<img src="${img.s}" alt="Member transformation" loading="lazy"/><div class="czi">&#128269;</div>`;
     el.addEventListener('click', () => idx === cur ? openLB(img.s) : setCur(idx));
     inner.appendChild(el);
     return el;
