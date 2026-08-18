@@ -315,14 +315,15 @@ body:has(#crc-root) > main { background: #f8f9fb !important; }
 }
 #crc-root .vprog {
   width: 100%; height: 20px;
-  display: flex; align-items: center;
   position: relative; cursor: pointer;
 }
 #crc-root .vprog-track {
-  position: absolute; inset-x: 0; height: 5px;
-  border-radius: 99px; background: rgba(0,0,0,.10);
-  top: 50%; transform: translateY(-50%);
-  pointer-events: none;
+  position: absolute;
+  left: 0; right: 0; width: 100%;
+  height: 5px; top: 8px;
+  border-radius: 5px;
+  background: #e2e8f0;
+  overflow: hidden;
 }
 #crc-root .vprog-fill {
   height: 100%; border-radius: 99px;
@@ -1019,7 +1020,7 @@ body:has(#crc-root) > main { background: #f8f9fb !important; }
     <div class="fg">
       <div>
         <div class="flogo">
-          <img src="https://cdn.shopify.com/s/files/1/0946/6455/6842/files/Craniofacial_research_collective_2.png?v=1753420613" alt="CRC" class="flogo-img"/>
+          <img src="https://cdn.shopify.com/s/files/1/0946/6455/6842/files/077cedd2-dd86-44d1-a654-1849a0d930eb.png?v=1765746945" alt="CRC" class="flogo-img"/>
           <span class="flogo-name">CRC</span>
         </div>
         <p class="ftag">Reshaping how we understand facial growth through peer-reviewed science.</p>
@@ -1141,11 +1142,12 @@ document.querySelectorAll('.cu').forEach(el => cio.observe(el));
     lastTime = now;
 
     const W = canvas.offsetWidth, H = canvas.offsetHeight;
-    // White-to-lavender radial gradient background
-    const bg = ctx.createRadialGradient(W*0.5, H*0.42, 0, W*0.5, H*0.52, Math.max(W,H)*0.78);
-    bg.addColorStop(0, '#ffffff');
-    bg.addColorStop(0.42, '#f4f3ff');
-    bg.addColorStop(1, '#ede9fe');
+    // Silver spotlight gradient — white at top-center → dark charcoal at edges
+    const bg = ctx.createRadialGradient(W*0.5, H*0.05, 0, W*0.5, H*0.5, Math.max(W,H)*0.95);
+    bg.addColorStop(0,    '#dde1e8');
+    bg.addColorStop(0.25, '#a8b0bc');
+    bg.addColorStop(0.55, '#606877');
+    bg.addColorStop(1,    '#1e2130');
     ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H);
 
     // Subtle floating particles (slate-400 on light bg)
