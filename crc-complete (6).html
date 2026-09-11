@@ -4,1379 +4,393 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>Craniofacial Research Collective</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
 <style>
-/*
-  Light theme. All styles prefixed with #crc-root.
-  Every color is explicit — nothing relies on Shopify's inherited styles.
-*/
 
-/* ── Remove Shopify section wrapper gaps ── */
-.shopify-section:has(#crc-root),
-.shopify-section--main:has(#crc-root),
-[class*="shopify-section"]:has(#crc-root) {
-  padding: 0 !important;
-  margin: 0 !important;
-  background: #f8f9fb !important;
-}
-#crc-root + * { display: none; }
-body:has(#crc-root) > main { background: #f8f9fb !important; }
 
-/* Hard reset inside our root only */
-#crc-root, #crc-root *,
-#crc-root *::before, #crc-root *::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
 
-#crc-root {
-  background: #f8f9fb !important;
-  color: #0f1629 !important;
-  font-family: 'Inter', sans-serif !important;
-  overflow-x: hidden;
-  -webkit-text-size-adjust: 100%;
-  line-height: 1.5;
-  position: relative !important;
-  z-index: 0 !important;
-  isolation: isolate;
-  margin: 0 !important;
-}
 
-#crc-root p,
-#crc-root span,
-#crc-root div,
-#crc-root li,
-#crc-root label {
-  color: inherit;
+:root {
+  --background: 231 100% 2%;
+  --foreground: 250 100% 96%;
 }
+.dark {
+  --background: 231 100% 2%;
+  --foreground: 250 100% 96%;
+}
+body { background: #030407 !important; color: #f3f1fa !important; color-scheme: dark; font: 400 16px/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
 
-#crc-root h1,
-#crc-root h2,
-#crc-root h3,
-#crc-root h4 {
-  color: #0f1629;
-  font-family: 'Space Grotesk', sans-serif;
-}
 
-#crc-root a {
-  text-decoration: none;
-  color: inherit;
-}
+/* CRC / A new orbit — self-contained Shopify page, September 2026 */
+body:has(#crc-next){background:#030407!important}body:has(#crc-next) #MainContent{padding:0!important}body:has(#crc-next) .page-width:has(#crc-next){max-width:none!important;width:100%!important;padding:0!important}body:has(#crc-next) [class*="section-"]:has(#crc-next){padding-top:0!important;padding-bottom:0!important}body:has(#crc-next) .main-page-title,body:has(#crc-next) #qab_container,body:has(#crc-next) #qab_background{display:none!important}
+#crc-next{--bg:#030407;--fg:#f3f1fa;--muted:#a2a6bc;--line:#252633;--lilac:#b7a1ed;--cyan:#8bdbef;position:relative;isolation:isolate;width:100%;overflow:clip;background:var(--bg);color:var(--fg);font:400 16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;letter-spacing:0;text-align:left;color-scheme:dark}
+#crc-next *,#crc-next *:before,#crc-next *:after{box-sizing:border-box}#crc-next :is(h1,h2,h3,p,figure,ul,ol){margin:0;padding:0}#crc-next :is(h1,h2,h3){color:var(--fg);text-transform:none}#crc-next :is(h1,h2,h3){font-family:Georgia,"Times New Roman",serif;font-weight:400;font-style:normal;letter-spacing:-.045em}#crc-next h2{font-size:clamp(38px,4.5vw,66px);line-height:1.08}#crc-next h3{font-size:29px;line-height:1.18}#crc-next p{color:var(--muted)}#crc-next a{color:inherit;text-decoration:none;box-shadow:none;border:0}#crc-next a:hover{color:var(--cyan)}#crc-next a:focus-visible,#crc-next summary:focus-visible,#crc-next input:focus-visible{outline:2px solid var(--cyan);outline-offset:6px}#crc-next ::selection{background:#786195;color:#fff}#crc-next section{scroll-margin-top:28px}#crc-next .cn-wrap{width:min(1320px,calc(100% - 96px));margin:auto}#crc-next .cn-eyebrow{color:var(--lilac);font:600 12px/1.5 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.14em;text-transform:uppercase}#crc-next .cn-pill{display:inline-flex;align-items:center;gap:8px;border:1px solid #383143;padding:5px 10px;border-radius:50px;color:#c4b0ee;font:500 11px/1.5 ui-monospace,monospace;letter-spacing:.06em}
+#crc-next .cn-header{position:relative;z-index:3;border-bottom:1px solid var(--line)}#crc-next .cn-nav{min-height:94px;display:flex;align-items:center;justify-content:space-between;gap:32px}#crc-next .cn-brand{display:flex;align-items:center;gap:13px}#crc-next .cn-brand img{width:48px;height:48px;object-fit:contain;border:0;border-radius:0;margin:0;filter:grayscale(1);mix-blend-mode:screen}#crc-next .cn-brand strong{font-size:25px;line-height:1;letter-spacing:-.06em;font-weight:850}#crc-next .cn-brand small{display:block;border-left:1px solid #393942;padding-left:15px;color:#b8b8c8;font-size:10px;line-height:1.5;letter-spacing:.12em;text-transform:uppercase}#crc-next .cn-links{display:flex;align-items:center;gap:32px;font-size:13px;color:#c6c6d3}#crc-next .cn-nav-cta{border:1px solid #555163;padding:10px 18px;border-radius:3px;color:#f5f0ff}#crc-next .cn-mobile-menu{display:none}
+#crc-next .cn-hero{position:relative;min-height:720px;display:grid;grid-template-columns:1fr 1.1fr;align-items:center;gap:10px;padding-block:80px 60px}#crc-next .cn-hero:before{content:"";position:absolute;z-index:-1;width:850px;height:760px;right:-190px;top:0;background:radial-gradient(ellipse,#35214c38,transparent 66%);pointer-events:none}#crc-next .cn-hero-copy{position:relative;z-index:2}#crc-next .cn-hero h1{font-size:clamp(64px,7.4vw,108px);line-height:.99;margin:29px 0;letter-spacing:-.065em}#crc-next .cn-hero h1 em{font-weight:400;color:#c3afea}#crc-next .cn-hero-copy>p:not(.cn-eyebrow){max-width:460px;font-size:17px;line-height:1.8}#crc-next .cn-actions{display:flex;align-items:center;flex-wrap:wrap;gap:25px;margin-top:34px}#crc-next .cn-button{display:inline-flex;align-items:center;justify-content:center;gap:26px;min-height:49px;padding:12px 21px;border:1px solid #d5c4f6;border-radius:3px;background:#cbbbeb;color:#171220;font-size:14px;font-weight:600;transition:background .2s,transform .2s}#crc-next .cn-button:hover{background:#e1d5fa;color:#171220;transform:translateY(-2px)}#crc-next .cn-text-link{font-size:14px;color:#e0dceb;border-bottom:1px solid #555163;padding-block:5px}#crc-next .cn-text-link span{margin-left:15px;color:#bda4eb}#crc-next .cn-hero-foot{display:flex;gap:12px;align-items:center;margin-top:41px;color:#8d90a4;font:11px/1.5 ui-monospace,monospace;letter-spacing:.025em}
+#crc-next .cn-universe{position:relative;aspect-ratio:1.07;width:112%;margin-left:-6%;isolation:isolate}#crc-next .cn-universe svg{width:100%;height:100%;display:block;overflow:visible}#crc-next .cn-galaxy{transform-origin:350px 290px;animation:cn-breathe 14s ease-in-out infinite alternate}#crc-next .cn-orbit{transform-origin:350px 290px;animation:cn-orbit 95s linear infinite}#crc-next .cn-star{animation:cn-twinkle 4s ease-in-out infinite alternate}#crc-next .cn-map-label{position:absolute;color:#d5cce9;border:1px solid #383043;background:#080910d9;backdrop-filter:blur(10px);padding:6px 12px;border-radius:3px;font:11px/1.6 ui-monospace,monospace;box-shadow:0 5px 24px #0004;transition:border-color .2s,transform .2s}#crc-next .cn-map-label:hover{border-color:var(--lilac);transform:translateY(-3px)}#crc-next .cn-map-label:nth-of-type(1){left:14%;top:22%}#crc-next .cn-map-label:nth-of-type(2){right:2%;top:40%}#crc-next .cn-map-label:nth-of-type(3){left:4%;top:68%}#crc-next .cn-map-label:nth-of-type(4){right:8%;bottom:15%}#crc-next .cn-core-label{position:absolute;left:50%;top:48.333%;transform:translate(-50%,-50%);font:500 12px/1.5 ui-monospace,monospace;letter-spacing:.18em;color:white;pointer-events:none}#crc-next .cn-map-caption{position:absolute;bottom:0;left:15%;right:5%;display:flex;justify-content:flex-start;gap:20px;font:10px/1.5 ui-monospace,monospace;color:#9995ae}#crc-next .cn-motion{display:inline-flex;align-items:center;gap:6px;white-space:nowrap;cursor:pointer}#crc-next .cn-motion input{width:12px;height:12px;margin:0;accent-color:#b7a1ed}#crc-next:has(#cn-pause:checked) :is(.cn-galaxy,.cn-orbit,.cn-star){animation-play-state:paused}
+#crc-next .cn-rail{display:grid;grid-template-columns:1.15fr 1fr 1fr 1fr;gap:28px;border-block:1px solid var(--line);padding:31px 0}#crc-next .cn-rail>div{border-right:1px solid var(--line);padding-right:22px}#crc-next .cn-rail>div:last-child{border:0}#crc-next .cn-rail strong{display:block;font:400 29px/1.2 Georgia,serif;letter-spacing:-.03em}#crc-next .cn-rail small{display:block;color:var(--muted);font-size:12px;margin-top:8px}#crc-next .cn-section{padding-block:110px}#crc-next .cn-section-head{display:grid;grid-template-columns:1.2fr .8fr;align-items:end;gap:65px;margin-bottom:48px}#crc-next .cn-section-head h2{margin-top:20px;max-width:730px}#crc-next .cn-section-head>p{max-width:420px;line-height:1.85}#crc-next .cn-network-grid{display:grid;grid-template-columns:1.25fr 1fr;gap:16px}#crc-next .cn-feature{padding:38px;border:1px solid var(--line);border-radius:5px;position:relative;overflow:hidden;background:#070810}#crc-next .cn-feature>p{margin-top:17px;max-width:430px}#crc-next .cn-feature .cn-eyebrow{margin-bottom:19px}#crc-next .cn-feature .cn-text-link{display:inline-block;margin-top:22px}#crc-next .cn-feature-list{display:grid;gap:16px}#crc-next .cn-feature-list .cn-feature{padding:30px 34px;background:transparent}#crc-next .cn-feature-list h3{font-size:27px}#crc-next .cn-feature-list .cn-feature>p{font-size:14px;line-height:1.75;margin-top:10px}#crc-next .cn-index{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;color:#b1a0d9;font:11px/1.5 ui-monospace,monospace;letter-spacing:.1em}#crc-next .cn-map-mini{height:190px;position:relative;margin:16px -10px 0;background:radial-gradient(ellipse at center,#261d403d,transparent 65%)}#crc-next .cn-map-mini svg{width:100%;height:100%}#crc-next .cn-topics{padding-top:40px}#crc-next .cn-topics>p{margin-bottom:17px}#crc-next .cn-topic-links{display:flex;flex-wrap:wrap;gap:10px}#crc-next .cn-topic-links a{border:1px solid #2d2e3b;padding:9px 15px;border-radius:50px;color:#bebed0;font-size:13px}#crc-next .cn-topic-links a:hover{border-color:#8f7bb3;background:#13101d;color:#e1d4ff}
+#crc-next .cn-argus{border-block:1px solid var(--line);background:radial-gradient(ellipse at 85% 30%,#34254c40,transparent 56%),#06060c}#crc-next .cn-argus-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:90px;align-items:center}#crc-next .cn-argus h2{margin:24px 0}#crc-next .cn-argus h2 em{color:#b7a1ed;font-weight:400}#crc-next .cn-argus-copy>p{max-width:450px;line-height:1.85}#crc-next .cn-argus-copy .cn-fine{font-size:12px;margin-top:20px;color:#9291a8}#crc-next .cn-workspace{border:1px solid #393345;border-radius:6px;background:#090a11;box-shadow:0 35px 100px #0007;transform:rotate(-1deg)}#crc-next .cn-window-top{padding:14px 20px;border-bottom:1px solid #292631;display:flex;justify-content:space-between;color:#a7a0b9;font:10px/1.5 ui-monospace,monospace;letter-spacing:.06em}#crc-next .cn-work-body{padding:32px}#crc-next .cn-work-body h3{font-size:28px;margin:15px 0 24px;line-height:1.25;letter-spacing:-.03em}#crc-next .cn-work-flow{display:flex;gap:8px;flex-wrap:wrap;font:10px/1.6 ui-monospace,monospace;color:#b6a7d6;padding-bottom:23px;border-bottom:1px solid var(--line)}#crc-next .cn-work-flow b{font-weight:400;color:#8b809c}#crc-next .cn-evidence-row{display:flex;justify-content:space-between;gap:14px;align-items:center;font-size:12px;padding:13px 0;border-bottom:1px solid #24232e}#crc-next .cn-evidence-row>span:last-child{font:10px/1.5 ui-monospace,monospace;padding:3px 8px;border:1px solid #37424c;border-radius:50px;color:#9fd5d9}#crc-next .cn-evidence-row:last-of-type>span:last-child{color:#d7bd8f;border-color:#524532}#crc-next .cn-expedition-link{display:flex;align-items:center;justify-content:space-between;gap:20px;margin-top:24px;padding:15px 17px;background:linear-gradient(110deg,#292039,#111825);border:1px solid #4b3b67;border-radius:3px;font-size:13px}#crc-next .cn-expedition-link small{display:block;font-size:11px;color:#b3a8c8}#crc-next .cn-work-caption{padding:0 32px 20px;font-size:10px;color:#8a829d;line-height:1.6}#crc-next .cn-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:45px;padding-top:75px}#crc-next .cn-steps>div{border-top:1px solid #373041;padding-top:23px}#crc-next .cn-steps h3{font-size:25px;margin:12px 0}#crc-next .cn-steps p{font-size:14px;line-height:1.8}
+#crc-next .cn-belief{display:grid;grid-template-columns:.7fr 1.3fr;gap:100px;border-bottom:1px solid var(--line)}#crc-next .cn-belief blockquote{margin:0 0 30px;padding:0;border:0;font:400 clamp(30px,3.4vw,48px)/1.25 Georgia,serif;color:#e9e5f3;letter-spacing:-.035em}#crc-next .cn-belief blockquote em{color:#b7a1ed}#crc-next .cn-belief p:not(.cn-eyebrow){line-height:1.9;max-width:700px}#crc-next .cn-belief .cn-actions{margin-top:28px}#crc-next .cn-end{display:grid;grid-template-columns:1.1fr .9fr;gap:90px;align-items:center}#crc-next .cn-end h2{margin:20px 0}#crc-next .cn-end p{max-width:550px}#crc-next .cn-join-card{border:1px solid #484052;padding:37px;border-radius:5px;background:linear-gradient(130deg,#20182e66,#070910)}#crc-next .cn-join-card h3{margin:15px 0}#crc-next .cn-join-card .cn-button{display:flex;margin-top:25px;justify-content:space-between}#crc-next .cn-join-card p{font-size:14px}#crc-next .cn-join-card .cn-fine{font-size:11px;color:#9690a6;margin-top:17px}#crc-next .cn-faq{border-top:1px solid var(--line);padding:0 0 85px}#crc-next .cn-faq details{padding:23px 0;border-bottom:1px solid var(--line)}#crc-next .cn-faq summary{cursor:pointer;font-size:15px;color:#ddd8e7;list-style:none;display:flex;justify-content:space-between;gap:20px}#crc-next .cn-faq summary::-webkit-details-marker{display:none}#crc-next .cn-faq summary:after{content:"+";color:var(--lilac);font-size:21px;line-height:1}#crc-next .cn-faq details[open] summary:after{content:"−"}#crc-next .cn-faq details p{max-width:900px;font-size:14px;line-height:1.85;margin-top:16px}#crc-next .cn-footer{border-top:1px solid var(--line);padding:35px 0}#crc-next .cn-footer-inner{display:flex;justify-content:space-between;gap:32px;align-items:center}#crc-next .cn-footer p{font-size:11px;margin-top:7px}#crc-next .cn-footer nav{display:flex;flex-wrap:wrap;gap:24px;font-size:12px;color:#a9a4b8}#crc-next .cn-copyright{border-top:1px solid #1c1c26;margin-top:28px;padding-top:21px;display:flex;justify-content:space-between;gap:24px;color:#767587;font:10px/1.5 ui-monospace,monospace}#crc-next .cn-skip{position:absolute;left:20px;top:-90px;padding:10px 20px;z-index:10;background:#cbbbeb;color:#171220}#crc-next .cn-skip:focus{top:10px}
+@keyframes cn-orbit{to{transform:rotate(360deg)}}@keyframes cn-breathe{to{transform:scale(1.025) rotate(3deg)}}@keyframes cn-twinkle{from{opacity:.25}to{opacity:.95}}
+@media(min-width:1700px){#crc-next .cn-hero{min-height:800px}}@media(max-width:1100px){#crc-next .cn-wrap{width:calc(100% - 64px)}#crc-next .cn-links{gap:21px}#crc-next .cn-brand small{display:none}#crc-next .cn-hero{min-height:620px}#crc-next .cn-hero h1{font-size:80px}#crc-next .cn-argus-grid{gap:40px}#crc-next .cn-section-head{gap:35px}#crc-next .cn-end{gap:45px}#crc-next .cn-belief{gap:50px}}
+@media(max-width:760px){#crc-next .cn-wrap{width:calc(100% - 40px)}#crc-next .cn-nav{min-height:76px;gap:14px}#crc-next .cn-brand img{width:37px;height:37px}#crc-next .cn-brand strong{font-size:23px}#crc-next .cn-links>a:not(.cn-nav-cta){display:none}#crc-next .cn-links{gap:12px}#crc-next .cn-nav-cta{padding:9px 12px;font-size:12px}#crc-next .cn-hero{grid-template-columns:1fr;padding-block:52px 30px;gap:15px;min-height:0}#crc-next .cn-hero h1{font-size:clamp(63px,13vw,86px);margin:22px 0}#crc-next .cn-hero-copy>p:not(.cn-eyebrow){font-size:16px;max-width:520px}#crc-next .cn-hero-foot{margin-top:26px}#crc-next .cn-actions{gap:23px;margin-top:27px}#crc-next .cn-universe{width:100%;margin:0;max-width:550px;justify-self:center}#crc-next .cn-map-label{font-size:9px;padding:4px 8px}#crc-next .cn-core-label{font-size:10px}#crc-next .cn-map-caption{left:3%;right:3%;font-size:9px}#crc-next .cn-rail{grid-template-columns:1fr 1fr;gap:27px 20px;padding:28px 0}#crc-next .cn-rail>div:nth-child(2){border:0}#crc-next .cn-rail strong{font-size:25px}#crc-next .cn-rail small{font-size:11px}#crc-next .cn-section{padding-block:70px}#crc-next .cn-section-head,#crc-next .cn-argus-grid,#crc-next .cn-belief,#crc-next .cn-end{grid-template-columns:1fr;gap:27px}#crc-next .cn-section-head{margin-bottom:30px}#crc-next .cn-section-head>p{font-size:15px}#crc-next .cn-network-grid{grid-template-columns:1fr}#crc-next .cn-feature{padding:28px}#crc-next .cn-feature-list .cn-feature{padding:26px}#crc-next .cn-argus-grid{gap:40px}#crc-next .cn-workspace{transform:none}#crc-next .cn-work-body{padding:25px}#crc-next .cn-work-caption{padding:0 25px 20px}#crc-next .cn-steps{grid-template-columns:1fr;gap:25px;padding-top:40px}#crc-next .cn-belief blockquote{font-size:33px}#crc-next .cn-join-card{padding:28px}#crc-next .cn-footer-inner{align-items:flex-start;flex-direction:column}#crc-next .cn-copyright{flex-direction:column;gap:9px}#crc-next .cn-faq{padding-bottom:60px}}
+@media(prefers-reduced-motion:reduce){#crc-next *,#crc-next *:before,#crc-next *:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}#crc-next .cn-motion{display:none}}
 
-#crc-root img {
-  max-width: 100%;
-  display: block;
-}
 
-#crc-root button {
-  font-family: 'Inter', sans-serif;
-}
+/* Coverflow additions */
+#crc-next .cov-stage { position: relative; width: 100%; max-width: 1152px; margin: 0 auto; height: 400px; perspective: 1000px; touch-action: pan-y; }
+@media (min-width: 768px) { #crc-next .cov-stage { height: 500px; } }
+#crc-next .cov-inner { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; transform-style: preserve-3d; }
+#crc-next .cov-card { position: absolute; width: 280px; aspect-ratio: 3/4; border-radius: 1rem; overflow: hidden; transition: transform .7s ease-out, opacity .7s ease-out; border: 1px solid #383143; background: #070810; box-shadow: 0 8px 24px rgba(0,0,0,0.5); }
+@media (min-width: 768px) { #crc-next .cov-card { width: 400px; } }
+#crc-next .cov-card img { width: 100%; height: 100%; object-fit: cover; }
+#crc-next .cov-card.isc { box-shadow: 0 20px 60px rgba(0,0,0,0.8), 0 8px 20px rgba(0,0,0,0.5); }
+#crc-next .czi { position: absolute; top: 12px; right: 12px; background: rgba(19, 16, 29, 0.8); backdrop-filter: blur(4px); border: 1px solid #383143; border-radius: 50%; width: 28px; height: 28px; display: none; align-items: center; justify-content: center; color: #c6c6d3; }
+#crc-next .cov-card.isc .czi { display: flex; }
+#crc-next .cov-prev, #crc-next .cov-next { position: absolute; top: 50%; transform: translateY(-50%); z-index: 50; background: rgba(19, 16, 29, 0.9); backdrop-filter: blur(8px); border: 1px solid #383143; color: #c6c6d3; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: background .2s, color .2s; outline: none; }
+#crc-next .cov-prev:hover, #crc-next .cov-next:hover { background: #b7a1ed; color: #030407; }
+#crc-next .cov-prev { left: 16px; }
+#crc-next .cov-next { right: 16px; }
+@media (min-width: 768px) { #crc-next .cov-prev { left: 48px; } #crc-next .cov-next { right: 48px; } }
+#crc-next .cov-dots { display: flex; justify-content: center; gap: 6px; margin-top: 32px; }
+#crc-next .cov-dot { width: 8px; height: 8px; border-radius: 50%; background: #252633; transition: all .3s; border: none; padding: 0; cursor: pointer; }
+#crc-next .cov-dot.act { width: 24px; background: #b7a1ed; }
+#crc-next .cov-dot:hover:not(.act) { background: #383143; }
 
-/* Utility */
-#crc-root .c  { max-width: 1280px; margin: 0 auto; padding: 0 2rem; }
-#crc-root .tc { text-align: center; }
-
-/* Scroll reveal */
-#crc-root .sr      { opacity: 0; transform: translateY(22px); transition: opacity .6s ease, transform .6s ease; }
-#crc-root .sr.d1   { transition-delay: .1s; }
-#crc-root .sr.d2   { transition-delay: .2s; }
-#crc-root .sr.d3   { transition-delay: .3s; }
-#crc-root .sr.vis  { opacity: 1; transform: none; }
-
-/* ───────────────────────── HERO */
-#crc-root #hero {
-  position: relative;
-  width: 100%;
-  height: 100svh;
-  min-height: 580px;
-  overflow: hidden;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  background: #f8f9fb;
-}
-#crc-root #hc {
-  position: absolute; inset: 0;
-  width: 100%; height: 100%;
-  display: block;
-}
-#crc-root .hob {
-  position: absolute; inset: 0;
-  background: linear-gradient(to bottom, rgba(248,249,251,.18) 0%, transparent 40%, #f8f9fb 100%);
-  pointer-events: none; z-index: 2;
-}
-#crc-root .hos {
-  position: absolute; inset: 0;
-  background: linear-gradient(to right, rgba(248,249,251,.4) 0%, transparent 30%, transparent 70%, rgba(248,249,251,.4) 100%);
-  pointer-events: none; z-index: 2;
-}
-#crc-root .hcont {
-  position: relative; z-index: 10;
-  text-align: center;
-  padding: 0 1.25rem;
-  max-width: 900px; width: 100%;
-}
-#crc-root .hh1 {
-  font-family: 'Space Grotesk', sans-serif !important;
-  font-size: clamp(2.8rem, 10vw, 9.5rem);
-  font-weight: 900;
-  color: #0f1629 !important;
-  line-height: 1;
-  letter-spacing: -.03em;
-  margin-bottom: 1.4rem;
-  opacity: 0;
-  animation: crc-fi .7s .05s ease forwards;
-}
-#crc-root .hh1 .gt {
-  background: linear-gradient(90deg, #6b5ff8, #38bdf8, #6b5ff8);
-  background-size: 200% auto;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  animation: crc-fi .7s .05s ease forwards, crc-sh 4s linear infinite;
-}
-#crc-root .hdesc {
-  font-size: clamp(1rem, 2vw, 1.35rem);
-  color: rgba(15,22,41,.68) !important;
-  max-width: 680px;
-  margin: 0 auto 2.25rem;
-  line-height: 1.75;
-  opacity: 0;
-  animation: crc-fi .7s .2s ease forwards;
-}
-@media (max-width: 640px) {
-  #crc-root .hdesc { font-size: clamp(1rem, 4.5vw, 1.1rem); }
-}
-#crc-root .hbtns {
-  display: flex; gap: 1rem;
-  justify-content: center;
-  flex-wrap: wrap;
-  opacity: 0;
-  animation: crc-fi .7s .35s ease forwards;
-}
-#crc-root .bp {
-  display: inline-block;
-  padding: .9rem 2rem;
-  border-radius: 9999px;
-  background: #6b5ff8 !important;
-  color: #ffffff !important;
-  font-family: 'Space Grotesk', sans-serif;
-  font-weight: 700; font-size: 1rem;
-  text-decoration: none;
-  border: 1px solid rgba(107,95,248,.3);
-  box-shadow: 0 4px 20px rgba(107,95,248,.25);
-  transition: transform .2s, box-shadow .2s;
-}
-#crc-root .bp:hover { transform: scale(1.05); box-shadow: 0 8px 32px rgba(107,95,248,.40); }
-#crc-root .bgg {
-  display: inline-block;
-  padding: .9rem 2rem;
-  border-radius: 9999px;
-  background: rgba(255,255,255,.85) !important;
-  color: #0f1629 !important;
-  font-family: 'Space Grotesk', sans-serif;
-  font-weight: 700; font-size: 1rem;
-  text-decoration: none;
-  border: 1px solid rgba(0,0,0,.12);
-  backdrop-filter: blur(8px);
-  transition: background .2s, transform .2s;
-}
-#crc-root .bgg:hover { background: rgba(107,95,248,.07) !important; transform: scale(1.03); }
-#crc-root .hscr {
-  position: absolute; bottom: 2rem; left: 50%;
-  transform: translateX(-50%);
-  z-index: 10;
-  display: flex; flex-direction: column;
-  align-items: center; gap: .5rem;
-}
-#crc-root .hscr span { font-size: .65rem; letter-spacing: .2em; text-transform: uppercase; color: #94a3b8 !important; }
-#crc-root .scrl {
-  width: 1px; height: 2rem;
-  background: linear-gradient(to bottom, #94a3b8, transparent);
-  animation: crc-sb 1.6s ease-in-out infinite;
-}
-
-@keyframes crc-fi { from { opacity:0; transform:translateY(24px); } to { opacity:1; transform:none; } }
-@keyframes crc-sh { 0% { background-position:0% center; } 100% { background-position:200% center; } }
-@keyframes crc-sb { 0%,100% { transform:translateY(0);opacity:1; } 50% { transform:translateY(8px);opacity:.4; } }
-
-/* ───────────────────────── STATS */
-#crc-root #stats {
-  padding: 4.5rem 0;
-  border-top: 1px solid #e2e8f0;
-  border-bottom: 1px solid #e2e8f0;
-  background: #f1f5f9;
-}
-#crc-root .sg {
-  display: grid;
-  grid-template-columns: repeat(2,1fr);
-  gap: 2rem;
-}
-@media(min-width:768px){ #crc-root .sg { grid-template-columns: repeat(4,1fr); } }
-#crc-root .si { text-align: center; }
-#crc-root .sv {
-  font-family: 'Space Grotesk', sans-serif !important;
-  font-size: clamp(2rem,4vw,2.7rem);
-  font-weight: 900;
-  margin-bottom: .35rem;
-}
-#crc-root .sl2 { font-size: .82rem; color: #64748b !important; font-weight: 500; letter-spacing: .03em; }
-
-/* ───────────────────────── MISSION */
-#crc-root #mission {
-  padding: 5.5rem 0;
-  position: relative;
-  background: #ffffff;
-}
-#crc-root #mission::before {
-  content: '';
-  position: absolute; top: 0; left: 25%;
-  width: 22rem; height: 22rem;
-  background: rgba(107,95,248,.04);
-  border-radius: 50%;
-  filter: blur(80px);
-  pointer-events: none;
-}
-#crc-root .mg {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 2.5rem;
-  align-items: center;
-}
-@media(min-width:768px){ #crc-root .mg { grid-template-columns: 1fr 1fr; gap: 4rem; } }
-#crc-root .mlbl {
-  font-size: .72rem; font-weight: 700;
-  text-transform: uppercase; letter-spacing: .18em;
-  color: #6b5ff8 !important;
-  margin-bottom: .9rem;
-}
-#crc-root .mh2m-mis {
-  font-family: 'Space Grotesk', sans-serif !important;
-  font-size: clamp(2.2rem,4vw,3.4rem);
-  font-weight: 900; line-height: 1.1;
-  color: #0f1629 !important;
-  margin-bottom: 1.75rem;
-}
-#crc-root .mh2m-mis .a { color: #6b5ff8 !important; }
-#crc-root .mb p { color: #64748b !important; line-height: 1.75; margin-bottom: .9rem; font-size: 1rem; }
-#crc-root .mtags { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1.75rem; }
-#crc-root .mtag {
-  padding: .28rem .85rem;
-  border-radius: 9999px;
-  font-size: .72rem; font-weight: 600;
-  border: 1px solid rgba(107,95,248,.25);
-  background: rgba(107,95,248,.08);
-  color: #6b5ff8 !important;
-}
-#crc-root .mcw {
-  position: relative; height: 360px;
-  border-radius: 1.25rem; overflow: hidden;
-  border: 1px solid #e2e8f0;
-  background: #f8fafc;
-  box-shadow: 0 4px 16px rgba(0,0,0,.06);
-}
-#crc-root .mcw video { width: 100%; height: 100%; object-fit: cover; display: block; }
-
-/* ───────────────────────── CRCBN */
-#crc-root #crcbn {
-  padding: 5.5rem 0;
-  background: #f8f9fb;
-}
-#crc-root .clbl-sub {
-  font-size: .72rem; font-weight: 700;
-  text-transform: uppercase; letter-spacing: .18em;
-  color: #6b5ff8 !important;
-  margin-bottom: .9rem;
-}
-#crc-root .ch {
-  font-family: 'Space Grotesk', sans-serif !important;
-  font-size: clamp(2rem,4vw,3.2rem);
-  font-weight: 900; color: #0f1629 !important;
-  margin-bottom: 1.1rem;
-}
-#crc-root .cd { font-size: 1rem; color: #64748b !important; line-height: 1.7; max-width: 760px; }
-#crc-root .chdr { margin-bottom: 3.5rem; }
-#crc-root .vw {
-  border-radius: 1.25rem; overflow: hidden;
-  border: 1px solid #e2e8f0;
-  background: #ffffff;
-  box-shadow: 0 4px 20px rgba(0,0,0,.07);
-  margin-bottom: 3.5rem;
-}
-#crc-root .vw video { width: 100%; max-height: 70vh; display: block; object-fit: cover; }
-#crc-root .vctl {
-  padding: .75rem 1.25rem .85rem;
-  background: #f8fafc;
-  border-top: 1px solid #e2e8f0;
-  display: flex; flex-direction: column; gap: .6rem;
-}
-#crc-root .vprog {
-  width: 100%; height: 20px;
-  position: relative; cursor: pointer;
-}
-#crc-root .vprog-track {
-  position: absolute;
-  left: 0; right: 0; width: 100%;
-  height: 5px; top: 8px;
-  border-radius: 5px;
-  background: #e2e8f0;
-  overflow: hidden;
-}
-#crc-root .vprog-fill {
-  height: 100%; border-radius: 99px;
-  background: linear-gradient(90deg,#6b5ff8,#38bdf8);
-  pointer-events: none; transition: none;
-}
-#crc-root .vprog-thumb {
-  position: absolute; top: 50%; transform: translate(-50%,-50%);
-  width: 11px; height: 11px; border-radius: 50%;
-  background: #6b5ff8;
-  box-shadow: 0 1px 4px rgba(107,95,248,.4);
-  pointer-events: none;
-}
-#crc-root .vrow {
-  display: flex; align-items: center; gap: .6rem;
-}
-#crc-root .vbtn {
-  background: none; border: none; cursor: pointer; padding: 0;
-  display: flex; align-items: center; justify-content: center;
-  color: rgba(0,0,0,.35);
-  transition: color .2s;
-  width: 28px; height: 28px;
-}
-#crc-root .vbtn:hover { color: #0f1629; }
-#crc-root .vbtn-skip {
-  font-family: 'Inter', monospace !important; font-size: .68rem; font-weight: 700;
-  letter-spacing: .01em; width: auto; min-width: 36px; padding: 0 4px;
-}
-#crc-root .vbtn-play {
-  width: 34px; height: 34px; border-radius: 50%;
-  background: rgba(107,95,248,.85);
-  color: #ffffff;
-  transition: background .2s;
-}
-#crc-root .vbtn-play:hover { background: rgba(107,95,248,1); }
-#crc-root .vtm {
-  margin-left: auto; font-size: .68rem; font-family: 'Inter', monospace !important;
-  color: rgba(0,0,0,.32) !important; letter-spacing: .04em;
-}
-#crc-root .vc {
-  padding: .9rem 1.4rem;
-  background: #ffffff;
-  border-top: 1px solid #f1f5f9;
-  font-size: .82rem; color: #64748b !important;
-  text-align: center;
-}
-#crc-root .ph {
-  font-family: 'Space Grotesk', sans-serif !important;
-  font-size: 1.2rem; font-weight: 700; color: #0f1629 !important;
-  margin-bottom: 1.4rem;
-}
-#crc-root .ps {
-  display: flex; overflow-x: auto; gap: 1.2rem;
-  padding-bottom: 1.5rem;
-  margin: 0 -2rem; padding-left: 2rem; padding-right: 2rem;
-  scroll-snap-type: x mandatory;
-  -ms-overflow-style: none; scrollbar-width: none;
-}
-#crc-root .ps::-webkit-scrollbar { display: none; }
-#crc-root .pc {
-  min-width: 288px; max-width: 288px; flex-shrink: 0;
-  scroll-snap-align: start;
-  background: #ffffff;
-  border: 1px solid #e2e8f0;
-  border-radius: 1rem; padding: 1.4rem;
-  display: flex; flex-direction: column; gap: .55rem;
-  transition: border-color .25s, box-shadow .25s;
-  box-shadow: 0 1px 4px rgba(0,0,0,.05);
-}
-#crc-root .pc:hover { border-color: rgba(107,95,248,.35); box-shadow: 0 4px 16px rgba(0,0,0,.08); }
-#crc-root .pt { font-weight: 600; font-size: .95rem; color: #0f1629 !important; line-height: 1.45; }
-#crc-root .pau { font-size: .8rem; color: #64748b !important; }
-#crc-root .pm { font-size: .72rem; color: #94a3b8 !important; margin-top: auto; }
-#crc-root .ptags { display: flex; flex-wrap: wrap; gap: .35rem; margin-top: .4rem; }
-#crc-root .ptag {
-  padding: .18rem .55rem;
-  border-radius: 9999px; font-size: .68rem; font-weight: 600;
-  border: 1px solid rgba(107,95,248,.25);
-  background: rgba(107,95,248,.08);
-  color: #6b5ff8 !important;
-}
-
-/* ───────────────────────── COVERFLOW */
-#crc-root #cov { padding: 5.5rem 0; overflow: hidden; background: #f1f5f9; }
-#crc-root .covlbl {
-  font-size: .72rem; font-weight: 700;
-  text-transform: uppercase; letter-spacing: .18em;
-  color: #6b5ff8 !important;
-  margin-bottom: .9rem;
-}
-#crc-root .covh {
-  font-family: 'Space Grotesk', sans-serif !important;
-  font-size: clamp(2rem,4vw,3.2rem);
-  font-weight: 900; color: #0f1629 !important;
-  margin-bottom: .65rem;
-}
-#crc-root .covs { font-size: .95rem; color: #64748b !important; margin-bottom: .35rem; }
-#crc-root .covhint { font-size: .75rem; color: #94a3b8 !important; margin-bottom: 2.5rem; }
-#crc-root .cstg {
-  position: relative; width: 100%; height: 460px;
-  perspective: 1100px;
-  display: flex; align-items: center; justify-content: center;
-  touch-action: pan-y;
-}
-#crc-root .cin { position: relative; width: 100%; height: 100%; transform-style: preserve-3d; }
-#crc-root .ccard {
-  position: absolute;
-  width: 280px; aspect-ratio: 3/4;
-  border-radius: 1.25rem; overflow: hidden;
-  transition: transform .65s cubic-bezier(.4,0,.2,1), opacity .65s ease, box-shadow .65s ease;
-  box-shadow: 0 8px 24px rgba(0,0,0,.08);
-  border: 1px solid #e2e8f0;
-  left: 50%; top: 50%;
-  margin-left: -140px; margin-top: -186px;
-  background: #f8fafc;
-  user-select: none; cursor: pointer;
-}
-@media(min-width:768px){
-  #crc-root .ccard { width: 360px; margin-left: -180px; margin-top: -240px; }
-}
-#crc-root .ccard img { width: 100%; height: 100%; object-fit: cover; pointer-events: none; }
-#crc-root .clbl {
-  position: absolute; bottom: 0; left: 0; right: 0;
-  padding: 1.35rem;
-  background: linear-gradient(to top, rgba(0,0,0,.80), transparent);
-  font-family: 'Space Grotesk', sans-serif;
-  font-weight: 600; font-size: 1.05rem;
-  color: #ffffff !important;
-}
-#crc-root .czi {
-  position: absolute; top: .65rem; right: .65rem;
-  background: rgba(255,255,255,.85);
-  backdrop-filter: blur(4px);
-  border: 1px solid #e2e8f0;
-  border-radius: 9999px;
-  width: 1.9rem; height: 1.9rem;
-  display: none; align-items: center; justify-content: center;
-  color: #475569 !important; font-size: .8rem;
-}
-#crc-root .ccard.isc .czi { display: flex; }
-#crc-root .cprev,
-#crc-root .cnxt {
-  position: absolute; top: 50%; transform: translateY(-50%);
-  z-index: 100;
-  background: rgba(255,255,255,.92);
-  backdrop-filter: blur(8px);
-  border: 1px solid #e2e8f0;
-  color: #475569 !important;
-  border-radius: 9999px;
-  width: 2.5rem; height: 2.5rem;
-  display: flex; align-items: center; justify-content: center;
-  cursor: pointer;
-  transition: background .2s, color .2s, transform .2s;
-  font-size: 1.1rem; outline: none;
-  box-shadow: 0 2px 8px rgba(0,0,0,.08);
-}
-#crc-root .cprev:hover,
-#crc-root .cnxt:hover { background: #6b5ff8; color: #ffffff !important; transform: translateY(-50%) scale(1.08); }
-#crc-root .cprev { left: 1rem; }
-#crc-root .cnxt  { right: 1rem; }
-@media(min-width:768px){ #crc-root .cprev { left: 2.5rem; } #crc-root .cnxt { right: 2.5rem; } }
-#crc-root .cdots { display: flex; justify-content: center; gap: .4rem; margin-top: 1.75rem; }
-#crc-root .cdot {
-  height: .45rem; border-radius: 9999px;
-  background: #cbd5e1;
-  transition: all .3s; cursor: pointer; width: .45rem;
-  border: none; outline: none;
-}
-#crc-root .cdot.act { width: 1.4rem; background: #6b5ff8; }
-#crc-root .cdot:hover:not(.act) { background: #94a3b8; }
-
-/* Lightbox */
-#crc-lb {
-  position: fixed; inset: 0; z-index: 99999;
-  background: rgba(0,0,0,.65);
-  backdrop-filter: blur(12px);
-  display: none; align-items: center; justify-content: center;
-  padding: 1rem;
-}
+#crc-lb { position: fixed; inset: 0; z-index: 99999; background: rgba(0,0,0,.8); backdrop-filter: blur(12px); display: none; align-items: center; justify-content: center; padding: 16px; }
 #crc-lb.open { display: flex; }
-#crc-lb .lbi {
-  max-width: 100%; max-height: 88vh;
-  border-radius: 1.25rem;
-  box-shadow: 0 40px 100px rgba(0,0,0,.4);
-  object-fit: contain;
-  animation: crc-lbin .25s ease;
-}
-@keyframes crc-lbin { from { transform:scale(.88);opacity:0; } to { transform:scale(1);opacity:1; } }
-#crc-lb .lbc {
-  position: absolute; top: 1.25rem; right: 1.25rem;
-  background: #ffffff;
-  border: 1px solid #e2e8f0;
-  border-radius: 9999px;
-  width: 2.4rem; height: 2.4rem;
-  display: flex; align-items: center; justify-content: center;
-  color: #475569; cursor: pointer; font-size: 1.1rem;
-  transition: background .2s;
-  box-shadow: 0 2px 8px rgba(0,0,0,.1);
-}
+#crc-lb .lbi { max-width: 100%; max-height: 85vh; border-radius: 1rem; box-shadow: 0 40px 100px rgba(0,0,0,.6); object-fit: contain; animation: lbin .25s ease-out; }
+@keyframes lbin { from { transform:scale(.85);opacity:0; } to { transform:scale(1);opacity:1; } }
+#crc-lb .lbc { position: absolute; top: -16px; right: -16px; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; color: #475569; cursor: pointer; transition: background .2s; box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
 #crc-lb .lbc:hover { background: #f1f5f9; }
+#crc-lb .lb-wrap { position: relative; max-width: 42rem; width: 100%; max-height: 90vh; }
 
-/* ───────────────────────── MEMBERSHIP */
-#crc-root #mem {
-  padding: 6.5rem 0;
-  position: relative; overflow: hidden;
-  background: #ffffff;
-}
-#crc-root #mem::before {
-  content: ''; position: absolute; top: 25%; right: 0;
-  width: 480px; height: 480px;
-  background: rgba(107,95,248,.04);
-  border-radius: 50%; filter: blur(110px); pointer-events: none;
-}
-#crc-root #mem::after {
-  content: ''; position: absolute; bottom: 25%; left: 0;
-  width: 380px; height: 380px;
-  background: rgba(56,189,248,.03);
-  border-radius: 50%; filter: blur(100px); pointer-events: none;
-}
-#crc-root .mrel { position: relative; z-index: 1; }
-#crc-root .mh2-mem {
-  font-family: 'Space Grotesk', sans-serif !important;
-  font-size: clamp(2.1rem,5vw,3.8rem);
-  font-weight: 900; color: #0f1629 !important;
-  line-height: 1.1; margin-bottom: 1.15rem;
-}
-#crc-root .mh2-mem .gr {
-  background: linear-gradient(90deg, #6b5ff8, #38bdf8);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-#crc-root .mdes { font-size: 1.05rem; color: #64748b !important; max-width: 630px; margin: 0 auto 3.5rem; line-height: 1.7; }
-#crc-root .mstats {
-  display: grid; grid-template-columns: repeat(2,1fr);
-  gap: .9rem; margin-bottom: 4.5rem;
-}
-@media(min-width:768px){ #crc-root .mstats { grid-template-columns: repeat(4,1fr); } }
-#crc-root .mst {
-  background: #ffffff;
-  border: 1px solid #e2e8f0;
-  border-radius: 1.25rem; padding: 1.15rem; text-align: center;
-  box-shadow: 0 1px 4px rgba(0,0,0,.05);
-  transition: box-shadow .2s;
-}
-#crc-root .mst:hover { box-shadow: 0 4px 16px rgba(0,0,0,.08); }
-#crc-root .msv {
-  font-family: 'Space Grotesk', sans-serif !important;
-  font-size: clamp(1.4rem,3vw,2rem);
-  font-weight: 900; margin-bottom: .3rem;
-}
-#crc-root .msl { font-size: .77rem; color: #64748b !important; line-height: 1.35; }
-#crc-root .mgrid {
-  display: grid; grid-template-columns: 1fr;
-  gap: 1.4rem; margin-bottom: 3.5rem;
-}
-@media(min-width:768px){ #crc-root .mgrid { grid-template-columns: 1fr 1fr; } }
-#crc-root .mcard {
-  background: #ffffff;
-  border: 1px solid #e2e8f0;
-  border-radius: 1.5rem; padding: 1.75rem;
-  box-shadow: 0 1px 4px rgba(0,0,0,.05);
-}
-#crc-root .mch {
-  font-family: 'Space Grotesk', sans-serif !important;
-  font-size: 1.25rem; font-weight: 700; color: #0f1629 !important;
-  margin-bottom: 1.4rem;
-}
-#crc-root .fli { display: flex; gap: .9rem; align-items: flex-start; margin-bottom: 1.1rem; }
-#crc-root .fli:last-of-type { margin-bottom: 0; }
-#crc-root .fico { font-size: 1.15rem; flex-shrink: 0; margin-top: .1rem; }
-#crc-root .ftx { color: #64748b !important; font-size: .92rem; line-height: 1.55; }
-#crc-root .ftx strong { color: #0f1629 !important; }
-#crc-root .fdis {
-  font-size: .72rem; color: #94a3b8 !important;
-  border-top: 1px solid #f1f5f9;
-  padding-top: .9rem; margin-top: .9rem;
-}
-#crc-root .crow { padding: .7rem 0; border-bottom: 1px solid #f1f5f9; }
-#crc-root .crow:last-child { border: none; }
-#crc-root .cdim { font-size: .75rem; color: #94a3b8 !important; margin-bottom: .38rem; }
-#crc-root .cpills { display: flex; flex-wrap: wrap; gap: .38rem; }
-#crc-root .pcrc {
-  display: inline-flex; align-items: center; gap: .3rem;
-  font-size: .72rem; font-weight: 600;
-  padding: .22rem .65rem; border-radius: 9999px;
-  background: rgba(16,185,129,.08); color: #059669 !important;
-  border: 1px solid rgba(16,185,129,.20);
-}
-#crc-root .poth {
-  display: inline-flex; align-items: center;
-  font-size: .72rem; padding: .22rem .65rem; border-radius: 9999px;
-  background: #f1f5f9; color: #64748b !important;
-  border: 1px solid #e2e8f0;
-}
-#crc-root .howh {
-  font-family: 'Space Grotesk', sans-serif !important;
-  font-size: 1.45rem; font-weight: 700; color: #0f1629 !important;
-  text-align: center; margin-bottom: 2.25rem;
-}
-#crc-root .hsteps {
-  display: grid; grid-template-columns: 1fr;
-  gap: 1.2rem; margin-bottom: 4rem;
-}
-@media(min-width:768px){ #crc-root .hsteps { grid-template-columns: repeat(3,1fr); } }
-#crc-root .hsc {
-  background: #ffffff;
-  border: 1px solid #e2e8f0;
-  border-radius: 1.5rem; padding: 1.75rem;
-  box-shadow: 0 1px 4px rgba(0,0,0,.05);
-  transition: box-shadow .2s;
-}
-#crc-root .hsc:hover { box-shadow: 0 4px 16px rgba(0,0,0,.08); }
-#crc-root .hsn {
-  font-family: 'Space Grotesk', sans-serif !important;
-  font-size: 4.5rem; font-weight: 900; line-height: 1;
-  margin-bottom: .9rem;
-  background: linear-gradient(135deg, rgba(107,95,248,.18), rgba(107,95,248,.04));
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-}
-#crc-root .hslb { font-size: .72rem; font-weight: 700; color: #6b5ff8 !important; text-transform: uppercase; letter-spacing: .1em; margin-bottom: .45rem; }
-#crc-root .hsti { font-family: 'Space Grotesk', sans-serif !important; font-size: 1.1rem; font-weight: 700; color: #0f1629 !important; margin-bottom: .55rem; }
-#crc-root .hsde { font-size: .88rem; color: #64748b !important; line-height: 1.6; }
-#crc-root .mctab {
-  border-radius: 2rem; overflow: hidden;
-  border: 1px solid rgba(107,95,248,.15);
-  background: linear-gradient(135deg, rgba(107,95,248,.06), rgba(56,189,248,.04));
-  padding: 3.5rem 1.75rem; text-align: center;
-  position: relative;
-}
-#crc-root .mctab::before {
-  content: ''; position: absolute; inset: 0;
-  background: linear-gradient(135deg, rgba(107,95,248,.04), transparent);
-  pointer-events: none;
-}
-#crc-root .mctab .r { position: relative; z-index: 1; }
-#crc-root .mctah {
-  font-family: 'Space Grotesk', sans-serif !important;
-  font-size: clamp(1.7rem,4vw,2.7rem);
-  font-weight: 900; color: #0f1629 !important; margin-bottom: .9rem;
-}
-#crc-root .mctap { font-size: 1rem; color: #64748b !important; margin-bottom: 1.75rem; max-width: 480px; margin-left: auto; margin-right: auto; }
-#crc-root .mctap strong { color: #0f1629 !important; }
-#crc-root .bcta {
-  display: inline-block;
-  padding: 1rem 2.6rem; border-radius: 9999px;
-  background: #6b5ff8 !important; color: #ffffff !important;
-  font-family: 'Space Grotesk', sans-serif;
-  font-weight: 700; font-size: 1.05rem; text-decoration: none;
-  border: 1px solid rgba(107,95,248,.3);
-  box-shadow: 0 4px 24px rgba(107,95,248,.25);
-  transition: transform .2s, box-shadow .2s;
-}
-#crc-root .bcta:hover { transform: scale(1.05); box-shadow: 0 8px 40px rgba(107,95,248,.40); }
-#crc-root .mdisc { margin-top: 1.1rem; font-size: .72rem; color: #94a3b8 !important; }
-
-/* ───────────────────────── DISCORD */
-#crc-root #discord {
-  padding: 5.5rem 0;
-  background: #ffffff;
-  position: relative; overflow: hidden;
-}
-#crc-root #discord::before {
-  content: ''; position: absolute; top: 50%; left: 50%;
-  transform: translate(-50%,-50%);
-  width: 560px; height: 560px;
-  background: rgba(88,101,242,.05);
-  border-radius: 50%; filter: blur(90px); pointer-events: none;
-}
-#crc-root .di { position: relative; z-index: 2; max-width: 620px; margin: 0 auto; text-align: center; }
-#crc-root .dav { display: flex; align-items: center; justify-content: center; margin-bottom: 1.75rem; }
-#crc-root .da {
-  width: 2.35rem; height: 2.35rem;
-  border-radius: 9999px;
-  border: 2px solid #ffffff;
-  display: flex; align-items: center; justify-content: center;
-  font-size: .68rem; font-weight: 700; color: #ffffff !important;
-  margin-left: -.7rem; flex-shrink: 0;
-  box-shadow: 0 1px 4px rgba(0,0,0,.10);
-}
-#crc-root .da:first-child { margin-left: 0; }
-#crc-root .db {
-  margin-left: .7rem; padding: .22rem .7rem;
-  background: #f1f5f9;
-  border: 1px solid #e2e8f0;
-  border-radius: 9999px; font-size: .82rem; font-weight: 500;
-  color: #374151 !important;
-}
-#crc-root .dh2 {
-  font-family: 'Space Grotesk', sans-serif !important;
-  font-size: clamp(2rem,4vw,3rem);
-  font-weight: 900; color: #0f1629 !important; margin-bottom: .9rem;
-}
-#crc-root .ddesc { font-size: .97rem; color: #64748b !important; line-height: 1.7; margin-bottom: 2.25rem; }
-#crc-root .bdis {
-  display: inline-flex; align-items: center; gap: .7rem;
-  padding: .95rem 2rem;
-  background: #5865F2 !important; color: #ffffff !important;
-  font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 1rem;
-  text-decoration: none; border-radius: .8rem;
-  box-shadow: 0 4px 24px rgba(88,101,242,.30);
-  transition: background .2s, transform .2s, box-shadow .2s;
-}
-#crc-root .bdis:hover { background: #4752C4 !important; transform: scale(1.04); box-shadow: 0 8px 32px rgba(88,101,242,.40); }
-#crc-root .dico { width: 1.4rem; height: 1.4rem; fill: #ffffff; flex-shrink: 0; }
-
-/* ───────────────────────── FOOTER */
-#crc-root #footer {
-  padding: 3.5rem 0;
-  background: #f8f9fb;
-  border-top: 1px solid #e2e8f0;
-}
-#crc-root .fg {
-  display: grid; grid-template-columns: 1fr;
-  gap: 2rem; align-items: center; text-align: center;
-}
-@media(min-width:768px){ #crc-root .fg { grid-template-columns: 1fr 1fr 1fr; text-align: left; } }
-#crc-root .flogo { display: flex; align-items: center; gap: .65rem; justify-content: center; margin-bottom: .75rem; }
-@media(min-width:768px){ #crc-root .flogo { justify-content: flex-start; } }
-#crc-root .flogo-img { width: 1.75rem; height: 1.75rem; border-radius: .3rem; }
-#crc-root .flogo-name { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 1.05rem; color: #0f1629 !important; }
-#crc-root .ftag { font-size: .82rem; color: #64748b !important; max-width: 240px; margin: 0 auto; }
-@media(min-width:768px){ #crc-root .ftag { margin: 0; } }
-#crc-root .fnav { display: flex; flex-direction: column; align-items: center; gap: .6rem; }
-#crc-root .fnav a { font-size: .85rem; color: #64748b !important; transition: color .2s; }
-#crc-root .fnav a:hover { color: #0f1629 !important; }
-#crc-root .fright { display: flex; flex-direction: column; align-items: center; gap: .6rem; }
-@media(min-width:768px){ #crc-root .fright { align-items: flex-end; } }
-#crc-root .fslogan { font-size: .7rem; font-weight: 600; letter-spacing: .15em; text-transform: uppercase; color: #94a3b8 !important; }
-#crc-root .fcopy { font-size: .72rem; color: #b0bec5 !important; }
-
-/* Mobile tweaks */
-@media(max-width:640px){
-  #crc-root .c { padding: 0 1.25rem; }
-  #crc-root .cstg { height: 380px; }
-}
 </style>
 </head>
 <body>
+<div id="crc-next">
+<a class="cn-skip" href="#cn-main">Skip to content</a><header class="cn-header"><div class="cn-wrap cn-nav"><a class="cn-brand" href="#crc-next" aria-label="CRC home"><img src="https://cdn.shopify.com/s/files/1/0946/6455/6842/files/077cedd2-dd86-44d1-a654-1849a0d930eb.png?v=1765746945" alt="" width="48" height="48"><strong>CRC</strong><small>Craniofacial<br>Research Collective</small></a><nav class="cn-links" aria-label="CRC navigation"><a href="#cn-network">The network</a><a href="#cn-argus">ARGUS</a><a href="#cn-collective">The collective</a><a class="cn-nav-cta" href="https://staging-app.crcofficial.com/app">Enter the beta <span aria-hidden="true">↗</span></a></nav></div></header>
+<div id="cn-main"><section class="cn-hero cn-wrap" aria-labelledby="cn-hero-title"><div class="cn-hero-copy"><p class="cn-eyebrow">A new chapter of CRC</p><h1 id="cn-hero-title">Stay curious.<br><em>Go deeper.</em></h1><p>Craniofacial science is only the beginning. Explore the connections between growth, biology, and human health—with the evidence always in reach.</p><div class="cn-actions"><a class="cn-button" href="#cn-network">Discover the network <span aria-hidden="true">↗</span></a><a class="cn-text-link" href="https://crcofficial.com/products/crc-membership">Explore membership <span aria-hidden="true">→</span></a></div><div class="cn-hero-foot">Independent minds. Connected research.</div></div><figure class="cn-universe" aria-label="Illustrative constellation of connected research areas"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 600" aria-hidden="true"><defs><radialGradient id="cn-glow"><stop stop-color="#a286ed" stop-opacity=".2"/><stop offset="1" stop-color="#644092" stop-opacity="0"/></radialGradient><radialGradient id="cn-core"><stop stop-color="#e0d4ff"/><stop offset=".1" stop-color="#c0a3fa" stop-opacity=".7"/><stop offset="1" stop-color="#8a4dcc" stop-opacity="0"/></radialGradient></defs><circle cx="536.1" cy="546.9" r="0.5" fill="#a9abc8" opacity=".4"/><circle cx="140.4" cy="494.1" r="0.7" fill="#a9abc8" opacity=".4"/><circle cx="405.6" cy="165.1" r="0.6" fill="#a9abc8" opacity=".4"/><circle cx="48.0" cy="98.8" r="0.8" fill="#a9abc8" opacity=".4"/><circle cx="239.2" cy="281.2" r="0.4" fill="#a9abc8" opacity=".4"/><circle cx="86.0" cy="427.7" r="0.3" fill="#a9abc8" opacity=".4"/><circle cx="4.0" cy="323.2" r="0.8" fill="#a9abc8" opacity=".4"/><circle cx="76.0" cy="445.5" r="0.9" fill="#a9abc8" opacity=".4"/><circle cx="596.9" cy="34.0" r="0.9" fill="#a9abc8" opacity=".4"/><circle cx="52.9" cy="391.8" r="0.5" fill="#a9abc8" opacity=".4"/><circle cx="644.3" cy="104.7" r="0.5" fill="#a9abc8" opacity=".4"/><circle cx="471.5" cy="154.4" r="0.8" fill="#a9abc8" opacity=".4"/><circle cx="201.5" cy="470.0" r="0.9" fill="#a9abc8" opacity=".4"/><circle cx="514.0" cy="89.0" r="0.8" fill="#a9abc8" opacity=".4"/><circle cx="155.1" cy="21.1" r="0.8" fill="#a9abc8" opacity=".4"/><circle cx="294.6" cy="9.1" r="0.7" fill="#a9abc8" opacity=".4"/><circle cx="33.4" cy="204.3" r="0.9" fill="#a9abc8" opacity=".4"/><circle cx="352.9" cy="82.1" r="0.3" fill="#a9abc8" opacity=".4"/><circle cx="4.2" cy="460.8" r="0.5" fill="#a9abc8" opacity=".4"/><circle cx="411.4" cy="515.2" r="0.5" fill="#a9abc8" opacity=".4"/><circle cx="394.0" cy="482.1" r="0.5" fill="#a9abc8" opacity=".4"/><circle cx="650.7" cy="427.1" r="0.8" fill="#a9abc8" opacity=".4"/><circle cx="373.1" cy="228.1" r="0.7" fill="#a9abc8" opacity=".4"/><circle cx="659.4" cy="414.2" r="0.5" fill="#a9abc8" opacity=".4"/><circle cx="135.0" cy="236.5" r="0.4" fill="#a9abc8" opacity=".4"/><circle cx="51.2" cy="508.1" r="0.5" fill="#a9abc8" opacity=".4"/><circle cx="124.0" cy="416.4" r="0.9" fill="#a9abc8" opacity=".4"/><circle cx="442.8" cy="437.0" r="0.5" fill="#a9abc8" opacity=".4"/><circle cx="445.2" cy="359.6" r="0.7" fill="#a9abc8" opacity=".4"/><circle cx="550.5" cy="63.1" r="0.4" fill="#a9abc8" opacity=".4"/><circle cx="511.5" cy="320.6" r="0.6" fill="#a9abc8" opacity=".4"/><circle cx="340.0" cy="388.9" r="0.7" fill="#a9abc8" opacity=".4"/><circle cx="236.2" cy="257.7" r="0.7" fill="#a9abc8" opacity=".4"/><circle cx="30.8" cy="395.8" r="0.4" fill="#a9abc8" opacity=".4"/><circle cx="463.9" cy="162.9" r="0.9" fill="#a9abc8" opacity=".4"/><circle cx="381.7" cy="32.2" r="0.8" fill="#a9abc8" opacity=".4"/><circle cx="439.7" cy="110.7" r="0.4" fill="#a9abc8" opacity=".4"/><circle cx="534.1" cy="348.2" r="0.9" fill="#a9abc8" opacity=".4"/><circle cx="137.6" cy="471.0" r="0.7" fill="#a9abc8" opacity=".4"/><circle cx="631.5" cy="122.6" r="0.5" fill="#a9abc8" opacity=".4"/><circle cx="405.9" cy="171.4" r="0.8" fill="#a9abc8" opacity=".4"/><circle cx="546.0" cy="563.9" r="0.5" fill="#a9abc8" opacity=".4"/><circle cx="219.2" cy="57.5" r="0.5" fill="#a9abc8" opacity=".4"/><circle cx="77.4" cy="99.5" r="0.9" fill="#a9abc8" opacity=".4"/><circle cx="567.0" cy="550.2" r="0.8" fill="#a9abc8" opacity=".4"/><circle cx="634.7" cy="72.0" r="0.4" fill="#a9abc8" opacity=".4"/><circle cx="29.1" cy="395.7" r="0.6" fill="#a9abc8" opacity=".4"/><circle cx="517.6" cy="472.8" r="0.5" fill="#a9abc8" opacity=".4"/><circle cx="505.2" cy="515.5" r="0.3" fill="#a9abc8" opacity=".4"/><circle cx="165.9" cy="146.2" r="0.9" fill="#a9abc8" opacity=".4"/><circle cx="450.9" cy="385.6" r="0.5" fill="#a9abc8" opacity=".4"/><circle cx="597.0" cy="421.4" r="0.8" fill="#a9abc8" opacity=".4"/><circle cx="638.7" cy="470.6" r="0.6" fill="#a9abc8" opacity=".4"/><circle cx="88.3" cy="324.4" r="0.7" fill="#a9abc8" opacity=".4"/><circle cx="390.0" cy="418.3" r="0.4" fill="#a9abc8" opacity=".4"/><circle cx="328.4" cy="69.2" r="0.8" fill="#a9abc8" opacity=".4"/><circle cx="514.7" cy="221.8" r="0.9" fill="#a9abc8" opacity=".4"/><circle cx="361.0" cy="117.7" r="0.3" fill="#a9abc8" opacity=".4"/><circle cx="136.5" cy="20.0" r="0.9" fill="#a9abc8" opacity=".4"/><circle cx="205.3" cy="520.6" r="0.4" fill="#a9abc8" opacity=".4"/><circle cx="174.7" cy="404.2" r="0.9" fill="#a9abc8" opacity=".4"/><circle cx="367.1" cy="130.3" r="0.9" fill="#a9abc8" opacity=".4"/><circle cx="685.2" cy="287.9" r="0.9" fill="#a9abc8" opacity=".4"/><circle cx="190.5" cy="6.1" r="0.8" fill="#a9abc8" opacity=".4"/><circle cx="29.4" cy="394.9" r="0.5" fill="#a9abc8" opacity=".4"/><circle cx="334.1" cy="443.0" r="0.3" fill="#a9abc8" opacity=".4"/><circle cx="138.5" cy="244.2" r="0.4" fill="#a9abc8" opacity=".4"/><circle cx="536.8" cy="23.7" r="0.7" fill="#a9abc8" opacity=".4"/><circle cx="458.3" cy="434.8" r="0.7" fill="#a9abc8" opacity=".4"/><circle cx="557.4" cy="527.5" r="0.6" fill="#a9abc8" opacity=".4"/><circle cx="393.9" cy="314.3" r="0.3" fill="#a9abc8" opacity=".4"/><circle cx="272.8" cy="163.2" r="0.5" fill="#a9abc8" opacity=".4"/><circle cx="423.3" cy="433.1" r="0.4" fill="#a9abc8" opacity=".4"/><circle cx="294.8" cy="538.8" r="0.5" fill="#a9abc8" opacity=".4"/><circle cx="392.7" cy="62.8" r="0.5" fill="#a9abc8" opacity=".4"/><circle cx="563.1" cy="343.3" r="0.7" fill="#a9abc8" opacity=".4"/><circle cx="159.4" cy="41.6" r="0.7" fill="#a9abc8" opacity=".4"/><circle cx="480.7" cy="558.0" r="0.3" fill="#a9abc8" opacity=".4"/><circle cx="681.6" cy="257.3" r="0.9" fill="#a9abc8" opacity=".4"/><circle cx="23.9" cy="264.1" r="0.7" fill="#a9abc8" opacity=".4"/><ellipse cx="350" cy="290" rx="290" ry="245" fill="url(#cn-glow)"/><g class="cn-orbit" fill="none" stroke="#76618c" stroke-width=".6"><ellipse cx="350" cy="290" rx="275" ry="168" transform="rotate(-28 350 290)" opacity=".45"/><ellipse cx="350" cy="290" rx="265" ry="212" transform="rotate(28 350 290)" opacity=".25"/><circle cx="350" cy="290" r="255" opacity=".22" stroke-dasharray="2 7"/></g><g class="cn-galaxy"><g fill="none" stroke="#a182cb" stroke-width=".6" opacity=".3"><path d="M264.9 339.1L250.8 347.1"/><path d="M512.5 324.9L538.9 326.4"/><path d="M512.5 324.9L542.8 355.8"/><path d="M512.5 324.9L513.5 343.4"/><path d="M358.9 365.8L348.2 368.7"/><path d="M358.9 365.8L337.1 361.7"/><path d="M358.9 365.8L338.2 388.8"/><path d="M358.9 365.8L340.2 398.4"/><path d="M358.9 365.8L353.3 380.0"/><path d="M181.8 365.5L173.6 395.4"/><path d="M181.8 365.5L180.6 379.3"/><path d="M181.8 365.5L142.4 342.6"/><path d="M181.8 365.5L195.3 375.8"/><path d="M296.7 69.8L330.1 72.9"/><path d="M390.8 237.1L410.0 279.6"/><path d="M390.8 237.1L368.1 241.3"/><path d="M390.8 237.1L351.2 210.8"/><path d="M236.5 204.0L204.0 178.9"/><path d="M236.5 204.0L205.6 173.7"/><path d="M236.5 204.0L256.6 165.3"/><path d="M503.6 449.2L456.9 439.2"/><path d="M503.6 449.2L520.3 457.4"/><path d="M503.6 449.2L480.6 421.7"/><path d="M503.6 449.2L541.0 448.1"/><path d="M503.6 449.2L472.7 423.5"/><path d="M438.3 362.3L456.0 328.2"/><path d="M438.3 362.3L432.1 367.5"/><path d="M540.4 326.2L538.9 326.4"/><path d="M540.4 326.2L542.8 355.8"/><path d="M540.4 326.2L513.5 343.4"/><path d="M570.7 389.3L559.5 410.1"/><path d="M345.8 232.8L325.2 230.9"/><path d="M345.8 232.8L368.1 241.3"/><path d="M345.8 232.8L351.2 210.8"/><path d="M419.0 224.0L456.3 213.8"/><path d="M419.0 224.0L454.7 223.2"/><path d="M419.0 224.0L417.1 265.6"/><path d="M419.0 224.0L430.0 187.7"/><path d="M419.0 224.0L411.3 202.7"/><path d="M213.7 163.5L190.5 196.7"/><path d="M213.7 163.5L190.3 145.3"/><path d="M127.6 297.0L133.8 327.3"/><path d="M127.6 297.0L127.5 264.6"/><path d="M127.6 297.0L128.1 295.0"/><path d="M92.1 201.9L107.8 207.0"/><path d="M493.8 202.3L510.9 240.1"/><path d="M493.8 202.3L500.8 198.1"/><path d="M493.8 202.3L509.9 245.6"/><path d="M493.8 202.3L532.8 209.6"/><path d="M118.3 360.9L133.8 327.3"/><path d="M118.3 360.9L153.4 383.6"/><path d="M118.3 360.9L105.9 349.6"/><path d="M327.0 153.2L336.0 163.8"/><path d="M327.0 153.2L320.0 160.0"/><path d="M327.0 153.2L321.4 148.3"/><path d="M348.2 368.7L308.0 367.9"/><path d="M119.8 244.8L107.8 207.0"/><path d="M119.8 244.8L124.9 290.6"/><path d="M279.4 188.2L303.8 167.0"/><path d="M279.4 188.2L288.6 217.3"/><path d="M279.4 188.2L313.9 175.9"/><path d="M462.5 352.7L490.6 332.8"/><path d="M462.5 352.7L420.7 349.6"/><path d="M462.5 352.7L465.8 315.2"/><path d="M462.5 352.7L454.2 389.1"/><path d="M462.5 352.7L421.6 357.9"/><path d="M124.6 403.6L135.3 431.4"/><path d="M599.5 291.0L603.3 280.3"/><path d="M337.1 361.7L308.0 367.9"/><path d="M337.1 361.7L297.0 358.3"/><path d="M172.2 238.4L179.5 233.9"/><path d="M172.2 238.4L161.6 233.7"/><path d="M172.2 238.4L135.6 236.8"/><path d="M172.2 238.4L198.3 250.5"/><path d="M212.7 338.7L250.8 347.1"/><path d="M456.3 213.8L500.8 198.1"/><path d="M538.9 326.4L568.1 290.9"/><path d="M538.9 326.4L532.6 357.5"/><path d="M338.2 388.8L308.0 367.9"/><path d="M187.9 284.1L167.9 265.3"/><path d="M490.6 332.8L510.3 325.1"/><path d="M490.6 332.8L456.0 328.2"/><path d="M510.9 240.1L472.3 235.1"/><path d="M510.9 240.1L470.8 253.9"/><path d="M179.5 233.9L192.9 211.6"/><path d="M179.5 233.9L167.9 265.3"/><path d="M559.5 410.1L531.6 418.4"/><path d="M559.5 410.1L541.7 414.7"/><path d="M559.5 410.1L556.8 400.6"/><path d="M113.5 275.2L135.6 236.8"/><path d="M113.5 275.2L127.5 264.6"/><path d="M113.5 275.2L128.1 295.0"/><path d="M204.0 178.9L232.6 191.1"/><path d="M204.0 178.9L192.9 211.6"/><path d="M204.0 178.9L161.1 167.8"/><path d="M340.2 398.4L308.0 367.9"/><path d="M161.6 233.7L192.9 211.6"/><path d="M161.6 233.7L167.9 265.3"/><path d="M336.0 163.8L303.8 167.0"/><path d="M336.0 163.8L362.8 179.3"/><path d="M336.0 163.8L313.9 175.9"/><path d="M336.0 163.8L351.9 178.2"/><path d="M472.3 235.1L500.3 253.2"/><path d="M472.3 235.1L454.7 223.2"/><path d="M106.6 217.4L135.6 236.8"/><path d="M106.6 217.4L123.4 217.6"/><path d="M135.6 236.8L107.8 207.0"/><path d="M135.6 236.8L167.9 265.3"/><path d="M244.3 450.1L257.4 428.9"/><path d="M244.3 450.1L258.5 455.7"/><path d="M303.8 167.0L331.5 137.8"/><path d="M303.8 167.0L336.3 179.7"/><path d="M303.8 167.0L256.6 165.3"/><path d="M353.3 380.0L308.0 367.9"/><path d="M531.6 418.4L516.1 391.5"/><path d="M531.6 418.4L526.9 433.2"/><path d="M531.6 418.4L492.6 426.6"/><path d="M531.6 418.4L540.3 414.6"/><path d="M500.3 253.2L524.8 277.0"/><path d="M500.3 253.2L503.3 269.8"/><path d="M500.3 253.2L509.9 245.6"/><path d="M135.3 431.4L163.4 435.4"/><path d="M516.1 391.5L480.6 421.7"/><path d="M516.1 391.5L532.6 357.5"/><path d="M292.4 469.5L293.2 504.3"/><path d="M292.4 469.5L258.5 455.7"/><path d="M308.0 367.9L329.4 335.5"/><path d="M477.9 204.8L454.7 223.2"/><path d="M159.5 371.7L173.6 395.4"/><path d="M159.5 371.7L180.6 379.3"/><path d="M159.5 371.7L142.4 342.6"/><path d="M159.5 371.7L195.3 375.8"/><path d="M510.3 325.1L542.8 355.8"/><path d="M510.3 325.1L513.5 343.4"/><path d="M434.5 327.5L420.7 349.6"/><path d="M434.5 327.5L465.8 315.2"/><path d="M434.5 327.5L421.6 357.9"/><path d="M568.1 290.9L524.8 277.0"/><path d="M568.1 290.9L612.5 308.4"/><path d="M568.1 290.9L558.5 337.6"/><path d="M568.1 290.9L542.5 320.4"/><path d="M568.1 290.9L605.7 288.0"/><path d="M456.0 328.2L454.4 374.6"/><path d="M350.4 432.9L381.7 468.2"/><path d="M520.3 457.4L541.7 414.7"/><path d="M520.3 457.4L521.2 445.0"/><path d="M133.8 327.3L124.9 290.6"/><path d="M232.6 191.1L190.5 196.7"/><path d="M190.5 196.7L205.6 173.7"/><path d="M594.7 340.7L612.5 308.4"/><path d="M594.7 340.7L558.5 337.6"/><path d="M288.6 217.3L259.8 255.0"/><path d="M263.1 405.9L250.5 390.1"/><path d="M264.3 125.5L234.2 89.4"/><path d="M362.8 179.3L400.7 167.5"/><path d="M362.8 179.3L336.3 179.7"/><path d="M362.8 179.3L385.3 165.7"/><path d="M362.8 179.3L385.8 174.9"/><path d="M454.4 374.6L420.7 349.6"/><path d="M454.4 374.6L425.6 404.4"/><path d="M454.4 374.6L454.2 389.1"/><path d="M454.4 374.6L421.6 357.9"/><path d="M240.0 251.6L259.8 255.0"/><path d="M240.0 251.6L198.3 250.5"/><path d="M331.5 137.8L320.0 160.0"/><path d="M331.5 137.8L321.4 148.3"/><path d="M320.0 160.0L313.9 175.9"/><path d="M320.0 160.0L351.9 178.2"/><path d="M173.6 395.4L153.4 383.6"/><path d="M173.6 395.4L163.4 435.4"/><path d="M277.1 410.7L314.3 398.3"/><path d="M277.1 410.7L250.5 390.1"/><path d="M321.4 148.3L313.9 175.9"/><path d="M321.4 148.3L351.9 178.2"/><path d="M231.8 247.2L259.8 255.0"/><path d="M231.8 247.2L198.3 250.5"/><path d="M153.4 383.6L157.5 417.5"/><path d="M480.6 421.7L521.2 445.0"/><path d="M353.9 110.4L330.1 72.9"/><path d="M400.7 167.5L375.8 173.3"/><path d="M400.7 167.5L430.0 187.7"/><path d="M400.7 167.5L409.5 153.2"/><path d="M400.7 167.5L411.3 202.7"/><path d="M163.4 286.1L127.5 264.6"/><path d="M163.4 286.1L128.1 295.0"/><path d="M163.4 286.1L183.0 298.2"/><path d="M420.7 349.6L432.1 367.5"/><path d="M336.3 179.7L289.5 189.6"/><path d="M336.3 179.7L375.8 173.3"/><path d="M542.8 355.8L532.6 357.5"/><path d="M526.9 433.2L541.0 448.1"/><path d="M351.9 178.2L385.3 165.7"/><path d="M351.9 178.2L385.8 174.9"/><path d="M205.6 173.7L161.1 167.8"/><path d="M541.0 448.1L541.7 414.7"/><path d="M541.0 448.1L521.2 445.0"/><path d="M127.5 264.6L167.9 265.3"/><path d="M602.7 295.7L612.5 308.4"/><path d="M602.7 295.7L605.7 288.0"/><path d="M612.5 308.4L603.3 280.3"/><path d="M612.5 308.4L621.3 355.5"/><path d="M259.8 255.0L264.0 222.3"/><path d="M432.1 367.5L409.1 348.4"/><path d="M385.3 165.7L375.8 173.3"/><path d="M385.3 165.7L409.5 153.2"/><path d="M385.3 165.7L411.3 202.7"/><path d="M530.1 219.8L509.9 245.6"/><path d="M530.1 219.8L532.8 209.6"/><path d="M410.0 279.6L445.4 250.6"/><path d="M157.5 417.5L180.6 379.3"/><path d="M404.4 446.6L445.5 426.8"/><path d="M404.4 446.6L394.7 424.4"/><path d="M445.4 250.6L454.7 223.2"/><path d="M445.4 250.6L417.1 265.6"/><path d="M314.3 398.3L297.0 358.3"/><path d="M558.5 337.6L513.5 343.4"/><path d="M603.3 280.3L628.2 245.0"/><path d="M541.7 414.7L540.3 414.6"/><path d="M409.1 348.4L421.6 357.9"/><path d="M542.5 320.4L513.5 343.4"/><path d="M250.8 347.1L242.9 353.2"/><path d="M250.8 347.1L297.0 358.3"/><path d="M250.8 347.1L234.2 325.7"/><path d="M250.8 347.1L248.3 306.2"/><path d="M492.6 426.6L472.7 423.5"/><path d="M375.8 173.3L351.2 210.8"/><path d="M190.3 145.3L220.7 121.4"/><path d="M190.3 145.3L194.7 145.5"/><path d="M445.5 426.8L472.7 423.5"/><path d="M445.5 426.8L430.8 466.9"/><path d="M445.5 426.8L454.2 389.1"/><path d="M521.2 445.0L540.3 414.6"/><path d="M394.7 424.4L381.7 468.2"/><path d="M556.8 400.6L540.3 414.6"/><path d="M385.8 174.9L430.0 187.7"/><path d="M385.8 174.9L409.5 153.2"/><path d="M385.8 174.9L411.3 202.7"/><path d="M417.1 265.6L412.8 290.6"/><path d="M182.0 474.5L217.2 459.0"/><path d="M182.0 474.5L210.7 453.2"/><path d="M182.0 474.5L171.6 464.7"/><path d="M182.0 474.5L163.4 435.4"/><path d="M217.2 459.0L180.4 450.8"/><path d="M210.7 453.2L180.4 450.8"/><path d="M348.2 479.0L381.7 468.2"/><path d="M503.3 269.8L470.8 253.9"/><path d="M509.9 245.6L470.8 253.9"/><path d="M205 160Q440 150 500 275T450 415M205 160Q170 360 260 405T500 275" stroke="#91d5ec" stroke-width="1" opacity=".9"/></g><circle class="cn-star" cx="264.9" cy="339.1" r="1.5" fill="#93d9e9" opacity="0.85"/><circle  cx="349.4" cy="399.2" r="2.2" fill="#baa0ef" opacity="0.74"/><circle  cx="512.5" cy="324.9" r="1.2" fill="#baa0ef" opacity="0.46"/><circle  cx="358.9" cy="365.8" r="1.2" fill="#93d9e9" opacity="0.51"/><circle  cx="181.8" cy="365.5" r="1.0" fill="#baa0ef" opacity="0.37"/><circle  cx="296.7" cy="69.8" r="1.8" fill="#baa0ef" opacity="0.79"/><circle  cx="225.0" cy="92.8" r="1.1" fill="#93d9e9" opacity="0.81"/><circle class="cn-star" cx="390.8" cy="237.1" r="1.2" fill="#baa0ef" opacity="0.40"/><circle  cx="236.5" cy="204.0" r="1.4" fill="#baa0ef" opacity="0.42"/><circle  cx="503.6" cy="449.2" r="1.6" fill="#baa0ef" opacity="0.42"/><circle  cx="438.3" cy="362.3" r="2.1" fill="#baa0ef" opacity="0.53"/><circle  cx="540.4" cy="326.2" r="0.8" fill="#baa0ef" opacity="0.50"/><circle  cx="570.7" cy="389.3" r="1.3" fill="#baa0ef" opacity="0.74"/><circle  cx="345.8" cy="232.8" r="2.1" fill="#baa0ef" opacity="0.85"/><circle class="cn-star" cx="539.1" cy="188.2" r="0.7" fill="#93d9e9" opacity="0.60"/><circle  cx="419.0" cy="224.0" r="1.5" fill="#baa0ef" opacity="0.71"/><circle  cx="213.7" cy="163.5" r="1.8" fill="#baa0ef" opacity="0.74"/><circle  cx="127.6" cy="297.0" r="1.7" fill="#baa0ef" opacity="0.60"/><circle  cx="92.1" cy="201.9" r="0.7" fill="#baa0ef" opacity="0.58"/><circle  cx="493.8" cy="202.3" r="0.9" fill="#baa0ef" opacity="0.39"/><circle  cx="118.3" cy="360.9" r="0.9" fill="#baa0ef" opacity="0.58"/><circle class="cn-star" cx="327.0" cy="153.2" r="2.2" fill="#baa0ef" opacity="0.85"/><circle  cx="348.2" cy="368.7" r="1.5" fill="#baa0ef" opacity="0.73"/><circle  cx="497.3" cy="120.4" r="2.1" fill="#93d9e9" opacity="0.40"/><circle  cx="119.8" cy="244.8" r="0.8" fill="#93d9e9" opacity="0.77"/><circle  cx="279.4" cy="188.2" r="1.9" fill="#93d9e9" opacity="0.39"/><circle  cx="294.8" cy="459.3" r="0.9" fill="#93d9e9" opacity="0.62"/><circle  cx="462.5" cy="352.7" r="0.8" fill="#baa0ef" opacity="0.48"/><circle class="cn-star" cx="124.6" cy="403.6" r="0.9" fill="#baa0ef" opacity="0.42"/><circle  cx="599.5" cy="291.0" r="1.1" fill="#baa0ef" opacity="0.64"/><circle  cx="337.1" cy="230.2" r="1.8" fill="#93d9e9" opacity="0.38"/><circle  cx="337.1" cy="361.7" r="2.1" fill="#baa0ef" opacity="0.37"/><circle  cx="172.2" cy="238.4" r="1.4" fill="#93d9e9" opacity="0.78"/><circle  cx="212.7" cy="338.7" r="2.0" fill="#baa0ef" opacity="0.71"/><circle  cx="456.3" cy="213.8" r="1.7" fill="#baa0ef" opacity="0.46"/><circle class="cn-star" cx="445.2" cy="94.2" r="2.3" fill="#baa0ef" opacity="0.45"/><circle  cx="538.9" cy="326.4" r="1.8" fill="#93d9e9" opacity="0.76"/><circle  cx="338.2" cy="388.8" r="1.7" fill="#93d9e9" opacity="0.81"/><circle  cx="562.7" cy="249.3" r="2.1" fill="#93d9e9" opacity="0.45"/><circle  cx="187.9" cy="284.1" r="1.8" fill="#baa0ef" opacity="0.32"/><circle  cx="490.6" cy="332.8" r="0.9" fill="#baa0ef" opacity="0.32"/><circle  cx="510.9" cy="240.1" r="1.5" fill="#baa0ef" opacity="0.89"/><circle class="cn-star" cx="179.5" cy="233.9" r="0.8" fill="#baa0ef" opacity="0.37"/><circle  cx="559.5" cy="410.1" r="1.3" fill="#baa0ef" opacity="0.53"/><circle  cx="113.5" cy="275.2" r="2.1" fill="#baa0ef" opacity="0.43"/><circle  cx="204.0" cy="178.9" r="1.3" fill="#93d9e9" opacity="0.50"/><circle  cx="340.2" cy="398.4" r="1.6" fill="#baa0ef" opacity="0.40"/><circle  cx="431.3" cy="121.7" r="2.3" fill="#baa0ef" opacity="0.62"/><circle  cx="161.6" cy="233.7" r="1.3" fill="#93d9e9" opacity="0.31"/><circle class="cn-star" cx="336.0" cy="163.8" r="1.9" fill="#baa0ef" opacity="0.31"/><circle  cx="466.7" cy="497.7" r="1.7" fill="#baa0ef" opacity="0.46"/><circle  cx="472.3" cy="235.1" r="1.6" fill="#93d9e9" opacity="0.86"/><circle  cx="456.9" cy="439.2" r="1.3" fill="#baa0ef" opacity="0.75"/><circle  cx="106.6" cy="217.4" r="1.1" fill="#baa0ef" opacity="0.72"/><circle  cx="135.6" cy="236.8" r="2.1" fill="#baa0ef" opacity="0.57"/><circle  cx="244.3" cy="450.1" r="2.1" fill="#baa0ef" opacity="0.56"/><circle class="cn-star" cx="303.8" cy="167.0" r="1.0" fill="#baa0ef" opacity="0.59"/><circle  cx="353.4" cy="72.5" r="1.2" fill="#93d9e9" opacity="0.77"/><circle  cx="353.3" cy="380.0" r="1.1" fill="#baa0ef" opacity="0.82"/><circle  cx="531.6" cy="418.4" r="0.7" fill="#baa0ef" opacity="0.64"/><circle  cx="84.3" cy="327.0" r="0.7" fill="#baa0ef" opacity="0.41"/><circle  cx="500.3" cy="253.2" r="2.0" fill="#93d9e9" opacity="0.74"/><circle  cx="135.3" cy="431.4" r="1.7" fill="#baa0ef" opacity="0.33"/><circle class="cn-star" cx="516.1" cy="391.5" r="2.3" fill="#baa0ef" opacity="0.58"/><circle  cx="292.4" cy="469.5" r="1.1" fill="#baa0ef" opacity="0.76"/><circle  cx="308.0" cy="367.9" r="0.8" fill="#baa0ef" opacity="0.73"/><circle  cx="477.9" cy="204.8" r="1.9" fill="#93d9e9" opacity="0.37"/><circle  cx="159.5" cy="371.7" r="0.8" fill="#baa0ef" opacity="0.81"/><circle  cx="510.3" cy="325.1" r="0.9" fill="#baa0ef" opacity="0.84"/><circle  cx="434.5" cy="327.5" r="1.6" fill="#baa0ef" opacity="0.60"/><circle class="cn-star" cx="568.1" cy="290.9" r="1.2" fill="#93d9e9" opacity="0.46"/><circle  cx="456.0" cy="328.2" r="1.6" fill="#baa0ef" opacity="0.88"/><circle  cx="350.4" cy="432.9" r="0.8" fill="#baa0ef" opacity="0.87"/><circle  cx="520.3" cy="457.4" r="0.6" fill="#93d9e9" opacity="0.46"/><circle  cx="500.8" cy="198.1" r="1.8" fill="#93d9e9" opacity="0.68"/><circle  cx="133.8" cy="327.3" r="1.2" fill="#93d9e9" opacity="0.64"/><circle  cx="232.6" cy="191.1" r="2.1" fill="#93d9e9" opacity="0.61"/><circle class="cn-star" cx="190.5" cy="196.7" r="1.0" fill="#baa0ef" opacity="0.85"/><circle  cx="371.4" cy="416.5" r="1.8" fill="#baa0ef" opacity="0.74"/><circle  cx="594.7" cy="340.7" r="1.1" fill="#93d9e9" opacity="0.46"/><circle  cx="288.6" cy="217.3" r="0.7" fill="#baa0ef" opacity="0.54"/><circle  cx="263.1" cy="405.9" r="2.2" fill="#baa0ef" opacity="0.82"/><circle  cx="264.3" cy="125.5" r="0.8" fill="#baa0ef" opacity="0.68"/><circle  cx="362.8" cy="179.3" r="0.7" fill="#baa0ef" opacity="0.75"/><circle class="cn-star" cx="454.4" cy="374.6" r="2.3" fill="#93d9e9" opacity="0.87"/><circle  cx="107.8" cy="207.0" r="1.4" fill="#baa0ef" opacity="0.64"/><circle  cx="240.0" cy="251.6" r="1.5" fill="#baa0ef" opacity="0.67"/><circle  cx="331.5" cy="137.8" r="1.2" fill="#baa0ef" opacity="0.86"/><circle  cx="320.0" cy="160.0" r="0.7" fill="#baa0ef" opacity="0.31"/><circle  cx="173.6" cy="395.4" r="1.7" fill="#baa0ef" opacity="0.39"/><circle  cx="277.1" cy="410.7" r="1.2" fill="#baa0ef" opacity="0.55"/><circle class="cn-star" cx="321.4" cy="148.3" r="2.2" fill="#baa0ef" opacity="0.69"/><circle  cx="231.8" cy="247.2" r="1.1" fill="#baa0ef" opacity="0.42"/><circle  cx="153.4" cy="383.6" r="2.2" fill="#93d9e9" opacity="0.85"/><circle  cx="480.6" cy="421.7" r="2.4" fill="#baa0ef" opacity="0.72"/><circle  cx="353.9" cy="110.4" r="1.4" fill="#baa0ef" opacity="0.83"/><circle  cx="400.7" cy="167.5" r="2.3" fill="#baa0ef" opacity="0.85"/><circle  cx="409.4" cy="501.5" r="0.8" fill="#baa0ef" opacity="0.66"/><circle class="cn-star" cx="163.4" cy="286.1" r="2.3" fill="#baa0ef" opacity="0.75"/><circle  cx="204.1" cy="141.9" r="0.7" fill="#baa0ef" opacity="0.53"/><circle  cx="420.7" cy="349.6" r="0.9" fill="#baa0ef" opacity="0.62"/><circle  cx="524.8" cy="277.0" r="0.9" fill="#93d9e9" opacity="0.76"/><circle  cx="336.3" cy="179.7" r="1.7" fill="#93d9e9" opacity="0.65"/><circle  cx="192.9" cy="211.6" r="2.2" fill="#93d9e9" opacity="0.40"/><circle  cx="248.1" cy="356.6" r="1.2" fill="#93d9e9" opacity="0.72"/><circle class="cn-star" cx="542.8" cy="355.8" r="1.1" fill="#baa0ef" opacity="0.54"/><circle  cx="282.0" cy="261.5" r="1.9" fill="#baa0ef" opacity="0.56"/><circle  cx="313.9" cy="175.9" r="1.3" fill="#baa0ef" opacity="0.57"/><circle  cx="526.9" cy="433.2" r="2.1" fill="#baa0ef" opacity="0.52"/><circle  cx="124.9" cy="290.6" r="0.6" fill="#93d9e9" opacity="0.32"/><circle  cx="351.9" cy="178.2" r="0.7" fill="#93d9e9" opacity="0.32"/><circle  cx="205.6" cy="173.7" r="1.3" fill="#baa0ef" opacity="0.73"/><circle class="cn-star" cx="541.0" cy="448.1" r="1.6" fill="#baa0ef" opacity="0.54"/><circle  cx="145.2" cy="144.4" r="0.9" fill="#baa0ef" opacity="0.66"/><circle  cx="127.5" cy="264.6" r="2.0" fill="#93d9e9" opacity="0.74"/><circle  cx="602.7" cy="295.7" r="0.8" fill="#baa0ef" opacity="0.41"/><circle  cx="612.5" cy="308.4" r="1.1" fill="#baa0ef" opacity="0.69"/><circle  cx="259.8" cy="255.0" r="0.8" fill="#93d9e9" opacity="0.83"/><circle  cx="348.5" cy="512.8" r="1.2" fill="#baa0ef" opacity="0.48"/><circle class="cn-star" cx="432.1" cy="367.5" r="1.0" fill="#baa0ef" opacity="0.80"/><circle  cx="385.3" cy="165.7" r="1.8" fill="#baa0ef" opacity="0.81"/><circle  cx="530.1" cy="219.8" r="1.8" fill="#baa0ef" opacity="0.68"/><circle  cx="410.0" cy="279.6" r="1.5" fill="#baa0ef" opacity="0.41"/><circle  cx="128.1" cy="295.0" r="2.4" fill="#baa0ef" opacity="0.75"/><circle  cx="157.5" cy="417.5" r="1.0" fill="#baa0ef" opacity="0.79"/><circle  cx="404.4" cy="446.6" r="1.0" fill="#93d9e9" opacity="0.37"/><circle class="cn-star" cx="445.4" cy="250.6" r="1.7" fill="#93d9e9" opacity="0.61"/><circle  cx="314.3" cy="398.3" r="1.0" fill="#93d9e9" opacity="0.56"/><circle  cx="293.2" cy="504.3" r="1.6" fill="#baa0ef" opacity="0.72"/><circle  cx="105.9" cy="349.6" r="2.0" fill="#baa0ef" opacity="0.41"/><circle  cx="425.6" cy="404.4" r="1.4" fill="#baa0ef" opacity="0.37"/><circle  cx="558.5" cy="337.6" r="1.2" fill="#baa0ef" opacity="0.44"/><circle  cx="603.3" cy="280.3" r="1.0" fill="#93d9e9" opacity="0.49"/><circle class="cn-star" cx="424.4" cy="107.3" r="0.7" fill="#baa0ef" opacity="0.85"/><circle  cx="541.7" cy="414.7" r="1.4" fill="#93d9e9" opacity="0.40"/><circle  cx="409.1" cy="348.4" r="1.7" fill="#93d9e9" opacity="0.45"/><circle  cx="289.5" cy="189.6" r="2.1" fill="#baa0ef" opacity="0.85"/><circle  cx="542.5" cy="320.4" r="1.5" fill="#93d9e9" opacity="0.49"/><circle  cx="621.3" cy="355.5" r="1.6" fill="#baa0ef" opacity="0.61"/><circle  cx="250.8" cy="347.1" r="2.3" fill="#baa0ef" opacity="0.49"/><circle class="cn-star" cx="325.2" cy="230.9" r="1.3" fill="#baa0ef" opacity="0.70"/><circle  cx="492.6" cy="426.6" r="1.2" fill="#baa0ef" opacity="0.83"/><circle  cx="375.8" cy="173.3" r="1.6" fill="#baa0ef" opacity="0.68"/><circle  cx="190.3" cy="145.3" r="1.0" fill="#93d9e9" opacity="0.73"/><circle  cx="445.5" cy="426.8" r="2.3" fill="#baa0ef" opacity="0.85"/><circle  cx="454.7" cy="223.2" r="2.0" fill="#baa0ef" opacity="0.81"/><circle  cx="521.2" cy="445.0" r="2.3" fill="#baa0ef" opacity="0.77"/><circle class="cn-star" cx="394.7" cy="424.4" r="0.8" fill="#93d9e9" opacity="0.87"/><circle  cx="167.9" cy="265.3" r="2.3" fill="#baa0ef" opacity="0.35"/><circle  cx="242.9" cy="353.2" r="2.2" fill="#baa0ef" opacity="0.53"/><circle  cx="198.3" cy="250.5" r="0.7" fill="#baa0ef" opacity="0.79"/><circle  cx="161.1" cy="167.8" r="1.3" fill="#baa0ef" opacity="0.73"/><circle  cx="556.8" cy="400.6" r="0.7" fill="#93d9e9" opacity="0.49"/><circle  cx="220.7" cy="121.4" r="1.9" fill="#baa0ef" opacity="0.42"/><circle class="cn-star" cx="152.8" cy="135.2" r="0.7" fill="#baa0ef" opacity="0.70"/><circle  cx="605.7" cy="288.0" r="2.0" fill="#93d9e9" opacity="0.73"/><circle  cx="194.7" cy="145.5" r="1.6" fill="#93d9e9" opacity="0.76"/><circle  cx="472.7" cy="423.5" r="1.4" fill="#baa0ef" opacity="0.43"/><circle  cx="234.2" cy="89.4" r="0.9" fill="#93d9e9" opacity="0.73"/><circle  cx="385.8" cy="174.9" r="0.7" fill="#baa0ef" opacity="0.39"/><circle  cx="417.1" cy="265.6" r="0.7" fill="#baa0ef" opacity="0.30"/><circle class="cn-star" cx="182.0" cy="474.5" r="1.2" fill="#baa0ef" opacity="0.54"/><circle  cx="217.2" cy="459.0" r="1.6" fill="#93d9e9" opacity="0.38"/><circle  cx="430.8" cy="466.9" r="1.0" fill="#93d9e9" opacity="0.30"/><circle  cx="257.4" cy="428.9" r="2.0" fill="#93d9e9" opacity="0.65"/><circle  cx="210.7" cy="453.2" r="2.2" fill="#baa0ef" opacity="0.67"/><circle  cx="532.6" cy="357.5" r="1.5" fill="#baa0ef" opacity="0.44"/><circle  cx="368.1" cy="241.3" r="1.5" fill="#93d9e9" opacity="0.48"/><circle class="cn-star" cx="329.4" cy="335.5" r="1.7" fill="#baa0ef" opacity="0.37"/><circle  cx="180.4" cy="450.8" r="1.9" fill="#93d9e9" opacity="0.61"/><circle  cx="351.2" cy="210.8" r="1.4" fill="#baa0ef" opacity="0.54"/><circle  cx="540.3" cy="414.6" r="1.2" fill="#baa0ef" opacity="0.37"/><circle  cx="465.8" cy="315.2" r="0.7" fill="#baa0ef" opacity="0.56"/><circle  cx="297.0" cy="358.3" r="2.2" fill="#baa0ef" opacity="0.61"/><circle  cx="348.2" cy="479.0" r="2.2" fill="#93d9e9" opacity="0.85"/><circle class="cn-star" cx="454.2" cy="389.1" r="1.6" fill="#93d9e9" opacity="0.30"/><circle  cx="503.3" cy="269.8" r="1.1" fill="#baa0ef" opacity="0.47"/><circle  cx="183.0" cy="298.2" r="2.1" fill="#baa0ef" opacity="0.51"/><circle  cx="628.2" cy="245.0" r="2.1" fill="#baa0ef" opacity="0.30"/><circle  cx="509.9" cy="245.6" r="1.5" fill="#93d9e9" opacity="0.32"/><circle  cx="171.6" cy="464.7" r="1.3" fill="#baa0ef" opacity="0.37"/><circle  cx="525.1" cy="135.1" r="1.3" fill="#baa0ef" opacity="0.37"/><circle class="cn-star" cx="180.6" cy="379.3" r="1.4" fill="#baa0ef" opacity="0.77"/><circle  cx="366.4" cy="349.0" r="1.9" fill="#baa0ef" opacity="0.70"/><circle  cx="430.0" cy="187.7" r="1.0" fill="#baa0ef" opacity="0.66"/><circle  cx="532.8" cy="209.6" r="2.2" fill="#baa0ef" opacity="0.53"/><circle  cx="330.1" cy="72.9" r="1.1" fill="#baa0ef" opacity="0.86"/><circle  cx="409.5" cy="153.2" r="1.7" fill="#baa0ef" opacity="0.37"/><circle  cx="412.8" cy="290.6" r="1.7" fill="#93d9e9" opacity="0.82"/><circle class="cn-star" cx="513.5" cy="343.4" r="1.0" fill="#93d9e9" opacity="0.86"/><circle  cx="250.5" cy="390.1" r="1.5" fill="#baa0ef" opacity="0.48"/><circle  cx="258.5" cy="455.7" r="2.2" fill="#93d9e9" opacity="0.32"/><circle  cx="470.8" cy="253.9" r="1.4" fill="#93d9e9" opacity="0.35"/><circle  cx="381.7" cy="468.2" r="2.3" fill="#baa0ef" opacity="0.43"/><circle  cx="142.4" cy="342.6" r="1.6" fill="#93d9e9" opacity="0.78"/><circle  cx="256.6" cy="165.3" r="0.8" fill="#baa0ef" opacity="0.61"/><circle class="cn-star" cx="411.3" cy="202.7" r="1.4" fill="#baa0ef" opacity="0.45"/><circle  cx="234.2" cy="325.7" r="1.0" fill="#baa0ef" opacity="0.80"/><circle  cx="123.4" cy="217.6" r="1.8" fill="#baa0ef" opacity="0.47"/><circle  cx="264.0" cy="222.3" r="1.4" fill="#baa0ef" opacity="0.82"/><circle  cx="248.3" cy="306.2" r="1.8" fill="#93d9e9" opacity="0.74"/><circle  cx="163.4" cy="435.4" r="0.7" fill="#baa0ef" opacity="0.35"/><circle  cx="421.6" cy="357.9" r="1.7" fill="#baa0ef" opacity="0.38"/><circle class="cn-star" cx="195.3" cy="375.8" r="2.3" fill="#baa0ef" opacity="0.61"/><circle  cx="424.5" cy="210.2" r="1.0" fill="#baa0ef" opacity="0.80"/><circle cx="350" cy="290" r="66" fill="url(#cn-core)"/><circle cx="350" cy="290" r="41" fill="#090910" stroke="#b997df" stroke-width=".75"/><circle cx="350" cy="290" r="51" fill="none" stroke="#bea3f4" stroke-width=".6" stroke-dasharray="2 7"/><circle cx="205" cy="160" r="22" fill="url(#cn-core)"/><circle cx="205" cy="160" r="4" fill="#e1cdfd"/><circle cx="500" cy="275" r="21" fill="url(#cn-core)"/><circle cx="500" cy="275" r="3" fill="#adf2fa"/><circle cx="260" cy="405" r="20" fill="url(#cn-core)"/><circle cx="260" cy="405" r="3.5" fill="#e1cdfd"/></g></svg><span class="cn-core-label">CRCBN</span><a class="cn-map-label" href="#cn-fields">Craniofacial growth</a><a class="cn-map-label" href="#cn-fields">Bone biology</a><a class="cn-map-label" href="#cn-fields">Airway &amp; sleep</a><a class="cn-map-label" href="#cn-fields">Cellular longevity</a><figcaption class="cn-map-caption"><span>ILLUSTRATIVE NETWORK · FOLLOW A CONNECTION</span><label class="cn-motion"><input id="cn-pause" type="checkbox">Pause motion</label></figcaption></figure></section>
+<div class="cn-wrap"><div class="cn-rail" aria-label="Inside the CRCBN beta"><div><strong>74,000+</strong><small>research records in the beta network</small></div><div><strong>28</strong><small>connected research areas</small></div><div><strong>Source trails</strong><small>a path back to the literature</small></div><div><strong>One collective</strong><small>a shared curiosity for what comes next</small></div></div></div>
+<section class="cn-section cn-wrap" id="cn-network"><div class="cn-section-head"><div><p class="cn-eyebrow">01 / The research network</p><h2>Nothing exists<br>in isolation.</h2></div><p>A question about facial growth can lead to bone biology, sleep, or cellular signaling. CRCBN brings those fields into one connected place to read, explore, and think.</p></div><div class="cn-network-grid"><article class="cn-feature"><div class="cn-index"><span>CRCBN / EXPLORE</span><span aria-hidden="true">↗</span></div><h3>See the bigger picture.</h3><p>Move through a galaxy of research. Follow a connection, open a record, and discover a field you might never have thought to search.</p><div class="cn-map-mini">
 
-<div id="crc-root">
-
-<!-- ── HERO ── -->
-<section id="hero">
-  <canvas id="hc"></canvas>
-  <div class="hob"></div>
-  <div class="hos"></div>
-  <div class="hcont">
-    <h1 class="hh1">Real Science.<br><span class="gt">Real Answers.</span></h1>
-    <p class="hdesc">The Craniofacial Research Collective combines peer-reviewed evidence, open science, and community to give you genuine knowledge, not false hope or guesswork.</p>
-    <div class="hbtns">
-      <a href="https://crcofficial.com/products/crc-membership" target="_blank" rel="noopener noreferrer" class="bp">Become a Member</a>
-      <a href="#crcbn" class="bgg">Explore the Network</a>
-    </div>
-  </div>
-  <div class="hscr">
-    <span>Scroll</span>
-    <div class="scrl"></div>
-  </div>
-</section>
-
-<!-- ── STATS ── -->
-<section id="stats">
-  <div class="c">
-    <div class="sg">
-      <div class="si sr">
-        <div class="sv" style="color:#6b5ff8">
-          <span class="cu" data-e="3800" data-s="+">0+</span>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 220" aria-hidden="true">
+            <g fill="none" stroke="#715889" stroke-width="1">
+              <path d="M62 113L159 47L285 115L430 48L549 103L451 175L285 115L159 182L62 113M159 47L159 182M430 48L451 175M159 47L430 48M159 182L451 175" />
+            </g>
+          </svg>
         </div>
-        <div class="sl2">Discord Members</div>
-      </div>
-      <div class="si sr d1">
-        <div class="sv" style="color:#0ea5e9">Thousands</div>
-        <div class="sl2">Research Papers in CRCBN</div>
-      </div>
-      <div class="si sr d2">
-        <div class="sv" style="color:#10b981">
-          <span class="cu" data-e="100" data-s="%">0%</span>
-        </div>
-        <div class="sl2">Peer-Reviewed</div>
-      </div>
-      <div class="si sr d3">
-        <div class="sv" style="color:#f59e0b">Free</div>
-        <div class="sl2">Core Research Access</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ── MISSION ── -->
-<section id="mission">
-  <div class="c">
-    <div class="mg">
-      <div class="sr">
-        <div class="mlbl">Our Mission</div>
-        <h2 class="mh2m-mis">We build up.<br><span class="a">Not tear down.</span></h2>
-        <div class="mb">
-          <p>CRC is proudly anti-black pill. That ideology has no place here. This is a community built on science, self-development, and genuine curiosity - not fatalism, negativity, or false hope.</p>
-          <p>We combine peer-reviewed evidence, open science, and a dedicated community to give people real answers. Not recycled misinformation packaged as a $50 course. Not vague promises. Evidence.</p>
-          <p>CRC exists to give you the knowledge to understand your own facial structure, growth patterns, and treatment options - grounded in the same science your orthodontist reads, but accessible to anyone.</p>
-        </div>
-        <div class="mtags">
-          <span class="mtag">Science-First</span>
-          <span class="mtag">Anti-Black Pill</span>
-          <span class="mtag">Open Access</span>
-          <span class="mtag">Peer-Reviewed</span>
-        </div>
-      </div>
-      <div class="sr d2">
-        <div class="mcw">
-          <video autoplay muted loop playsinline>
-            <source src="https://cdn.shopify.com/videos/c/o/v/c2eafdedbe464d6a846e20ed39371e2a.mp4" type="video/mp4"/>
-          </video>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ── CRCBN ── -->
-<section id="crcbn">
-  <div class="c">
-    <div class="chdr sr">
-      <div class="clbl-sub">Bibliographic Network</div>
-      <h2 class="ch">The Bibliographic Network</h2>
-      <p class="cd">The CRCBN hosts thousands of research papers, each one interconnected and annotated by our team. One solid paper from our network has more value than entire $50 'looksmaxxing' courses filled with recycled, AI-generated misinformation.</p>
-    </div>
-    <div class="vw sr d1" id="crc-vw">
-      <video id="crc-vid" autoplay muted playsinline>
-        <source src="https://cdn.shopify.com/videos/c/o/v/9c353db6514840cdb5d88dbe13c85cfa.mov" type="video/mp4"/>
-      </video>
-      <div class="vctl">
-        <div class="vprog" id="crc-prog">
-          <div class="vprog-track">
-            <div class="vprog-fill" id="crc-fill" style="width:0%"></div>
+        <div class="cn-topics">
+          <p>Explore connected topics</p>
+          <div class="cn-topic-links">
+            <a href="#topics">Facial Development</a>
+            <a href="#topics">Orthotropics</a>
+            <a href="#topics">Airway Health</a>
+            <a href="#topics">Bone Remodeling</a>
           </div>
-          <div class="vprog-thumb" id="crc-thumb" style="left:0%"></div>
         </div>
-        <div class="vrow">
-          <button class="vbtn vbtn-skip" id="crc-rew" title="Back 10 seconds">&#8635;10s</button>
-          <button class="vbtn vbtn-play" id="crc-pp" title="Play / Pause">
-            <svg id="crc-ico-pause" width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
-            <svg id="crc-ico-play" width="15" height="15" viewBox="0 0 24 24" fill="currentColor" style="display:none"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-          </button>
-          <button class="vbtn vbtn-skip" id="crc-fwd" title="Forward 10 seconds">10s&#8634;</button>
-          <span class="vtm" id="crc-tm">0:00 / 0:00</span>
+      </article>
+
+      <div class="cn-feature-list">
+        <article class="cn-feature">
+          <p class="cn-eyebrow">CRCBN / SOURCE TRAILS</p>
+          <h3>Follow the evidence.</h3>
+          <p>Every claim is connected to its source. Trace the path from a synthesis back to the primary literature without losing your place.</p>
+        </article>
+        <article class="cn-feature">
+          <p class="cn-eyebrow">CRCBN / COLLECTIVE</p>
+          <h3>Learn together.</h3>
+          <p>Join a community of researchers, practitioners, and independent thinkers analyzing the literature side-by-side.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="cn-section cn-wrap cn-argus" id="cn-argus">
+    <div class="cn-argus-grid">
+      <div class="cn-argus-copy">
+        <p class="cn-eyebrow">02 / Meet ARGUS</p>
+        <h2>Your research <em>companion.</em></h2>
+        <p>ARGUS is our custom AI assistant, trained specifically on the CRC evidence base. Ask complex biological questions and get answers grounded entirely in verified literature.</p>
+        <p class="cn-fine">ARGUS is currently in beta for all active CRC members.</p>
+        <a class="cn-button cn-text-link" href="https://staging-app.crcofficial.com/app" style="margin-top: 20px; border: 0;">Explore ARGUS <span style="margin-left: 15px; color: #bda4eb;">→</span></a>
+      </div>
+      
+      <div class="cn-workspace">
+        <div class="cn-window-top">
+          <span>ARGUS Workspace</span>
         </div>
-      </div>
-      <div class="vc">Watch how the Craniofacial Research Collective's Bibliographic Network makes navigating complex orthodontic and craniofacial research effortless.</div>
-    </div>
-    <div class="sr d2">
-      <h3 class="ph">Featured Research</h3>
-      <div class="ps">
-        <div class="pc"><div class="pt">Craniofacial Growth Patterns in Adolescents</div><div class="pau">Björk, A. et al.</div><div class="pm">American Journal of Orthodontics &bull; 2019</div><div class="ptags"><span class="ptag">Growth</span><span class="ptag">Mandible</span></div></div>
-        <div class="pc"><div class="pt">Functional Appliances and Condylar Adaptation</div><div class="pau">McNamara, J.A. et al.</div><div class="pm">Angle Orthodontist &bull; 2021</div><div class="ptags"><span class="ptag">Condylar</span><span class="ptag">Appliance</span></div></div>
-        <div class="pc"><div class="pt">Orthotropics and Vertical Dimension</div><div class="pau">Mew, J.R. et al.</div><div class="pm">J. Craniofacial Surgery &bull; 2020</div><div class="ptags"><span class="ptag">Orthotropics</span><span class="ptag">Vertical</span></div></div>
-        <div class="pc"><div class="pt">Airway Volume and Mandibular Position</div><div class="pau">Graber, T.M. et al.</div><div class="pm">Orthodontics &amp; Craniofacial Res. &bull; 2022</div><div class="ptags"><span class="ptag">Airway</span><span class="ptag">Mandible</span></div></div>
-        <div class="pc"><div class="pt">Sutural Growth and Facial Expansion</div><div class="pau">Moss, M.L. et al.</div><div class="pm">J. Dental Research &bull; 2018</div><div class="ptags"><span class="ptag">Sutures</span><span class="ptag">Expansion</span></div></div>
-        <div class="pc"><div class="pt">Nasal Breathing and Facial Development</div><div class="pau">Enlow, D.H. et al.</div><div class="pm">European J. Orthodontics &bull; 2023</div><div class="ptags"><span class="ptag">Nasal</span><span class="ptag">Dev.</span></div></div>
-        <div class="pc"><div class="pt">Long-Term Stability of Orthopedic Treatment</div><div class="pau">Proffit, W.R. et al.</div><div class="pm">Am. J. Orthodontics &bull; 2020</div><div class="ptags"><span class="ptag">Stability</span><span class="ptag">Treatment</span></div></div>
-        <div class="pc"><div class="pt">Muscle Function and Skeletal Adaptation</div><div class="pau">Petrovic, A.G. et al.</div><div class="pm">Craniofacial Biology &bull; 2021</div><div class="ptags"><span class="ptag">Muscle</span><span class="ptag">Skeletal</span></div></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ── COVERFLOW ── -->
-<section id="cov">
-  <div class="c tc">
-    <div class="sr">
-      <div class="covlbl">Member Results</div>
-      <h2 class="covh">Member Transformations</h2>
-      <p class="covs">Real results from CRC members following evidence-based protocols.</p>
-      <p class="covhint">Swipe or use arrows to browse &bull; Tap center image to enlarge</p>
-    </div>
-  </div>
-  <div class="cstg sr d1" id="cstg">
-    <div class="cin" id="cfin"></div>
-    <button class="cprev" id="cprev" aria-label="Previous">&#8592;</button>
-    <button class="cnxt" id="cnxt" aria-label="Next">&#8594;</button>
-  </div>
-  <div class="cdots" id="cdots"></div>
-</section>
-
-<!-- ── MEMBERSHIP ── -->
-<section id="mem">
-  <div class="c mrel">
-    <div class="tc sr">
-      <h2 class="mh2-mem">Evidence-First Guidance<br><span class="gr">for $20/month</span></h2>
-      <p class="mdes">Unlimited messages and scheduled calls. Access to CRC's orthodontic literature network. Personalized, natural-correction planning and US orthodontist referral support.</p>
-    </div>
-
-    <div class="mstats sr d1">
-      <div class="mst">
-        <div class="msv" style="color:#10b981">$20</div>
-        <div class="msl">per month</div>
-      </div>
-      <div class="mst">
-        <div class="msv" style="color:#6b5ff8">Unlimited</div>
-        <div class="msl">messages &amp; calls</div>
-      </div>
-      <div class="mst">
-        <div class="msv" style="color:#0ea5e9">Library</div>
-        <div class="msl">orthodontic literature network</div>
-      </div>
-      <div class="mst">
-        <div class="msv" style="color:#f59e0b">US</div>
-        <div class="msl">orthodontist referral help</div>
-      </div>
-    </div>
-
-    <div class="mgrid sr">
-      <div class="mcard">
-        <div class="mch">What's included</div>
-        <div class="fli"><span class="fico">💬</span><div class="ftx"><strong>Unlimited messages &amp; scheduled calls</strong> with CRC staff. We guide your journey so you never feel alone.</div></div>
-        <div class="fli"><span class="fico">📚</span><div class="ftx"><strong>Full access to the CRC literature network</strong> and all research channels with thousands of annotated papers.</div></div>
-        <div class="fli"><span class="fico">🌿</span><div class="ftx"><strong>Natural correction program</strong> adapted to your facial structure, with practical habit and lifestyle tracks.</div></div>
-        <div class="fli"><span class="fico">🏥</span><div class="ftx"><strong>US orthodontist referral assistance</strong> and education on treatment options, with case studies to share with your provider.</div></div>
-        <div class="fli"><span class="fico">📋</span><div class="ftx"><strong>Custom treatment planning</strong> for minor to moderate malocclusions, with ongoing guidance at a fraction of in-person costs.</div></div>
-        <div class="fli"><span class="fico">🛍️</span><div class="ftx">Through our partner <strong>BracesShop</strong>, members can access devices at affordable prices when appropriate.</div></div>
-        <p class="fdis">Not medical advice. CRC supports informed decisions and provider conversations.</p>
-      </div>
-      <div class="mcard">
-        <div class="mch">CRC vs. typical online course</div>
-        <div class="crow"><div class="cdim">Evidence backbone</div><div class="cpills"><span class="pcrc">&#10003; Active literature network</span><span class="poth">Static modules</span></div></div>
-        <div class="crow"><div class="cdim">Expert access</div><div class="cpills"><span class="pcrc">&#10003; Unlimited messages + calls</span><span class="poth">Limited community</span></div></div>
-        <div class="crow"><div class="cdim">Personalization</div><div class="cpills"><span class="pcrc">&#10003; Plan matched to your structure</span><span class="poth">One-size modules</span></div></div>
-        <div class="crow"><div class="cdim">Promise style</div><div class="cpills"><span class="pcrc">&#10003; No blind promises</span><span class="poth">Transformational marketing</span></div></div>
-        <div class="crow"><div class="cdim">Refund clarity</div><div class="cpills"><span class="pcrc">&#10003; Clear</span><span class="poth">Mixed</span></div></div>
-        <div class="crow"><div class="cdim">Price</div><div class="cpills"><span class="pcrc">&#10003; $20/mo, no upsell tiers</span><span class="poth">Multi-tier</span></div></div>
-      </div>
-    </div>
-
-    <div class="sr d1">
-      <h3 class="howh">How it works — first 30 days</h3>
-      <div class="hsteps">
-        <div class="hsc">
-          <div class="hsn">01</div>
-          <div class="hslb">Step 1</div>
-          <div class="hsti">Onboarding &amp; Intake</div>
-          <div class="hsde">Submit photos, history, and goals. Get immediate access to all research channels.</div>
+        <div class="cn-work-body">
+          <div class="cn-work-flow">
+            <b>Query:</b> How does masticatory stress influence maxillary bone density?
+          </div>
+          <h3>Synthesizing evidence across 14 papers...</h3>
+          <div class="cn-evidence-row">
+            <span>Wolff's Law &amp; Bone Remodeling</span>
+            <span>Orthodontics</span>
+          </div>
+          <div class="cn-evidence-row">
+            <span>Masticatory Muscle Force</span>
+            <span>Biomechanics</span>
+          </div>
+          <div class="cn-evidence-row">
+            <span>Maxillary Suture Response</span>
+            <span>Anatomy</span>
+          </div>
+          
+          <div class="cn-expedition-link">
+            <div>
+              <strong>View full synthesis</strong>
+              <small>3 sources cited</small>
+            </div>
+            <span>→</span>
+          </div>
         </div>
-        <div class="hsc">
-          <div class="hsn">02</div>
-          <div class="hslb">Step 2</div>
-          <div class="hsti">Assessment &amp; Plan</div>
-          <div class="hsde">Receive a natural-correction track tailored to your facial structure plus an education pack for provider discussions.</div>
-        </div>
-        <div class="hsc">
-          <div class="hsn">03</div>
-          <div class="hslb">Step 3</div>
-          <div class="hsti">Guided Execution</div>
-          <div class="hsde">Weekly check-ins via messages and calls. We adjust your track and escalate to US referral if needed.</div>
+        <div class="cn-work-caption">
+          ARGUS generates real-time, cited syntheses from the CRC literature base.
         </div>
       </div>
     </div>
 
-    <div class="mctab sr d2">
-      <div class="r">
-        <h3 class="mctah">Ready to get started?</h3>
-        <p class="mctap">Join CRC for <strong>$20/month</strong>. Evidence-first guidance, personal support, and a community focused on doing it right.</p>
-        <a href="https://crcofficial.com/products/crc-membership" target="_blank" rel="noopener noreferrer" class="bcta">Join CRC — $20/mo</a>
-        <p class="mdisc">Not medical advice. Always consult a licensed provider for diagnosis and treatment.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ── DISCORD ── -->
-<section id="discord">
-  <div class="c">
-    <div class="di sr">
-      <div class="dav">
-        <div class="da" style="background:#818cf8">AJ</div>
-        <div class="da" style="background:#38bdf8">MK</div>
-        <div class="da" style="background:#94a3b8">L</div>
-        <div class="db">+3,800 members</div>
-      </div>
-      <h2 class="dh2">3,800+ Members Strong</h2>
-      <p class="ddesc">Join a community of researchers, students, and curious minds dedicated to evidence-based science and self-development.</p>
-      <a href="https://discord.gg/4jMVUXZW6J" target="_blank" rel="noopener noreferrer" class="bdis">
-        <svg class="dico" viewBox="0 0 71 55" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M60.1045 4.8978C55.5792 2.8214 50.7265 1.2916 45.6527 0.41542C45.5603 0.39851 45.468 0.44077 45.4204 0.52529C44.7963 1.6353 44.105 3.0834 43.6209 4.2216C38.1637 3.4046 32.7345 3.4046 27.3892 4.2216C26.905 3.0581 26.1886 1.6353 25.5617 0.52529C25.5141 0.44334 25.4218 0.40108 25.3294 0.41542C20.2584 1.2888 15.4057 2.8186 10.8776 4.8978C10.8384 4.9147 10.8048 4.9429 10.7825 4.9795C1.57795 18.7309 -0.943561 32.1443 0.293408 45.3914C0.299005 45.4562 0.335386 45.5182 0.385761 45.5576C6.45866 50.0174 12.3413 52.7249 18.1147 54.5195C18.2071 54.5477 18.305 54.5139 18.3638 54.4378C19.7295 52.5728 20.9469 50.6063 21.9907 48.5383C22.0523 48.4172 21.9935 48.2735 21.8676 48.2256C19.9366 47.4931 18.0979 46.6 16.3292 45.5858C16.1893 45.5041 16.1781 45.304 16.3068 45.2082C16.679 44.9293 17.0513 44.6391 17.4067 44.3461C17.471 44.2926 17.5606 44.2813 17.6362 44.3151C29.2558 49.6202 41.8354 49.6202 53.3179 44.3151C53.3935 44.2785 53.4831 44.2898 53.5502 44.3433C53.9057 44.6363 54.2779 44.9293 54.6529 45.2082C54.7816 45.304 54.7732 45.5041 54.6333 45.5858C52.8646 46.6197 51.0259 47.4931 49.0921 48.2228C48.9662 48.2707 48.9102 48.4172 48.9718 48.5383C50.038 50.6034 51.2554 52.5699 52.5959 54.435C52.6519 54.5139 52.7526 54.5477 52.845 54.5195C58.6464 52.7249 64.529 50.0174 70.6019 45.5576C70.6551 45.5182 70.6887 45.459 70.6943 45.3942C72.1747 30.0791 68.2147 16.7757 60.1968 4.9823C60.1772 4.9429 60.1437 4.9147 60.1045 4.8978ZM23.7259 37.3253C20.2276 37.3253 17.3451 34.1136 17.3451 30.1693C17.3451 26.225 20.1717 23.0133 23.7259 23.0133C27.308 23.0133 30.1626 26.2532 30.1066 30.1693C30.1066 34.1136 27.28 37.3253 23.7259 37.3253ZM47.3178 37.3253C43.8196 37.3253 40.9371 34.1136 40.9371 30.1693C40.9371 26.225 43.7636 23.0133 47.3178 23.0133C50.9 23.0133 53.7545 26.2532 53.6986 30.1693C53.6986 34.1136 50.9 37.3253 47.3178 37.3253Z" fill="white"/>
-        </svg>
-        Join the CRC Discord
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- ── FOOTER ── -->
-<footer id="footer">
-  <div class="c">
-    <div class="fg">
+    <div class="cn-steps">
       <div>
-        <div class="flogo">
-          <img src="https://cdn.shopify.com/s/files/1/0946/6455/6842/files/077cedd2-dd86-44d1-a654-1849a0d930eb.png?v=1765746945" alt="CRC" class="flogo-img"/>
-          <span class="flogo-name">CRC</span>
-        </div>
-        <p class="ftag">Reshaping how we understand facial growth through peer-reviewed science.</p>
+        <p class="cn-eyebrow">Step 1</p>
+        <h3>Ask a question</h3>
+        <p>Input a natural language query about craniofacial biology or treatment protocols.</p>
       </div>
-      <div class="fnav">
-        <a href="#crcbn">Bibliographic Network</a>
-        <a href="https://discord.gg/4jMVUXZW6J" target="_blank" rel="noopener noreferrer">Discord</a>
-        <a href="https://crcofficial.com/products/crc-membership" target="_blank" rel="noopener noreferrer">Membership</a>
+      <div>
+        <p class="cn-eyebrow">Step 2</p>
+        <h3>Trace the sources</h3>
+        <p>ARGUS retrieves relevant records and links every claim directly to the literature.</p>
       </div>
-      <div class="fright">
-        <div class="fslogan">Science-First &middot; Evidence-Based &middot; Community-Driven</div>
-        <div class="fcopy">&copy; 2026 Craniofacial Research Collective.</div>
+      <div>
+        <p class="cn-eyebrow">Step 3</p>
+        <h3>Connect the dots</h3>
+        <p>Explore the relationships between retrieved papers in the visual network.</p>
       </div>
     </div>
-  </div>
-</footer>
+  </section>
 
-</div><!-- /#crc-root -->
+  <!-- Coverflow -->
+  <section class="cn-section cn-wrap" id="cov-section">
+    <div class="cn-section-head" style="display: flex; flex-direction: column; align-items: center; margin: 0 auto 48px; text-align: center;">
+      <p class="cn-eyebrow">Member Results</p>
+      <h2 style="margin: 15px 0;">Member Transformations</h2>
+      <p style="max-width: 600px; font-size: 15px;">Real results from CRC members following evidence-based protocols.</p>
+      <p class="cn-fine" style="margin-top: 10px; font-size: 12px; color: #9291a8;">Click any image to enlarge</p>
+    </div>
+    <div class="cov-stage">
+      <div class="cov-inner" id="cov-container"></div>
+      <button class="cov-prev" id="cov-prev"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg></button>
+      <button class="cov-next" id="cov-next"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></button>
+    </div>
+    <div class="cov-dots" id="cov-dots"></div>
+  </section>
 
-<!-- Lightbox: outside #crc-root so position:fixed covers everything -->
-<div id="crc-lb" role="dialog" aria-modal="true">
-  <button class="lbc" id="lbc" aria-label="Close">&times;</button>
-  <img src="" alt="" class="lbi" id="lbi"/>
+  <section class="cn-section cn-wrap">
+    <div class="cn-belief">
+      <div>
+        <p class="cn-eyebrow">03 / The Collective</p>
+      </div>
+      <div>
+        <blockquote>
+          "The most significant breakthroughs in craniofacial health won't come from a single discipline, but from <em>connecting the evidence across them.</em>"
+        </blockquote>
+        <p>We are building a platform where researchers, clinicians, and driven individuals can explore the biology of facial growth together. By organizing the literature into a connected network, we make it possible to see the patterns that matter.</p>
+        <div class="cn-actions">
+          <a class="cn-button" href="https://crcofficial.com">Join the collective</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cn-section cn-wrap cn-end" id="cn-collective">
+    <div>
+      <p class="cn-eyebrow">Join CRC</p>
+      <h2>Ready to go deeper?</h2>
+      <p>Get immediate access to the CRCBN beta, ARGUS, and the private Discord community.</p>
+    </div>
+    
+    <div class="cn-join-card">
+      <p class="cn-eyebrow">CRC Membership</p>
+      <h3>Beta Access Pass</h3>
+      <p>Includes full access to the CRCBN knowledge graph, ARGUS research assistant, and the collective Discord server.</p>
+      <a class="cn-button" href="https://crcofficial.com/products/crc-membership" style="display: flex; margin-top: 25px; justify-content: space-between;">
+        <span>Subscribe</span>
+        <span>$15/mo</span>
+      </a>
+      <p class="cn-fine">Cancel anytime. Price secured for beta members.</p>
+    </div>
+  </section>
+
+  <section class="cn-wrap cn-faq">
+    <details>
+      <summary>What is CRCBN?</summary>
+      <p>CRCBN (Craniofacial Research Collective Beta Network) is a connected knowledge graph of research papers, clinical data, and biological concepts related to facial growth and health.</p>
+    </details>
+    <details>
+      <summary>How do I access ARGUS?</summary>
+      <p>ARGUS is available exclusively to CRC members. Once you subscribe, you can access the ARGUS workspace directly from the CRCBN dashboard.</p>
+    </details>
+    <details>
+      <summary>Can anyone join?</summary>
+      <p>Yes. While CRC is built for rigorous research, it is open to clinicians, researchers, and individuals who are serious about understanding craniofacial science.</p>
+    </details>
+  </section>
+
+  <footer class="cn-footer cn-wrap">
+    <div class="cn-footer-inner">
+      <a class="cn-brand" href="#crc-next" aria-label="CRC home">
+        <img src="https://cdn.shopify.com/s/files/1/0946/6455/6842/files/077cedd2-dd86-44d1-a654-1849a0d930eb.png?v=1765746945" alt="" width="32" height="32" />
+        <strong>CRC</strong>
+      </a>
+      <nav>
+        <a href="#cn-network">The network</a>
+        <a href="#cn-argus">ARGUS</a>
+        <a href="https://crcofficial.com">Membership</a>
+        <a href="mailto:contact@crcofficial.com">Contact</a>
+      </nav>
+    </div>
+    <div class="cn-copyright">
+      <span>© 2026 Craniofacial Research Collective</span>
+      <span>A new orbit.</span>
+    </div>
+  </footer>
 </div>
 
+<div id="crc-lb">
+  <div class="lb-wrap">
+    <button class="lbc" id="lb-close"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 5L5 15M5 5l10 10"/></svg></button>
+    <img class="lbi" id="lb-img" src="" alt="Enlarged transformation"/>
+  </div>
+</div>
+
+
 <script>
-'use strict';
-
-// ── Scroll reveal ──────────────────────────────────────────────────────
-const io = new IntersectionObserver(es => es.forEach(e => {
-  if (e.isIntersecting) { e.target.classList.add('vis'); io.unobserve(e.target); }
-}), { threshold: 0.08 });
-document.querySelectorAll('#crc-root .sr').forEach(el => io.observe(el));
-
-// ── Count-up ───────────────────────────────────────────────────────────
-function animCount(el) {
-  const end = +el.dataset.e, suf = el.dataset.s || '';
-  let cur = 0;
-  const step = (end / 1600) * 16;
-  const t = setInterval(() => {
-    cur = Math.min(cur + step, end);
-    el.textContent = Math.floor(cur).toLocaleString() + suf;
-    if (cur >= end) clearInterval(t);
-  }, 16);
-}
-const cio = new IntersectionObserver(es => es.forEach(e => {
-  if (e.isIntersecting) { animCount(e.target); cio.unobserve(e.target); }
-}), { threshold: 0.3 });
-document.querySelectorAll('.cu').forEach(el => cio.observe(el));
-
-// ── Hero canvas: light theme — indigo icosahedron + subtle particles ──
-(function () {
-  const canvas = document.getElementById('hc');
-  if (!canvas) return;
-  const ctx = canvas.getContext('2d', { alpha: false });
-  const isMobile = window.innerWidth < 768;
-  const DPR = Math.min(devicePixelRatio || 1, 1.5);
-
-  function buildIco(subs) {
-    const PHI = (1 + Math.sqrt(5)) / 2;
-    const norm = v => { const l = Math.hypot(v[0],v[1],v[2]); return [v[0]/l,v[1]/l,v[2]/l]; };
-    let V = [[-1,PHI,0],[1,PHI,0],[-1,-PHI,0],[1,-PHI,0],[0,-1,PHI],[0,1,PHI],[0,-1,-PHI],[0,1,-PHI],[PHI,0,-1],[PHI,0,1],[-PHI,0,-1],[-PHI,0,1]].map(norm);
-    let F = [[0,11,5],[0,5,1],[0,1,7],[0,7,10],[0,10,11],[1,5,9],[5,11,4],[11,10,2],[10,7,6],[7,1,8],[3,9,4],[3,4,2],[3,2,6],[3,6,8],[3,8,9],[4,9,5],[2,4,11],[6,2,10],[8,6,7],[9,8,1]];
-    for (let s = 0; s < subs; s++) {
-      const NF = [], mc = {};
-      const gm = (a,b) => { const k=Math.min(a,b)+'_'+Math.max(a,b); if(mc[k]!=null)return mc[k]; V.push(norm([(V[a][0]+V[b][0])/2,(V[a][1]+V[b][1])/2,(V[a][2]+V[b][2])/2])); mc[k]=V.length-1; return mc[k]; };
-      for (const [a,b,c] of F) { const ab=gm(a,b),bc=gm(b,c),ca=gm(c,a); NF.push([a,ab,ca],[ab,b,bc],[ca,bc,c],[ab,bc,ca]); }
-      F = NF;
-    }
-    const ES = new Set(), EI = [];
-    for (const [a,b,c] of F) for (const [i,j] of [[a,b],[b,c],[c,a]]) { const k=Math.min(i,j)+'_'+Math.max(i,j); if(!ES.has(k)){ES.add(k);EI.push([i,j]);} }
-    return { V, EI };
-  }
-
-  function makeSprite(size, r, g, b, maxA) {
-    const oc = document.createElement('canvas'); oc.width = oc.height = size * 2;
-    const ox = oc.getContext('2d');
-    const grad = ox.createRadialGradient(size,size,0,size,size,size);
-    grad.addColorStop(0, `rgba(${r},${g},${b},${maxA})`);
-    grad.addColorStop(1, `rgba(${r},${g},${b},0)`);
-    ox.fillStyle = grad; ox.fillRect(0,0,size*2,size*2);
-    return oc;
-  }
-
-  const { V: verts, EI: edgeIdx } = buildIco(isMobile ? 1 : 2);
-  const VGSZ = 26, PGSZ = 7;
-  // Indigo vertex glow, slate particle glow
-  const vertSprite = makeSprite(VGSZ, 107, 95, 248, 0.85);
-  const partSprite = makeSprite(PGSZ, 148, 163, 184, 0.55);
-
-  const N = verts.length;
-  const px = new Float32Array(N), py = new Float32Array(N), pz = new Float32Array(N);
-
-  const PC = isMobile ? 140 : 260;
-  const sx_ = new Float32Array(PC), sy_ = new Float32Array(PC), sz_ = new Float32Array(PC);
-  const svx = new Float32Array(PC), svy = new Float32Array(PC);
-  const ssz = new Float32Array(PC), spu = new Float32Array(PC), sps = new Float32Array(PC);
-  for (let i = 0; i < PC; i++) {
-    sx_[i] = Math.random(); sy_[i] = Math.random(); sz_[i] = Math.random();
-    ssz[i] = Math.random() * 1.2 + 0.3;
-    const sp = 0.00005 + Math.random() * 0.0001, ang = Math.random() * Math.PI * 2;
-    svx[i] = Math.cos(ang) * sp; svy[i] = Math.sin(ang) * sp;
-    spu[i] = Math.random() * Math.PI * 2; sps[i] = 0.005 + Math.random() * 0.011;
-  }
-
-  let t = 0, lastTime = 0;
-
-  function resize() {
-    canvas.width  = Math.round(canvas.offsetWidth  * DPR);
-    canvas.height = Math.round(canvas.offsetHeight * DPR);
-    ctx.scale(DPR, DPR);
-  }
-  resize();
-  window.addEventListener('resize', resize, { passive: true });
-
-  function draw(now) {
-    requestAnimationFrame(draw);
-    if (now - lastTime < 15) return;
-    lastTime = now;
-
-    const W = canvas.offsetWidth, H = canvas.offsetHeight;
-    // Silver spotlight gradient — white at top-center → dark charcoal at edges
-    const bg = ctx.createRadialGradient(W*0.5, H*0.05, 0, W*0.5, H*0.5, Math.max(W,H)*0.95);
-    bg.addColorStop(0,    '#dde1e8');
-    bg.addColorStop(0.25, '#a8b0bc');
-    bg.addColorStop(0.55, '#606877');
-    bg.addColorStop(1,    '#1e2130');
-    ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H);
-
-    // Subtle floating particles (slate-400 on light bg)
-    ctx.save();
-    let glows = 0;
-    for (let i = 0; i < PC; i++) {
-      sx_[i] += svx[i]; sy_[i] += svy[i]; spu[i] += sps[i];
-      if (sx_[i] < 0) sx_[i] = 1; else if (sx_[i] > 1) sx_[i] = 0;
-      if (sy_[i] < 0) sy_[i] = 1; else if (sy_[i] > 1) sy_[i] = 0;
-      const tw = 0.55 + Math.sin(spu[i]) * 0.45;
-      const br = (0.3 + sz_[i] * 0.7) * tw;
-      if (br < 0.07) continue;
-      const x = sx_[i] * W, y = sy_[i] * H;
-      const r = ssz[i] * (0.8 + Math.sin(spu[i] * 0.7) * 0.2);
-      if (glows < 5 && sz_[i] > 0.75 && tw > 0.9) {
-        ctx.globalAlpha = br * 0.22;
-        ctx.drawImage(partSprite, x - PGSZ, y - PGSZ, PGSZ*2, PGSZ*2);
-        glows++;
-      }
-      ctx.globalAlpha = Math.min(0.45, br * 0.50);
-      ctx.fillStyle = '#94a3b8';
-      ctx.beginPath(); ctx.arc(x, y, r, 0, 6.2832); ctx.fill();
-    }
-    ctx.restore();
-
-    // Project icosahedron
-    const aY = t * 0.18, aX = Math.sin(t * 0.07) * 0.18;
-    const cY = Math.cos(aY), sY = Math.sin(aY), cX = Math.cos(aX), sX = Math.sin(aX);
-    const cx = W * 0.5, cy = H * 0.5, fov = Math.min(W, H) * (isMobile ? 0.50 : 0.54);
-    for (let i = 0; i < N; i++) {
-      const [vx,vy,vz] = verts[i];
-      const rx = vx*cY - vz*sY, rz0 = vx*sY + vz*cY;
-      const ry = vy*cX - rz0*sX, rz = vy*sX + rz0*cX;
-      const s = fov / (rz + 4);
-      px[i] = cx + rx * s; py[i] = cy - ry * s; pz[i] = rz;
-    }
-
-    // Edges — indigo on light
-    ctx.save(); ctx.lineWidth = 1.2; ctx.strokeStyle = 'rgba(107,95,248,0.45)';
-    for (const [ai, bi] of edgeIdx) {
-      const avgZ = (pz[ai] + pz[bi]) * 0.5;
-      ctx.globalAlpha = Math.min(0.60, Math.max(0.06, 0.10 + (avgZ + 1) * 0.22));
-      ctx.beginPath(); ctx.moveTo(px[ai], py[ai]); ctx.lineTo(px[bi], py[bi]); ctx.stroke();
-    }
-    ctx.restore();
-
-    // Vertex glows — indigo
-    const pulse = Math.sin(t * 2.2) * 0.5 + 0.5;
-    const dotR = 2.5 + pulse * 1.0;
-    ctx.save(); ctx.fillStyle = '#6b5ff8';
-    for (let i = 0; i < N; i++) {
-      const na = Math.min(1, 0.45 + (pz[i] + 1) * 0.22);
-      ctx.globalAlpha = na * 0.55;
-      ctx.drawImage(vertSprite, px[i]-VGSZ, py[i]-VGSZ, VGSZ*2, VGSZ*2);
-      ctx.globalAlpha = Math.min(0.90, na * 0.85);
-      ctx.beginPath(); ctx.arc(px[i], py[i], dotR, 0, 6.2832); ctx.fill();
-    }
-    ctx.restore();
-
-    // Core ambient glow — soft indigo
-    const cg = ctx.createRadialGradient(cx, cy, 0, cx, cy, fov * 0.80);
-    cg.addColorStop(0, 'rgba(107,95,248,0.06)');
-    cg.addColorStop(0.5, 'rgba(107,95,248,0.02)');
-    cg.addColorStop(1, 'rgba(107,95,248,0)');
-    ctx.globalAlpha = 1; ctx.fillStyle = cg;
-    ctx.beginPath(); ctx.arc(cx, cy, fov * 0.80, 0, 6.2832); ctx.fill();
-
-    t += 0.016;
-  }
-  requestAnimationFrame(draw);
-})();
-
-// ── Video player controls ─────────────────────────────────────────────
-(function () {
-  const vid  = document.getElementById('crc-vid');
-  const prog = document.getElementById('crc-prog');
-  const fill = document.getElementById('crc-fill');
-  const thumb= document.getElementById('crc-thumb');
-  const pp   = document.getElementById('crc-pp');
-  const rew  = document.getElementById('crc-rew');
-  const fwd  = document.getElementById('crc-fwd');
-  const tm   = document.getElementById('crc-tm');
-  if (!vid || !prog) return;
-
-  function fmt(s) {
-    if (!isFinite(s)) return '0:00';
-    const m = Math.floor(s / 60);
-    return m + ':' + String(Math.floor(s % 60)).padStart(2, '0');
-  }
-
-  function updateProg() {
-    const pct = vid.duration ? (vid.currentTime / vid.duration * 100) : 0;
-    fill.style.width  = pct + '%';
-    thumb.style.left  = pct + '%';
-    tm.textContent    = fmt(vid.currentTime) + ' / ' + fmt(vid.duration);
-  }
-
-  function syncIcons() {
-    const pause = document.getElementById('crc-ico-pause');
-    const play  = document.getElementById('crc-ico-play');
-    if (vid.paused) { pause.style.display='none'; play.style.display=''; }
-    else            { pause.style.display='';     play.style.display='none'; }
-  }
-
-  vid.addEventListener('timeupdate', updateProg);
-  vid.addEventListener('loadedmetadata', updateProg);
-  vid.addEventListener('play',  syncIcons);
-  vid.addEventListener('pause', syncIcons);
-  vid.addEventListener('ended', syncIcons);
-
-  pp.addEventListener('click', function() { vid.paused ? vid.play() : vid.pause(); });
-  rew.addEventListener('click', function() { vid.currentTime = Math.max(0, vid.currentTime - 10); });
-  fwd.addEventListener('click', function() { vid.currentTime = Math.min(vid.duration || 0, vid.currentTime + 10); });
-
-  function seekTo(e) {
-    const r = prog.getBoundingClientRect();
-    const pct = Math.max(0, Math.min(1, (e.clientX - r.left) / r.width));
-    vid.currentTime = pct * (vid.duration || 0);
-  }
-  prog.addEventListener('click', seekTo);
-  let dragging = false;
-  prog.addEventListener('mousedown', function(e) { dragging = true; seekTo(e); });
-  window.addEventListener('mousemove', function(e) { if (dragging) seekTo(e); });
-  window.addEventListener('mouseup',   function()  { dragging = false; });
-})();
-
-// ── Network canvas no-op (canvas element no longer in DOM) ────────────
-(function () {
-  const canvas = document.getElementById('nc');
-  if (!canvas) return;
-})();
-
-// ── Coverflow with mouse + touch swipe ────────────────────────────────
-(function () {
-  const imgs = [
-    {s:'https://cdn.shopify.com/s/files/1/0769/4362/2362/files/A_1598ccc1-5b62-4998-81f5-8e86710d9610.png?v=1786587111',l:'Ari'},
-    {s:'https://cdn.shopify.com/s/files/1/0769/4362/2362/files/A_2.png?v=1786587110',l:'Ari'},
-    {s:'https://cdn.shopify.com/s/files/1/0769/4362/2362/files/Monte_d5352fb8-366c-40df-a405-15c231e241dd.png?v=1786587110',l:'Monte'},
-    {s:'https://cdn.shopify.com/s/files/1/0769/4362/2362/files/Monte_2_013bf6ca-f19f-4245-ae0c-d1df895d08d7.png?v=1786587111',l:'Monte'},
-    {s:'https://cdn.shopify.com/s/files/1/0769/4362/2362/files/M_2.png?v=1786587110',l:'Monte'},
-    {s:'https://cdn.shopify.com/s/files/1/0769/4362/2362/files/M_bff15908-aaa8-4aa1-abac-821fb5eed635.png?v=1786587110',l:'Monte'},
-    {s:'https://cdn.shopify.com/s/files/1/0769/4362/2362/files/L.png?v=1786587110',l:'Lee'},
-    {s:'https://cdn.shopify.com/s/files/1/0769/4362/2362/files/Lee_2082144e-b242-44ba-88b3-169d33bfd351.png?v=1786587110',l:'Lee'},
-    {s:'https://cdn.shopify.com/s/files/1/0769/4362/2362/files/Lee_2_167db5de-d7d1-4a86-832a-d4ab33859c22.png?v=1786587110',l:'Lee'},
-    {s:'https://cdn.shopify.com/s/files/1/0769/4362/2362/files/Kap_e7821bf2-c704-41fd-bd5f-bf8018373532.png?v=1786587109',l:'Kap'},
-    {s:'https://cdn.shopify.com/s/files/1/0769/4362/2362/files/Kap_2_9a8c8236-2d27-49b7-99af-3493a5cfa7d5.png?v=1786587109',l:'Kap'},
-    {s:'https://cdn.shopify.com/s/files/1/0769/4362/2362/files/K.png?v=1786587110',l:'Kaan'}
+document.addEventListener('DOMContentLoaded', () => {
+  const images = [
+    "https://cdn.shopify.com/s/files/1/0769/4362/2362/files/A_1598ccc1-5b62-4998-81f5-8e86710d9610.png?v=1786587111",
+    "https://cdn.shopify.com/s/files/1/0769/4362/2362/files/A_2.png?v=1786587110",
+    "https://cdn.shopify.com/s/files/1/0769/4362/2362/files/Monte_d5352fb8-366c-40df-a405-15c231e241dd.png?v=1786587110",
+    "https://cdn.shopify.com/s/files/1/0769/4362/2362/files/Monte_2_013bf6ca-f19f-4245-ae0c-d1df895d08d7.png?v=1786587111",
+    "https://cdn.shopify.com/s/files/1/0769/4362/2362/files/M_2.png?v=1786587110",
+    "https://cdn.shopify.com/s/files/1/0769/4362/2362/files/M_bff15908-aaa8-4aa1-abac-821fb5eed635.png?v=1786587110",
+    "https://cdn.shopify.com/s/files/1/0769/4362/2362/files/L.png?v=1786587110",
+    "https://cdn.shopify.com/s/files/1/0769/4362/2362/files/Lee_2082144e-b242-44ba-88b3-169d33bfd351.png?v=1786587110",
+    "https://cdn.shopify.com/s/files/1/0769/4362/2362/files/Lee_2_167db5de-d7d1-4a86-832a-d4ab33859c22.png?v=1786587110",
+    "https://cdn.shopify.com/s/files/1/0769/4362/2362/files/Kap_e7821bf2-c704-41fd-bd5f-bf8018373532.png?v=1786587109",
+    "https://cdn.shopify.com/s/files/1/0769/4362/2362/files/Kap_2_9a8c8236-2d27-49b7-99af-3493a5cfa7d5.png?v=1786587109",
+    "https://cdn.shopify.com/s/files/1/0769/4362/2362/files/K.png?v=1786587110"
   ];
+  let currentIndex = 0;
+  let paused = false;
+  let zoomedImage = null;
 
-  const inner  = document.getElementById('cfin');
-  const dotsEl = document.getElementById('cdots');
-  const stage  = document.getElementById('cstg');
-  const lb     = document.getElementById('crc-lb');
-  const lbi    = document.getElementById('lbi');
-  const lbc    = document.getElementById('lbc');
-  let cur = 0, paused = false, timer;
+  const container = document.getElementById('cov-container');
+  const dotsContainer = document.getElementById('cov-dots');
+  const lb = document.getElementById('crc-lb');
+  const lbImg = document.getElementById('lb-img');
+  
+  if(!container) return;
 
-  const cards = imgs.map((img, idx) => {
-    const el = document.createElement('div');
-    el.className = 'ccard';
-    el.innerHTML = `<img src="${img.s}" alt="Member transformation" loading="lazy"/><div class="czi">&#128269;</div>`;
-    el.addEventListener('click', () => idx === cur ? openLB(img.s) : setCur(idx));
-    inner.appendChild(el);
-    return el;
+  images.forEach((src, idx) => {
+    const div = document.createElement('div');
+    div.className = 'cov-card';
+    div.innerHTML = `<img src="${src}" alt="Member transformation" />
+                     <div class="czi"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 15l-4-4M10 6a4 4 0 10-8 0 4 4 0 008 0z"/></svg></div>`;
+    div.addEventListener('click', () => {
+      if (idx === currentIndex) {
+        openLightbox(src);
+      } else {
+        currentIndex = idx;
+        render();
+      }
+    });
+    container.appendChild(div);
+
+    const dot = document.createElement('button');
+    dot.className = 'cov-dot';
+    dot.addEventListener('click', () => { currentIndex = idx; render(); });
+    dotsContainer.appendChild(dot);
   });
 
-  const dots = imgs.map((_, idx) => {
-    const d = document.createElement('button');
-    d.className = 'cdot';
-    d.addEventListener('click', () => setCur(idx));
-    dotsEl.appendChild(d);
-    return d;
-  });
+  const cards = container.querySelectorAll('.cov-card');
+  const dots = dotsContainer.querySelectorAll('.cov-dot');
 
   function render() {
-    cards.forEach((c, idx) => {
-      let off = idx - cur;
-      if (off > imgs.length / 2) off -= imgs.length;
-      if (off < -imgs.length / 2) off += imgs.length;
-      const abs = Math.abs(off), isC = off === 0;
-      c.style.transform  = `translateX(${off * 110}px) translateZ(${-abs * 130}px) rotateY(${isC ? 0 : off > 0 ? -28 : 28}deg)`;
-      c.style.opacity    = abs > 3 ? '0' : String(1 - abs * 0.2);
-      c.style.zIndex     = String(50 - abs);
-      c.style.pointerEvents = abs > 3 ? 'none' : 'auto';
-      c.style.cursor     = isC ? 'zoom-in' : 'pointer';
-      c.style.boxShadow  = isC
-        ? '0 20px 60px rgba(0,0,0,.15), 0 8px 20px rgba(0,0,0,.08)'
-        : '0 8px 24px rgba(0,0,0,.08)';
-      c.classList.toggle('isc', isC);
+    cards.forEach((card, idx) => {
+      const diff = idx - currentIndex;
+      let offset = diff;
+      if (diff > images.length / 2) offset -= images.length;
+      if (diff < -images.length / 2) offset += images.length;
+
+      const isCenter = offset === 0;
+      const zIndex = 50 - Math.abs(offset);
+      const translateX = offset * 120;
+      const translateZ = -Math.abs(offset) * 150;
+      const rotateY = offset === 0 ? 0 : offset > 0 ? -30 : 30;
+      const opacity = Math.abs(offset) > 3 ? 0 : 1 - (Math.abs(offset) * 0.2);
+
+      card.style.transform = `translateX(${translateX}px) translateZ(${translateZ}px) rotateY(${rotateY}deg)`;
+      card.style.zIndex = zIndex;
+      card.style.opacity = opacity;
+      card.style.pointerEvents = Math.abs(offset) > 3 ? "none" : "auto";
+      card.style.cursor = isCenter ? "zoom-in" : "pointer";
+      
+      if(isCenter) card.classList.add('isc');
+      else card.classList.remove('isc');
     });
-    dots.forEach((d, idx) => d.classList.toggle('act', idx === cur));
+
+    dots.forEach((dot, idx) => {
+      if (idx === currentIndex) dot.classList.add('act');
+      else dot.classList.remove('act');
+    });
   }
 
-  function setCur(idx) { cur = (idx + imgs.length) % imgs.length; render(); }
-
-  function openLB(src) { lbi.src = src; lb.classList.add('open'); document.body.style.overflow='hidden'; }
-  function closeLB()   { lb.classList.remove('open'); document.body.style.overflow=''; }
-
-  lbc.addEventListener('click', closeLB);
-  lb.addEventListener('click', function(e) { if (e.target === lb) closeLB(); });
-  document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') closeLB();
-    if (!lb.classList.contains('open')) {
-      if (e.key === 'ArrowRight') { paused=true; setCur(cur+1); }
-      if (e.key === 'ArrowLeft')  { paused=true; setCur(cur-1); }
-    }
+  document.getElementById('cov-prev').addEventListener('click', () => {
+    currentIndex = (currentIndex - 1 + images.length) % images.length;
+    render();
+  });
+  document.getElementById('cov-next').addEventListener('click', () => {
+    currentIndex = (currentIndex + 1) % images.length;
+    render();
   });
 
-  document.getElementById('cprev').addEventListener('click', function() { paused=true; setCur(cur-1); });
-  document.getElementById('cnxt').addEventListener('click',  function() { paused=true; setCur(cur+1); });
+  function openLightbox(src) {
+    lbImg.src = src;
+    lb.classList.add('open');
+    zoomedImage = src;
+  }
+  function closeLightbox() {
+    lb.classList.remove('open');
+    zoomedImage = null;
+    lbImg.src = "";
+  }
 
-  // Auto-advance
-  function startTimer() { timer = setInterval(() => { if (!paused) setCur(cur+1); }, 4000); }
-  startTimer();
+  document.getElementById('lb-close').addEventListener('click', closeLightbox);
+  lb.addEventListener('click', (e) => {
+    if(e.target === lb) closeLightbox();
+  });
 
-  // Touch swipe
-  let tx0 = 0;
-  stage.addEventListener('touchstart', function(e) { tx0 = e.touches[0].clientX; paused=true; }, { passive:true });
-  stage.addEventListener('touchend',   function(e) {
-    const dx = e.changedTouches[0].clientX - tx0;
-    if (Math.abs(dx) > 40) { dx < 0 ? setCur(cur+1) : setCur(cur-1); }
-  }, { passive:true });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === "Escape" && zoomedImage) closeLightbox();
+    if (e.key === "ArrowRight" && !zoomedImage) { currentIndex = (currentIndex + 1) % images.length; render(); }
+    if (e.key === "ArrowLeft" && !zoomedImage) { currentIndex = (currentIndex - 1 + images.length) % images.length; render(); }
+  });
 
-  // Mouse pause on hover
-  stage.addEventListener('mouseenter', function() { paused = true; });
-  stage.addEventListener('mouseleave', function() { paused = false; });
+  const section = document.getElementById('cov-section');
+  section.addEventListener('mouseenter', () => paused = true);
+  section.addEventListener('mouseleave', () => paused = false);
+
+  setInterval(() => {
+    if(!paused && !zoomedImage) {
+      currentIndex = (currentIndex + 1) % images.length;
+      render();
+    }
+  }, 4000);
 
   render();
-})();
+});
 </script>
+
 </body>
 </html>
