@@ -131,6 +131,24 @@ body:has(#crc-next) :is(#qab_container,#qab_background,.announcement-bar,.announ
 #crc-next .cn-topic-links a{font-size:12px;padding:8px 12px}
 #crc-next .cn-belief blockquote{font-size:30px}
 }
+
+/* Hero contrast and compact mobile composition */
+#crc-next .cn-hero-video-shade{background:linear-gradient(90deg,#030407 0%,rgba(3,4,7,1) 16%,rgba(3,4,7,.96) 34%,rgba(3,4,7,.72) 48%,rgba(3,4,7,.2) 72%,rgba(3,4,7,.42) 100%),linear-gradient(0deg,#030407 0%,transparent 22%,rgba(3,4,7,.22) 100%);box-shadow:inset 110px 0 150px rgba(0,0,0,.52),inset 0 -70px 90px rgba(0,0,0,.42)}
+@media(max-width:760px){
+#crc-next .cn-hero{min-height:640px;height:min(700px,calc(100svh - 20px));padding:26px 0 24px;align-items:end}
+#crc-next .cn-hero-copy{padding:20px 0 4px;max-width:34rem}
+#crc-next .cn-hero h1{font-size:clamp(46px,10.5vw,58px);line-height:.96;margin:15px 0 17px;letter-spacing:-.055em}
+#crc-next .cn-hero-copy>p:not(.cn-eyebrow){font-size:14px;line-height:1.62;max-width:31rem}
+#crc-next .cn-hero-video{object-position:57% center}
+#crc-next .cn-hero-video-shade{background:linear-gradient(0deg,#030407 0%,rgba(3,4,7,.98) 17%,rgba(3,4,7,.9) 39%,rgba(3,4,7,.42) 65%,rgba(3,4,7,.12) 100%),linear-gradient(90deg,rgba(3,4,7,.76) 0%,rgba(3,4,7,.34) 60%,transparent 100%);box-shadow:inset 0 -150px 150px rgba(0,0,0,.62)}
+#crc-next .cn-actions{margin-top:20px}
+#crc-next .cn-hero-foot{margin-top:20px;font-size:10px}
+}
+@media(max-width:420px){
+#crc-next .cn-hero{min-height:610px;height:min(660px,calc(100svh - 12px))}
+#crc-next .cn-hero h1{font-size:clamp(43px,13vw,54px)}
+#crc-next .cn-hero-copy>p:not(.cn-eyebrow){font-size:13.5px}
+}
 </style>
 </head>
 <body>
